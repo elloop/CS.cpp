@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct Phone {
+    char phoneNumber[256];
+    int repeatCount;
+    struct Phone * link;
+} *TelephoneItemPtr, TelephoneItem;
+
+char* standardizePhoneNumber(char * phone) {
+    static char phoneCharMap[] = "2223334445556667077888999";
+    char * result = phone;
+    int i, j;
+    i = 0;
+    j = 0;
+    for (i=0; i<strlen(phone); ++i) {
+        if (phone[i] == '-') {
+            continue;
+        } else if (phone[i] < 'A') {
+            result[j++] = phone[i];
+        } else {
+            result[j++] = phoneCharMap[phone[i]-'A'];
+        }
+    }
+    result[j] = 0;
+    return result;
+}
+
+int main(void) {
+    int recordNum = 0;
+    TelephoneItemPtr head = NULL;
+    TelephoneItemPtr tmp = NULL;
+    char temp[256];
+    scanf("%d", &recordNum);
+    while (recordNum--) {
+        gets(temp);
+        char * standardForm = standardizePhoneNumber(temp);
+        TelephoneItemPtr p = head;
+        for (p; p->link && strcmp(p->phoneNumber, standardForm) < 0; p=p->link)
+            ;
+        tmp = (TelephoneItemPtr) malloc(sizeof (TelephoneItem));
+        if (NULL == tmp) {
+            exit(0);
+        }
+        gets(tmp->phoneNumber);
+        tmp->repeatCount = 1;
+
+    }
+    return 0;
+}
