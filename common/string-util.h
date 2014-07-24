@@ -16,8 +16,8 @@
  * =====================================================================================
  */
 
-#ifndef  STRING_UTIL_INC
-#define  STRING_UTIL_INC
+#ifndef  EL_STRING_UTIL
+#define  EL_STRING_UTIL
 
 #include <iostream>
 #define	pc(x) cout << "************************" << (x) << "*********************" << endl
