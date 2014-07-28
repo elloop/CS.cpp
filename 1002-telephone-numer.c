@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// this program didn't get AC in POJ.
+
 // 电话号码结果体：号码、重复次数、下一个号码的链接.
 typedef struct Phone {
 	char phoneNumber[256];
