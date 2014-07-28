@@ -53,7 +53,7 @@ string SuffixTest::suffix2midfix ( string & suffixStr ) {
 	 * 1. num : output.
 	 * 2. op :
 	 * 			1)  (opNew > opOld) : push into opNew into stack.
-	 * 			2) !(opNew > opOld) : pop and ouput the opOld, push opNew into stack.
+	 * 			2) !(opNew > opOld) : pop and ouput the opOld until opNew > opOld, push opNew into stack.
 	 * 3. (  : push into stack.
 	 * 4. )  : pop and ouput  ops until met '(' (don't output the '(' ')'.
 	 * 5. end of the input: pop all ops and output them.
