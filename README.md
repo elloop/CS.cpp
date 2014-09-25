@@ -1,8 +1,8 @@
 algorithm
-===
+---
 
-data structure and algorithm practices.
+- data structure and algorithm practices.
 
-this line is added by birdsun.
+- this line is added by birdsun.
 
-now there is something new.
+- now there is something new.
