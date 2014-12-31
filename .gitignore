@@ -1,4 +1,9 @@
 *.[oa]
+*.dylib
+*.la
+*.lai
+*.so
 *~
 *.orig
+*.exe
 
