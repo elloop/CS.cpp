@@ -1,25 +1,20 @@
 /*
  * =====================================================================================
  *
- *       Filename:  test.h
+ *       Filename:  inc.h
  *
- *    Description:  
+ *    Description:  common include files.
  *
  *        Version:  1.0
- *        Created:  2014/12/31 11:51:19
+ *        Created:  2015/01/03 15时30分44秒
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  jacy sun (https://github.com/elloop), elloop@foxmail.com
+ *         Author:  elloop (http://blog.csdn.net/elloop/), jacysun@gmail.com
  *   Organization:  China
  *
  * =====================================================================================
  */
 
-
-#ifndef  TEST_TEST_H
-#define TEST_TEST_H
-
-void test_read_char_to_c();
-
-#endif     /* -----  not TEST_TEST_H  ----- */
+#define USING_NS_TEST using namespace elloop_test
+#define USING_NS_STD using namespace std

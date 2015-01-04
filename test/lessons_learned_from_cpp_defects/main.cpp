@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.cpp
+ *       Filename:  odr.cpp
  *
- *    Description:  algoritm test.
+ *    Description:  odr(one define rule) test
  *
  *        Version:  1.0
- *        Created:  2014/12/31 23时13分16秒
+ *        Created:  2015/01/03 14时51分53秒
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,23 +16,20 @@
  * =====================================================================================
  */
 
+#include "odr.h"
+#include <ctime>
 #include <cstdlib>
 #include <cstdio>
-#include <ctime>
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  main
- *  Description:  
- * =====================================================================================
- */
 
+#define __g
 int main ( int argc, char * argv[] ) {
     clock_t begin, end;
     begin = clock();
     printf ( "\nProgram %s\n\n", argv[0] );
 
-    so_print();
-
+    Odr odr;
+    odr.init();
+    
     end = clock();
     printf ( "time consumed: %lf\n", ( double ) ( end - begin ) / CLOCKS_PER_SEC );
     return EXIT_SUCCESS;

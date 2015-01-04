@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.cpp
+ *       Filename:  test.cpp
  *
- *    Description:  algoritm test.
+ *    Description:  
  *
  *        Version:  1.0
- *        Created:  2014/12/31 23时13分16秒
+ *        Created:  2015/01/03 20时48分42秒
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,23 +15,23 @@
  *
  * =====================================================================================
  */
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 
-#include <cstdlib>
-#include <cstdio>
-#include <ctime>
+#include <iostream>
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  main
  *  Description:  
  * =====================================================================================
  */
-
 int main ( int argc, char * argv[] ) {
     clock_t begin, end;
     begin = clock();
     printf ( "\nProgram %s\n\n", argv[0] );
 
-    so_print();
+    std::cout << 1000 << std::endl;
 
     end = clock();
     printf ( "time consumed: %lf\n", ( double ) ( end - begin ) / CLOCKS_PER_SEC );
