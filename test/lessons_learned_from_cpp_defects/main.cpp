@@ -16,12 +16,17 @@
  * =====================================================================================
  */
 
-#include "odr.h"
 #include <ctime>
 #include <cstdlib>
 #include <cstdio>
+#include <iostream>
 
-#define __g
+#include "odr.h"
+#include "small_test_set.h"
+#define	_GLIBCXX_DEBUG			/*  */
+// #include "common/"
+using namespace std;
+
 int main ( int argc, char * argv[] ) {
     clock_t begin, end;
     begin = clock();
@@ -29,6 +34,11 @@ int main ( int argc, char * argv[] ) {
 
     Odr odr;
     odr.init();
+    cout << "main: " << odr.vec_.size() << endl;
+
+    o2_optimize();
+
+
     
     end = clock();
     printf ( "time consumed: %lf\n", ( double ) ( end - begin ) / CLOCKS_PER_SEC );
