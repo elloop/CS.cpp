@@ -26,7 +26,6 @@
  * =====================================================================================
  */
 
-#include "lib_print.h"
 int main ( int argc, char * argv[] ) {
     clock_t begin, end;
     begin = clock();
