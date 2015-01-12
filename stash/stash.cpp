@@ -1,6 +1,8 @@
 #include "stash.h"
-#include "string-util.h"
-using namespace std;
+#include "common/print_util.h"
+#include "common/inc.h"
+USING_NS_TEST;
+
 Stash::Stash () : head ( 0 ) { }
 
 Stash::~Stash() {}

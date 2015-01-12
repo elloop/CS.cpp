@@ -24,17 +24,11 @@ using namespace std;
 USING_NS_TEST;
 USING_NS_STD;
 
-ostream& operator << (ostream & os, const Test & t) {
-    os << t.num_;
-    return os;
-}
-
 int main() {
 
-    Test tt;
-    pcln(tt);
+    int a(10);
 
-    pln(tt);
-    p(tt);
+    pcln(a);
+
     return 0;
 }
