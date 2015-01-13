@@ -22,12 +22,12 @@ COMPILER = g++
 LOCAL_CPP_FLAGS = -std=c++11
 
 # searching print_util.h and inc.h for stash.cpp
-INCLUDE_DIRS = -I"."
+INCLUDE_DIRS = -I..
 
 # ./stash to find stash.cpp
 #VPATH = ./stash
 #or 
-vpath %.cpp ./stash
+vpath %.cpp ../:../stash
 
 all : $(OBJS)
 	$(COMPILER) -o $(TARGET) $^
