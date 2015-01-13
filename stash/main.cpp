@@ -31,7 +31,7 @@ int main ( int argc, char * argv[] ) {
         input.close();
     }
 
-    pcln("helo");
+    pcln("new make");
 
 	psln(stack.empty());
 

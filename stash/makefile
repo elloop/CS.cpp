@@ -1,7 +1,17 @@
 LINK_TARGET = main.exe
 CC = g++
 ALGORITHM_INCLUDE_PATH = "../" 
-CC_FLAGS = -I$(ALGORITHM_INCLUDE_PATH)
+CPP_INCLUDE_DIRS = -I"../" 
+CC_FLAGS = -std=c++11 \
+		   #$(CPP_INCLUDE_DIRS)
+
+# todo: check why vpath is invalid
+#VPATH = ../common
+#vpath %.h ../common:../:./:d:/md/algorithm;
+
+#VPATH = ../common:../
+VPATH = ../
+#vpath %.h "../common"
 
 OBJS = \
  stash.o \
@@ -24,6 +34,7 @@ $(LINK_TARGET) : $(OBJS)
 	$(CC) -g -o $@ $^
 
 
+VPATH = ../common
 # build all .cpp to .o
 # equal to following codes:
 #stash.o : stash.cpp
@@ -38,9 +49,18 @@ $(LINK_TARGET) : $(OBJS)
 #
 #	main.o : main.cpp
 #		$(CC) $(CC_FLAGS) -g -o main.o -c mian.cpp
-%.o : %.cpp
+#%.o : %.cpp
+	#$(CC) $(CC_FLAGS) -g -o $@ -c $<
+
+stash.o : stash.cpp print_util.h
 	$(CC) $(CC_FLAGS) -g -o $@ -c $<
 
+main.o : main.cpp print_util.h
+	$(CC) $(CC_FLAGS) -g -o $@ -c $<
+
+
+#main.o: stash.h
+#stash.o: stash.h
 
 
 

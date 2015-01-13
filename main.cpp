@@ -19,8 +19,8 @@
 // #include "common/print_util.h"
 #include "common/inc.h"
 #include "common/print_util.h"
+#include "stash/stash.h"
 
-using namespace std;
 USING_NS_TEST;
 USING_NS_STD;
 
@@ -30,5 +30,11 @@ int main() {
 
     pcln(a);
 
+    Stash my_stack;
+    pln(my_stack.empty());
+
+    pcln("ok");
+
+    pcln("end");
     return 0;
 }
