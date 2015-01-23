@@ -1,8 +1,12 @@
 algorithm
 ---
 
-- data structure and algorithm practices.
+#Data Structures and Algorithms implemented in c++.
 
-- this line is added by birdsun.
+#Next 
 
-- now there is something new.
+##1/23/2015
+---
+1. use automake to manage projects.
+
+

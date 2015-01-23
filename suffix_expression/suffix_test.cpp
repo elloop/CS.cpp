@@ -1,19 +1,3 @@
-// =====================================================================================
-//
-//       Filename:  main.cpp
-//
-//    Description:  entrance of the program
-//
-//        Version:  1.0
-//        Created:  2014年03月25日 19时04分35秒
-//       Revision:  none
-//       Compiler:  g++
-//
-//         Author:  elloop (), elloop@foxmail.com
-//        Company:  China
-//
-// =====================================================================================
-
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
