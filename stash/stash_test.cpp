@@ -3,7 +3,7 @@
 #include <fstream>
 #include "stash.h"
 #include "common/print_util.h"
-#include "common/inc.h"
+#include "inc.h"
 
 USING_NS_STD;
 USING_NS_TEST;

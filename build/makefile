@@ -10,16 +10,17 @@
 # execute make in current path.
 #
 
-TARGET = main.exe
+TARGET = main
 
 OBJS = stash.o \
-	   main.o
+	   main.o \
+	   stack_test.o
 
 REBUILDABLE = $(TARGET) $(OBJS)
 
 COMPILER = g++
 
-LOCAL_CPP_FLAGS = -std=c++11
+LOCAL_CPP_FLAGS = -std=c++11 
 
 # searching print_util.h and inc.h for stash.cpp
 INCLUDE_DIRS = -I..
@@ -27,7 +28,7 @@ INCLUDE_DIRS = -I..
 # ./stash to find stash.cpp
 #VPATH = ./stash
 #or 
-vpath %.cpp ../:../stash
+vpath %.cpp ../:../stash:../stack:../build
 
 all : $(OBJS)
 	$(COMPILER) -o $(TARGET) $^

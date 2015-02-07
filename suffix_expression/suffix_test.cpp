@@ -3,10 +3,8 @@
 #include <iostream>
 #include <iomanip>
 #include "suffix.h"
-#define	pc(x) cout << "************************" << (x) << "*********************" << endl
-#define	ps(x) cout << #x " = " << (x) << endl			//
-#define	p(x)  cout << (x)			//
-#define	cr    cout << endl			//
+#include "inc.h"
+
 using namespace std;
 int main ( int argc, char * argv[] ) {
 	clock_t begin, end;

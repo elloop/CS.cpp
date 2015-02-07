@@ -17,8 +17,8 @@
 #include "suffix.h"
 #include <fstream>
 #include <string>
-#include "../../common/string-util.h"
-#include "../../stash/stash.h"
+#include "common/print-util.h"
+#include "stash/stash.h"
 
 using namespace std;
 
