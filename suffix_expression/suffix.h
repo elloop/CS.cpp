@@ -1,25 +1,9 @@
-/*
- * =====================================================================================
- *
- *       Filename:  suffix.h
- *
- *    Description:  convert a prefix expr to mid-fix expr
- *
- *        Version:  1.0
- *        Created:  2014年03月25日 19时19分38秒
- *       Revision:  none
- *       Compiler:  gcc
- *
- *         Author:  elloop (), elloop@foxmail.com
- *   Organization:  China
- *
- * =====================================================================================
- */
+_Pragma("once")
 
-
-#ifndef  SUFFIX_EXPR_INC
-#define  SUFFIX_EXPR_INC
 #include <string>
+
+namespace elloop {
+
 class SuffixTest {
 public:
 	void test();
@@ -34,4 +18,5 @@ private:
 	};
 	OpType _fectchAElement(char elem);
 };
-#endif   /* ----- #ifndef SUFFIX_EXPR_INC  ----- */
+
+} // end namespace elloop;

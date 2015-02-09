@@ -1,18 +1,35 @@
-// #include "common/print_util.h"
 #include "inc.h"
-#include "common/print_util.h"
 #include "stash/stash.h"
 #include "stack/stack.h"
-#include "stack/stack_test.h"
 #include <iostream>
+#include <cstdio>
 
-using namespace std;
-USING_NS_TEST;
+USING_NS_ELLOOP;
 USING_NS_STD;
 
 int main() {
 
-    StackTest st;
-    st.test();
+    DEBUG_LOG("hello: %d", 10);
+
+    Stash stash;
+    psln(stash.empty());
+    stash.push(new stack<int>());
+    while (!stash.empty()) {
+        pcln("poping stash into  st...");
+        auto st = (stack<int>*)stash.pop();
+        if (st != 0) {
+            psln(st->empty());
+            while (!st->empty()) {
+                auto i = st->top();
+                st->pop();
+            }
+        }
+        else {
+            pcln("st is null.");
+        }
+
+        delete st;
+    }
+    psln(stash.empty());
     return 0;
 }

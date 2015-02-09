@@ -11,8 +11,9 @@
  * =====================================================================================
  */
 
-#ifndef  STASH_H_INC
-#define  STASH_H_INC
+_Pragma("once")
+
+namespace elloop {
 
 class Stash {
 public:
@@ -31,8 +32,8 @@ protected:
 		void * data;
 		Link * link;
 		void initialize ( void * data, Link * link );
-	} * head;
+	} * head_;
 
 }; /* -----  end of class Stash  ----- */
 
-#endif   /* ----- #ifndef STASH_H_INC  ----- */
+} // end namespace elloop;

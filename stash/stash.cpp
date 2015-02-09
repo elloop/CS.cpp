@@ -1,11 +1,12 @@
 #include "stash.h"
-#include "common/print_util.h"
 #include "inc.h"
-USING_NS_TEST;
+USING_NS_ELLOOP;
 
-Stash::Stash () : head ( 0 ) { }
+Stash::Stash () : head_ ( 0 ) { }
 
-Stash::~Stash() {}
+Stash::~Stash() {
+    cleanup();
+}
 
 void Stash::Link::initialize ( void * data, Link * link ) {
 	Stash::Link::data = data;
@@ -14,37 +15,40 @@ void Stash::Link::initialize ( void * data, Link * link ) {
 
 void Stash::push ( void * data ) {
 	Link * link = new Link();
-	link->initialize ( data, head );
-	head = link;
+	link->initialize ( data, head_ );
+	head_ = link;
 }
 
 void * Stash::peek() {
-	if ( !head ) {
+	if ( !head_ ) {
 		return 0;
 	}
-	return head->data;
+	return head_->data;
 }
 
 void * Stash::pop() {
 
-	if ( !head ) {
+	if ( !head_ ) {
 		return 0;
 	}
-	Link * oldHead = head;
-	head = oldHead->link;
+	Link * oldHead = head_;
+	head_ = oldHead->link;
 	void * data = oldHead->data;
 	delete oldHead;
+    oldHead = 0;
 	return data;
 }
 
 bool Stash::empty() {
-	return ( head == 0 );
+	return ( head_ == 0 );
 }
 
 void Stash::cleanup() {
-	if ( head ) {
-		pln ( "not clean!" );
-	}
-	pln ( "clean up!" );
+    Link * temp = head_;
+    while (temp != 0) {
+        head_ = temp->link;
+        delete temp;
+        temp = head_;
+    }
 }
 

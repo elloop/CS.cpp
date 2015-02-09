@@ -1,67 +1,27 @@
-LINK_TARGET = main.exe
-CC = g++
-ALGORITHM_INCLUDE_PATH = "../" 
-CPP_INCLUDE_DIRS = -I"../" 
-CC_FLAGS = -std=c++11 \
-		   #$(CPP_INCLUDE_DIRS)
+TARGET = main
 
-# todo: check why vpath is invalid
-#VPATH = ../common
-#vpath %.h ../common:../:./:d:/md/algorithm;
+OBJS = stash_test.o \
+	   stash.o
 
-#VPATH = ../common:../
-VPATH = ../
-#vpath %.h "../common"
+REBUILDABLE = $(TARGET) $(OBJS)
 
-OBJS = \
- stash.o \
- main.o 
+COMPILER = g++
 
-REBUILDABLES = $(OBJS) $(LINK_TARGET)
+LOCAL_CPP_FLAGS = -std=c++11 \
+				  #-DNDEBUG
 
+INCLUDE_DIRS = -I..
+
+#vpath %.cpp ../:../stash:../stack:../build
+
+all : $(OBJS)
+	$(COMPILER) -g -o $(TARGET) $^
+	echo "all done."
+
+%.o : %.cpp
+	$(COMPILER) $(LOCAL_CPP_FLAGS) $(INCLUDE_DIRS) -g -o $@ -c $<
+
+.PHONY : clean
 clean:
-	rm -f $(REBUILDABLES)
-	echo clean done!
-
-all: $(LINK_TARGET)
-	echo all done!
-
-# link .o to .exe
-# equals to following codes:
-# main.exe : main.o stash.o
-# 	$(CC) -g -o main.exe main.o stash.o
-$(LINK_TARGET) : $(OBJS)
-	$(CC) -g -o $@ $^
-
-
-VPATH = ../common
-# build all .cpp to .o
-# equal to following codes:
-#stash.o : stash.cpp
-#	$(CC) $(CC_FLAGS) -g -o $@ -c $<
-
-#main.o : main.cpp
-#	$(CC) $(CC_FLAGS) -g -o $@ -c $<
-#
-#	and equals to:
-#	stash.o : stash.cpp
-#		$(CC) $(CC_FLAGS) -g -o stash.o -c stash.cpp
-#
-#	main.o : main.cpp
-#		$(CC) $(CC_FLAGS) -g -o main.o -c mian.cpp
-#%.o : %.cpp
-	#$(CC) $(CC_FLAGS) -g -o $@ -c $<
-
-stash.o : stash.cpp print_util.h
-	$(CC) $(CC_FLAGS) -g -o $@ -c $<
-
-main.o : main.cpp print_util.h
-	$(CC) $(CC_FLAGS) -g -o $@ -c $<
-
-
-#main.o: stash.h
-#stash.o: stash.h
-
-
-
-
+		-rm $(REBUILDABLE)
+		echo "all cleaned!"

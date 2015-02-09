@@ -1,40 +1,44 @@
+#include "stash.h"
+#include "inc.h"
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "stash.h"
-#include "common/print_util.h"
-#include "inc.h"
 
 USING_NS_STD;
-USING_NS_TEST;
+USING_NS_ELLOOP;
 
 int main ( int argc, char * argv[] ) {
 	// define a stack
 	Stash stack;
 
-	ifstream input ( "input", ios::in );
-	if ( !input ) {
-		pln ( "fail to open input file" );
+    // read from file. 
 
-        const char * strs[] = {"one", "two", "three", "four", "five", "six", "seve"};
-        
-        for ( int i=0; i<sizeof (strs) / sizeof (strs[0]); ++i ) {
-            stack.push( new string(strs[i]));
-        }
-	}
-    else {
-        // read string from file & save it in the stack
-        string line ( "" );
-        while ( getline ( input, line ) ) {
-            stack.push ( new string ( line ) );
-        }
-        input.close();
-    }
+    // ofstream("input", ios::out) << "one\n" << "two\n" << "three\n" << "four\n";
 
-    pcln("new make");
+	// ifstream input ( "input", ios::in );
+	// if ( !input ) {
+	//     pln ( "fail to open input file" );
+	// }
+    // else {
+    //     // read string from file & save it in the stack
+    //     string line ( "" );
+    //     while ( getline ( input, line ) ) {
+    //         stack.push ( new string ( line ) );
+    //     }
+    //     input.close();
+    // }
 
+    // read from variable.
 	psln(stack.empty());
 
+    pcln("inserting ... ");
+    stack.push(new string("one"));
+    stack.push(new string("two"));
+    stack.push(new string("three"));
+    stack.push(new string("four"));
+
+	psln(stack.empty());
+    
 	// print string and clean up
 	string * pstr = 0;
 	while ( ( pstr = ( string * ) stack.pop() ) != 0 ) {
@@ -42,6 +46,7 @@ int main ( int argc, char * argv[] ) {
 		delete pstr;
 	}
 	psln(stack.empty());
+
 	stack.cleanup();
 
 	return 0;

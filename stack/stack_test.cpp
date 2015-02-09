@@ -1,17 +1,12 @@
 #include "stack/stack.h"
-#include "stack/stack_test.h"
 #include "inc.h"
 
-USING_NS_TEST;
+USING_NS_ELLOOP;
 
-void StackTest::test() {
+int main() {
     stack<int> st;
-    st.push(new int(1000));
-    int* at_top = st.peek();
-    if (at_top == nullptr) {
-        pcln("nullptr");
-    }
-    else {
-        psln(*at_top);
-    }
+    st.push(10000);
+    auto top_elem = st.top();
+    psln(top_elem);
+    return 0;
 }

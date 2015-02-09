@@ -1,22 +1,18 @@
+
 TARGET = main
 
-OBJS = stash.o \
-	   main.o \
+OBJS = stack_test.o
 
 REBUILDABLE = $(TARGET) $(OBJS)
 
 COMPILER = g++
 
 LOCAL_CPP_FLAGS = -std=c++11 \
-				  #-DNDEBUG
+				  -DNDEBUG
 
-# searching print_util.h and inc.h for stash.cpp
 INCLUDE_DIRS = -I..
 
-# ./stash to find stash.cpp
-#VPATH = ./stash
-#or 
-vpath %.cpp ../:../stash:../stack:../build
+vpath %.cpp ../
 
 all : $(OBJS)
 	$(COMPILER) -o $(TARGET) $^

@@ -1,31 +1,26 @@
-/*
- * =====================================================================================
- *
- *       Filename:  print_util.h
- *
- *    Description:  
- *
- *        Version:  1.0
- *        Created:  2014年03月21日 23时46分32秒
- *       Revision:  none
- *       Compiler:  gcc
- *
- *         Author:  孙永健 (Ivan Sun), 912191009@qq.com
- *   Organization:  China
- *
- * =====================================================================================
- */
-
-#ifndef  ALGORITHM_TEST_PRINT_UTIL_H
-#define  ALGORITHM_TEST_PRINT_UTIL_H
+_Pragma("once")
 
 #include <iostream>
 #include <string>
-namespace elloop_test {
+#include <cstdio>
 
-#define psln(x) std::cout << #x " = " << (x) << std::endl
-#define ps(x) std::cout << #x " = " << (x)
-#define	cr std::cout << std::endl			/*  */
+namespace elloop {
+
+#define psln(x) do { std::cout << #x " = " << (x) << std::endl; } while (0);
+#define ps(x) do { std::cout << #x " = " << (x); } while (0);
+#define	cr do { std::cout << std::endl; } while (0);
+
+void DebugLog(const char * format, ...) {
+    printf(format, ...);
+}
+
+void DummyLog(const char * format, ...) { }
+
+#ifdef NDEBUG
+#define DEBUG_LOG DebugLog
+#else
+#define DEBUG_LOG DummyLog
+#endif
 
 template <typename T>
 inline void pc(const T & x) {
@@ -57,6 +52,5 @@ inline void pln(const T & x) {
     /* std::cout << _TEXT(x) << " = " << x << std::endl; */
 /* } */
 
-}
+} // end namespace elloop;
 
-#endif   /* ----- #ifndef ALGORITHM_TEST_PRINT_UTIL_H----- */
