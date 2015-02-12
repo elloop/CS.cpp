@@ -8,7 +8,7 @@ REBUILDABLE = $(TARGET) $(OBJS)
 COMPILER = g++
 
 LOCAL_CPP_FLAGS = -std=c++11 \
-				  #-DNDEBUG
+				  -DNDEBUG
 
 # searching print_util.h and inc.h for stash.cpp
 INCLUDE_DIRS = -I..

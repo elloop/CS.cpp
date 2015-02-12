@@ -10,6 +10,7 @@ USING_NS_STD;
 int main() {
 
     DEBUG_LOG("hello: %d", 10);
+    LOG("world is not word: %d \n", 100);
 
     Stash stash;
     psln(stash.empty());

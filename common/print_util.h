@@ -10,17 +10,17 @@ namespace elloop {
 #define ps(x) do { std::cout << #x " = " << (x); } while (0);
 #define	cr do { std::cout << std::endl; } while (0);
 
-void DebugLog(const char * format, ...) {
-    printf(format, ...);
-}
-
-void DummyLog(const char * format, ...) { }
+#define LOG(...)  do { \
+                      fprintf(stderr, "%s:%d: ", __FILE__, __LINE__);\
+                      fprintf(stderr, __VA_ARGS__);\
+                  } while (0);
 
 #ifdef NDEBUG
-#define DEBUG_LOG DebugLog
+#define DEBUG_LOG(...) 
 #else
-#define DEBUG_LOG DummyLog
+#define DEBUG_LOG(...)  LOG(__VA_ARGS__)
 #endif
+
 
 template <typename T>
 inline void pc(const T & x) {

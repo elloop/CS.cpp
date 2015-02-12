@@ -2,11 +2,18 @@
 ===
 
 #Questions.
+---
+##  2015/2/11
+1. things in container must have copy constructor, try it.
+2. 《对不起，青春》
+3. see understanding_cpp11/compatibility.h: using BaseTest::BaseTest(10); compile error.
+
 ## 2015/2/9
 1. how to return a null-refrence in function stack/stack.h:top() ?
 
 
 #Summary.
+---
 ## grammer.
 1. don't include headers in your custom namespace.
 ```
@@ -51,3 +58,17 @@ void q() {
 }
 // wrong, ';' before else.
 ```
+## GDB
+|command|description|
+|-------|-----------|
+|r|run|
+|c|continue|
+|step (s) | step into|
+|next () | setp over|
+|q| quit|
+|b linenumber/file:function/functon...| breakpoints|
+|info b| list of breakpoints|
+|l | list source codes|
+|p name | print macro value/ variable value ... |
+| macro expand macroname | expand macro (need g++ compiler options: -gdwarf-2 -g3 ) |
+
