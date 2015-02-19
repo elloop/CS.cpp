@@ -7,20 +7,25 @@ namespace elloop {
 template <typename T> class stack;
 
 template <typename T>
-class stack_node {
-    stack_node(const T & data = nullptr, stack_node<T> * next = nullptr) : data_(data), next_(next) { }
-    ~stack_node() { }
+class list_node {
+    list_node(const T & data = nullptr, list_node<T> * next = nullptr) : data_(data), next_(next) { }
+    ~list_node() { }
     T data_;
-    stack_node * next_;
+    list_node * next_;
     friend stack<T>;
 };
 
 template <typename T>
 class stack {
     public:
-        typedef stack_node<T> node_type;
+        typedef list_node<T> node_type;
 
         stack() : head_(nullptr) {}
+
+        // disallow copy.
+        stack(const stack & rhs) = delete;
+        // disallow move.
+        // stack(const stack && rhs) = delete;
 
         T top() noexcept(false) {
             assert(head_ != nullptr);
