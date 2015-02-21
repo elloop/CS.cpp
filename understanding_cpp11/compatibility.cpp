@@ -4,7 +4,7 @@
 USING_NS_ELLOOP;
 
 Compatibility * Compatibility::run() {
-    LOG("in function : %s\n", __func__);
+    LOGD("in function : %s\n", __func__);
     return this;
 }
 

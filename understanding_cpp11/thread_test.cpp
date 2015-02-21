@@ -9,11 +9,19 @@ USING_NS_STD;
 USING_NS_ELLOOP;
 
 void testSpinLock();
+void testMemoryOrderWithoutOrderLimit();
 
 //---------------------------------- enter ------------------------------------
 ThreadTest* ThreadTest::run() {
 
-  testSpinLock();
+  int i {0};
+  for ( i=0; i < 100; ++i) {
+    // testMemoryOrderWithoutOrderLimit();
+    pln(i);
+    usleep(1000);
+  }
+
+  // testSpinLock();
 
   // testAtomic();
 
@@ -111,15 +119,15 @@ atomic_flag lock = ATOMIC_FLAG_INIT;
 
 void threadWaiting(int n) {
   while (lock.test_and_set(memory_order_acquire)) {
-    LOG("waiting from thread %d\n", n);
+    LOGD("waiting from thread %d\n", n);
   }
-  LOG("thread %d starts working\n", n);
+  LOGD("thread %d starts working\n", n);
 }
 
 void releaseWaiting(int n) {
-  LOG("thread %d going to work\n", n);
+  LOGD("thread %d going to work\n", n);
   lock.clear();
-  LOG("thread %d starts working\n", n);
+  LOGD("thread %d starts working\n", n);
 
 }
 
@@ -133,3 +141,33 @@ void testSpinLock() {
   t2.join();
 }
 
+//----------------------------------------------------------------------
+// sequential consistent assumption.(顺序一致性假设)
+// strong ordered: x86
+// weak ordered:  powerPC
+//----------------------------------------------------------------------
+atomic<int> ta {0};
+atomic<int> tb {0};
+void setValue(int) {
+  int t = 1;
+  ta = t;
+  tb = 2;
+}
+
+int observe(int) {
+  LOGD("observe: a, b =(%d, %d)\n", ta.load(), tb.load());
+}
+
+void testMemoryOrderWithoutOrderLimit() {
+  thread t1(setValue, 0);
+  thread t2(observe, 0);
+
+  t1.join();
+  t2.join();
+
+  // LOGD("final a,b = (%d, %d)\n", ta.load(), tb.load());
+}
+
+//----------------------------------------------------------------------
+// 
+//----------------------------------------------------------------------

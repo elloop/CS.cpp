@@ -10,16 +10,28 @@ namespace elloop {
 #define ps(x) do { std::cout << #x " = " << (x); } while (0);
 #define	cr do { std::cout << std::endl; } while (0);
 
-#define LOG(...)  do { \
-                      fprintf(stderr, "%s:%d: ", __FILE__, __LINE__);\
-                      fprintf(stderr, __VA_ARGS__);\
+#define __VLOGD(...)  do { \
+                      fprintf(stdout, "%s:%d: ", __FILE__, __LINE__);\
+                      fprintf(stdout, __VA_ARGS__);\
                   } while (0);
 
+#define __LOGD(...)  do { \
+                      fprintf(stdout, __VA_ARGS__);\
+                  } while (0);
+
+
 #ifdef NDEBUG
-#define DEBUG_LOG(...) 
+#define LOGD(...) 
 #else
-#define DEBUG_LOG(...)  LOG(__VA_ARGS__)
+#define LOGD(...)  __LOGD(__VA_ARGS__)
 #endif
+
+#ifdef NDEBUG
+#define VLOGD(...) 
+#else
+#define VLOGD(...)  __VLOGD(__VA_ARGS__)
+#endif
+
 
 
 template <typename T>
