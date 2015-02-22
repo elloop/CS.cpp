@@ -2,6 +2,7 @@
 
 #include <unistd.h>
 #include <atomic>
+#include <cassert>
 #include <thread>
 #include <pthread.h>
 
@@ -10,16 +11,30 @@ USING_NS_ELLOOP;
 
 void testSpinLock();
 void testMemoryOrderWithoutOrderLimit();
+void testMemoryOrderRelax();
+void testReleaseAcquire();
+void testReleaseConsume();
 
 //---------------------------------- enter ------------------------------------
 ThreadTest* ThreadTest::run() {
 
-  int i {0};
-  for ( i=0; i < 100; ++i) {
-    // testMemoryOrderWithoutOrderLimit();
-    pln(i);
-    usleep(1000);
+  int i {10};
+  while (i-- > 0) {
+    testReleaseConsume();
+    LOGD("end of %d turn\n", i+1);
+    sleep(2);
   }
+
+  // testReleaseAcquire();
+
+  // testMemoryOrderRelax();
+
+  /* int i {0}; */
+  // for ( i=0; i < 100; ++i) {
+    // testMemoryOrderWithoutOrderLimit();
+    // // sleep(1);
+    // // usleep(2000000);
+  // }
 
   // testSpinLock();
 
@@ -143,15 +158,17 @@ void testSpinLock() {
 
 //----------------------------------------------------------------------
 // sequential consistent assumption.(顺序一致性假设)
-// strong ordered: x86
-// weak ordered:  powerPC
+// strong ordered: x86...
+// weak ordered:  powerPC...
+// in cpp11, default atomic operation's memory_order is memory_order_seq_cst.
 //----------------------------------------------------------------------
 atomic<int> ta {0};
 atomic<int> tb {0};
 void setValue(int) {
   int t = 1;
-  ta = t;
-  tb = 2;
+  ta = t;   // equal to ta.store(t, memory_order_seq_cst);
+  tb = 2;   // equal to tb.store(t, memory_order_seq_cst);
+  // memory_order_seq_cst restrict cpu to optimize instructions order. even insert memory barrirers into asm or machine codes.
 }
 
 int observe(int) {
@@ -169,5 +186,82 @@ void testMemoryOrderWithoutOrderLimit() {
 }
 
 //----------------------------------------------------------------------
-// 
+// relaxed memory order.
 //----------------------------------------------------------------------
+void setValueRelax(int) {
+  int t = 1;
+  ta.store(t, memory_order_relaxed);
+  tb.store(2, memory_order_relaxed);  // this may execute before ta.store().
+}
+
+int observeWait(int) {
+  while (tb.load(memory_order_relaxed) != 2) {
+    // LOGD("waiting tb == 2\n");
+    // waiting...
+  }
+  LOGD("a now is: %d\n", ta.load(memory_order_relaxed)); // ta maybe == 0 in some hardware platform.
+}
+
+void testMemoryOrderRelax() {
+  thread t1(setValueRelax, 0);
+  thread t2(observeWait, 0);
+
+  t1.join();
+  t2.join();
+}
+
+//----------------------------------------------------------------------
+// release-acquire.
+//----------------------------------------------------------------------
+void setValueReleaseAcquire(int) {
+  int t =1;
+  ta.store(t, memory_order_relaxed);
+  tb.store(2, memory_order_release);  // this will not execute until all atomic done. that is to say, when execute this, ta must be t(1).
+}
+
+int observeWaitAcquire(int) {
+  while (tb.load(memory_order_acquire) != 2) {  // all other atomic will not execute until this operation is done.
+    LOGD("memory_order_acquire waiting in tb == 2\n");
+    // waiting...
+  }
+  LOGD("a now is: %d\n", ta.load(memory_order_relaxed)); // ta can't be 0 , because of the memory_order_acquire in tb.load().
+}
+
+void testReleaseAcquire() {
+  thread t1(setValueReleaseAcquire, 0);
+  thread t2(observeWaitAcquire, 0);
+
+  t1.join();
+  t2.join();
+
+}
+//----------------------------------------------------------------------
+// release-consume. less limit than release-acquire.
+//----------------------------------------------------------------------
+atomic<string*> ptr;
+atomic<int> data;
+
+void produce() {
+  string *p = new string("hello");
+  data.store(42, memory_order_relaxed);
+  ptr.store(p, memory_order_release);
+}
+
+void consume() {
+  string * p2;
+  // memory_order_consume only require the same type atomic operation is executed after it, data.load() may be execute before prt.load().
+  while (!(p2 = ptr.load(memory_order_consume))) {
+    LOGD("waiting ptr not null use memory_order_consume\n");
+  }
+
+  assert(*p2 == "hello");   // always equal.
+  assert(data.load(memory_order_relaxed) == 42);  // may fail.
+}
+
+void testReleaseConsume() {
+  thread t1(produce);
+  thread t2(consume);
+
+  t1.join();
+  t2.join();
+}
