@@ -16,7 +16,12 @@ Compatibility * Compatibility::run() {
     LOGD("in function : %s\n", __func__);
     LOGD("__cplusplus : %ld\n", __cplusplus);
 
-    testC99Macro();
+    // testC99Macro();
+
+    Printer<Compatibility> p;
+    Compatibility c;
+    p.p(c);
+
 
     // testLongLong();
     return this;

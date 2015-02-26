@@ -3,7 +3,8 @@ TARGET = main
 
 OBJS = test.o \
 	   compatibility.o \
-	   thread_test.o
+	   thread_test.o \
+	   constructor_test.o
 
 REBUILDABLE = $(TARGET) $(OBJS)
 

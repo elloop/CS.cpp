@@ -1,14 +1,17 @@
 #include "compatibility.h"
 #include "thread_test.h"
+#include "constructor_test.h"
 
 USING_NS_ELLOOP;
 
 #define TEST(x) do { delete (new (x))->run(); } while (0);
 int main() {
 
-    // TEST(ThreadTest);
+  TEST(ConstructorTest);
 
-    TEST(Compatibility);
-    
-    return 0;
+  // TEST(ThreadTest);
+
+  // TEST(Compatibility);
+
+  return 0;
 }
