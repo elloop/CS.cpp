@@ -1,9 +1,12 @@
 #include <map>
 #include <string>
+#include <cstring>
 #include <iostream>
 #include <vector>
 #include "inc.h"
 #include "valid_parentheses.h"
+#include "rotate_array.h"
+#include "title_to_number.h"
 
 USING_NS_ELLOOP;
 USING_NS_STD;
@@ -49,9 +52,25 @@ int main() {
   // string str("()[]}");
   // psln(s.isValid(str));
   
-  rotate_array::Solution s;
+  // rotate_array::Solution s;
+  // int nums[] = {1, 2, 3, 4, 5};
+  // int k = 6;
+  // s.rotate(nums, sizeof nums/ sizeof nums[0], k);
 
+  // TODO: make a summary about memcpy and memmove.
+  // test memcpy and memmove.
+  // int a[] = {1, 2, 3, 4};
+  // int b[] = {0, 0, 0,0,0};
+  // int n(4);
+  // // ::memcpy(b+1, (int*)a, sizeof (int) * (n));
+  // ::memmove(a+1, a, sizeof (int) *(n-1));
+  // ::memcpy(a+1, a, sizeof (int) *(n-1));
+  // print_array(a);
 
-
+  title_to_number::Solution s;
+  psln(s.titleToNumber("ZA"));
   return 0;
 }
+
+
+

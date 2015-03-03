@@ -54,6 +54,33 @@ inline void pln(const T & x) {
     std::cout << x << std::endl;
 }
 
+template <typename T, size_t N>
+void print_array(const T (& a)[N]) {
+  std::cout << "length:" << N << ", (";
+  for (size_t i=0; i<N; ++i) {
+    std::cout << a[i];
+    if (i < N - 1) {
+      std::cout << ", ";
+    }
+  }
+  std::cout << ")" << std::endl;
+}
+
+/*
+template <typename T, size_t N>
+void print_array<T*, N>(const T (&a)[N]) {
+  std::cout << "length:" << N << ", (";
+  for (size_t i=0; i<N; ++i) {
+    std::cout << a[i];
+    if (i < N - 1) {
+      std::cout << ", ";
+    }
+  }
+  std::cout << ")" << std::endl;
+
+}
+*/
+
 /* template <typename T> */
 /* inline void ps(const std::string & str, const T & x){ */
     /* std::cout << str << " = " << x; */
