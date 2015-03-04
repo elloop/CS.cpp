@@ -7,6 +7,8 @@
 #include "valid_parentheses.h"
 #include "rotate_array.h"
 #include "title_to_number.h"
+#include "trailing_zeroes.h"
+#include "column_to_title.h"
 
 USING_NS_ELLOOP;
 USING_NS_STD;
@@ -67,8 +69,15 @@ int main() {
   // ::memcpy(a+1, a, sizeof (int) *(n-1));
   // print_array(a);
 
-  title_to_number::Solution s;
-  psln(s.titleToNumber("ZA"));
+  // title_to_number::Solution s;
+  // psln(s.titleToNumber("ZA"));
+
+  trailing_zeroes::Solution s;
+  psln(s.trailingZeroes(24));
+
+  // column_to_title::Solution s;
+  // s.convertToTitle(52);
+
   return 0;
 }
 

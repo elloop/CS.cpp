@@ -66,6 +66,23 @@ void print_array(const T (& a)[N]) {
   std::cout << ")" << std::endl;
 }
 
+template <typename Con>
+void print_container(const Con & c) {
+  auto iter = c.begin();
+  p("size: ");
+  pln(c.size());
+  p("(");
+  std::string sep("");
+  while (iter != c.end()) {
+    p(sep);
+    p(*iter);
+    sep = ", ";
+    ++iter;
+  }
+  pln(")");
+}
+
+
 /*
 template <typename T, size_t N>
 void print_array<T*, N>(const T (&a)[N]) {
