@@ -73,7 +73,13 @@ int main() {
   // psln(s.titleToNumber("ZA"));
 
   trailing_zeroes::Solution s;
-  psln(s.trailingZeroes(24));
+  // psln(s.trailingZeroes(4));
+  psln(s.trailingZeroes(2147483647));
+  // for (int i=4; i<124; ) {
+    // psln(i);
+    // pln(s.trailingZeroes(i));
+    // i += 5;
+  // }
 
   // column_to_title::Solution s;
   // s.convertToTitle(52);

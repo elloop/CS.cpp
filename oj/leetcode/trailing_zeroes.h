@@ -59,14 +59,53 @@ namespace trailing_zeroes {
 
       int trailingZeroes(int n) {
 
-        int result(0);
-        result = n / 10 * 2;
+        int current_pow(0);
+        int t(1);
 
-        if ((n - n / 10 * 10) >= 5) {
-          ++result;
+        // log5(n)
+        while (t <= n) {
+          ++current_pow;
+          t *= 5;
+        }
+        
+        t /= 5;
+        --current_pow;
+
+        psln(current_pow);
+        int num_of_5(0);
+        int inc(0);
+        int i(0);
+        while (inc < n && current_pow > 0) {
+          for (i=1; i<5; ++i) {
+
+            if (inc + i*t <= n) {
+              if (current_pow > 1) {
+                num_of_5 += 4 * (1 + current_pow - 1) * (current_pow - 1) / 2 + current_pow;
+              }
+              else {
+                ++num_of_5;
+              }
+            }
+            else {
+              break;
+            }
+          }
+          inc += (i - 1) * t;
+          t /= 5;
+          --current_pow;
         }
 
-        return result;
+        return num_of_5;
+
+
+        // int result(0);
+        // result = n / 10 * 2;
+
+        // if ((n - n / 10 * 10) >= 5) {
+          // ++result;
+        // }
+        // return result;
+
 
         // unsigned long long ff = f<20>();
         // psln(ff);
@@ -88,8 +127,7 @@ namespace trailing_zeroes {
           // }
           // fac /= 10;
         // }
-
-        return result;
+        // return result;
       }
   };
 
