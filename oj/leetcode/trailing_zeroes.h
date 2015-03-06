@@ -5,37 +5,37 @@ _Pragma("once")
 
 namespace trailing_zeroes {
   /*
+     template <int n>
+     int factorial() {
+     return n * factorial<n-1>;
+     }
+
+     template <>
+     int factorial<1>() {
+     return 1;
+     }
+     */
   template <int n>
-    int factorial() {
-      return n * factorial<n-1>;
+    class Factorial {
+      public:
+        enum { value = n * Factorial<n-1>::value};
+    };
+
+  template <>
+    class Factorial<1> {
+      public:
+        enum { value = 1 };
+    };
+
+  template <unsigned long long N>
+    unsigned long long f() {
+      return N * f<N-1>();
     }
 
   template <>
-    int factorial<1>() {
+    unsigned long long f<1>() {
       return 1;
     }
-    */
-  template <int n>
-      class Factorial {
-        public:
-        enum { value = n * Factorial<n-1>::value};
-      };
-
-      template <>
-      class Factorial<1> {
-        public:
-        enum { value = 1 };
-      };
-
-      template <unsigned long long N>
-      unsigned long long f() {
-        return N * f<N-1>();
-      }
-
-      template <>
-      unsigned long long f<1>() {
-        return 1;
-      }
 
   class Solution {
     public:
@@ -57,52 +57,86 @@ namespace trailing_zeroes {
         return n * factorial(n - 1);
       }
 
+      int numOf5(int n) {
+        if (1 == n) {
+          return 1;
+        }
+        return 5 * numOf5(n-1) + 1;
+      }
+
       int trailingZeroes(int n) {
 
-        int current_pow(0);
-        int t(1);
-
-        // log5(n)
-        while (t <= n) {
-          ++current_pow;
-          t *= 5;
+        int pow5(0);
+        unsigned long val(1);
+        while (val <= n) {
+          ++pow5;
+          val *= 5;
         }
-        
-        t /= 5;
-        --current_pow;
 
-        psln(current_pow);
-        int num_of_5(0);
+        --pow5;
+        val /= 5;
+
+        int result(0);
         int inc(0);
         int i(0);
-        while (inc < n && current_pow > 0) {
+        while (pow5 > 0) {
           for (i=1; i<5; ++i) {
-
-            if (inc + i*t <= n) {
-              if (current_pow > 1) {
-                num_of_5 += 4 * (1 + current_pow - 1) * (current_pow - 1) / 2 + current_pow;
-              }
-              else {
-                ++num_of_5;
-              }
+            if (inc + i * val <= n) {
+              result += numOf5(pow5);
             }
             else {
               break;
             }
           }
-          inc += (i - 1) * t;
-          t /= 5;
-          --current_pow;
+          inc += (i - 1) * val;
+          --pow5;
+          val /= 5;
         }
+        return result;
 
-        return num_of_5;
+        // int current_pow(0);
+        // int t(1);
+
+        // // log5(n)
+        // while (t <= n) {
+        // ++current_pow;
+        // t *= 5;
+        // }
+
+        // t /= 5;
+        // --current_pow;
+
+        // int num_of_5(0);
+        // int inc(0);
+        // int i(0);
+        // while (inc < n && current_pow > 0) {
+        // for (i=1; i<5; ++i) {
+
+        // if (inc + i*t <= n) {
+        // if (current_pow > 1) {
+        // num_of_5 += 4 * (1 + current_pow - 1) * (current_pow - 1) / 2 + current_pow;
+        // }
+        // else {
+        // ++num_of_5;
+        // }
+        // }
+        // else {
+        // break;
+        // }
+        // }
+        // inc += (i - 1) * t;
+        // t /= 5;
+        // --current_pow;
+        // }
+
+        // return num_of_5;
 
 
         // int result(0);
         // result = n / 10 * 2;
 
         // if ((n - n / 10 * 10) >= 5) {
-          // ++result;
+        // ++result;
         // }
         // return result;
 
@@ -119,13 +153,13 @@ namespace trailing_zeroes {
         // psln(fac);
         // int result(0);
         // while (fac > 10) {
-          // if (0 == fac - fac / 10 * 10 ) {
-            // ++result;
-          // }
-          // else {
-            // break;
-          // }
-          // fac /= 10;
+        // if (0 == fac - fac / 10 * 10 ) {
+        // ++result;
+        // }
+        // else {
+        // break;
+        // }
+        // fac /= 10;
         // }
         // return result;
       }

@@ -1,5 +1,5 @@
 
-TARGET = main.exe
+TARGET = main
 
 OBJS = two_sum.o
 

@@ -9,6 +9,7 @@
 #include "title_to_number.h"
 #include "trailing_zeroes.h"
 #include "column_to_title.h"
+#include "compare_version.h"
 
 USING_NS_ELLOOP;
 USING_NS_STD;
@@ -72,14 +73,18 @@ int main() {
   // title_to_number::Solution s;
   // psln(s.titleToNumber("ZA"));
 
-  trailing_zeroes::Solution s;
+  // trailing_zeroes::Solution s;
   // psln(s.trailingZeroes(4));
-  psln(s.trailingZeroes(2147483647));
-  // for (int i=4; i<124; ) {
-    // psln(i);
+  // psln(s.trailingZeroes(2147483647));
+  
+  // for (int i=4; i<250; ) {
+    // p(i); p(": ");
     // pln(s.trailingZeroes(i));
     // i += 5;
   // }
+
+  compare_version::Solution s;
+  psln(s.compareVersion("1.1", "2.1"));
 
   // column_to_title::Solution s;
   // s.convertToTitle(52);
