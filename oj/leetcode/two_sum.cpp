@@ -10,6 +10,8 @@
 #include "trailing_zeroes.h"
 #include "column_to_title.h"
 #include "compare_version.h"
+#include "intersection_of_linklist.h"
+#include "zig_zag.h"
 
 USING_NS_ELLOOP;
 USING_NS_STD;
@@ -83,12 +85,39 @@ int main() {
     // i += 5;
   // }
 
-  compare_version::Solution s;
-  psln(s.compareVersion("1.1", "2.1"));
+  // compare_version::Solution s;
+  // psln(s.compareVersion("1", "2.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.10000.1.1.1.1.1.2.3.4.5.6.7"));
+  // psln(s.compareVersion("1.1.0", "1.1"));
 
+  // string s1("01");
+  // string s2("1");
+  // vector<int> x = s.getNumbers(s1);
+  // vector<int> x2 = s.getNumbers(s2);
+  // int i = x.size();
+  // int j = x2.size();
+  // psln(i);
+  // psln(j);
+
+  // psln(s.compareVersion(s1, s2));
+
+  // string v1, v2;
+  // while (cin >> v1 >> v2) {
+    // psln(s.compareVersion(v1, v2));
+  // }
   // column_to_title::Solution s;
   // s.convertToTitle(52);
 
+  // using namespace intersection_of_linklist;
+  // intersection_of_linklist::Solution s;
+
+  // Solution::ListNode * p = new Solution::ListNode[13];
+  // Solution::ListNode * q = new Solution::ListNode[13];
+  // psln(s.getIntersectionNode(p, q));
+  // delete p;
+  // delete q;
+
+  zig_zag::Solution s;
+  psln(s.convert("sss", 3));
   return 0;
 }
 
