@@ -112,13 +112,10 @@ class MinStack2 {
     return m;
   }
 
-  void clear() {
-    delete [] elems_;
-  }
-
   public:
     void push(int x) {
       if (-1 == top_) {
+        min_ = x;
         capacity_ = 10;
         elems_ = new int[capacity_];
       }
@@ -129,35 +126,39 @@ class MinStack2 {
         else {
           capacity_ += 10;
         }
-       
+        int * t = new int[capacity_];
+        memcpy(t, elems_, top_ * sizeof (int));
+        delete [] elems_;
+        elems_ = t;
       }
+
       if (min_ < x){
         min_ = x;
       }
+
       elems_[++top_] = x;
     }
 
     void pop() {
-      if (top_ != nullptr) {
+      if (top_ > -1) {
         // delete top.
         // if min is delete, recalculate min.
-        int data = top_->data;
-        auto temp = top_;
-        top_ = top_->next;
-        delete temp;
 
-        if (nullptr == top_)  {
+        --top_;
+
+        if (-1 == top_)  {
           min_ = 0;
+          delete [] elems_;
         }
-        else if (min_ == data){
+        else if (min_ == elems_[top_ + 1]){
           min_ = calculateMin();
         }
       }
     }
 
     int top() {
-      if (top_ != nullptr) {
-        return top_->data;
+      if (top_ != -1) {
+        return elems_[top_];
       }
       else {
         throw 1;
@@ -168,8 +169,8 @@ class MinStack2 {
       return min_;
     }
 
-    ~MinStack() {
-      clear();
+    ~MinStack2() {
+      delete [] elems_;
     }
 };
 }

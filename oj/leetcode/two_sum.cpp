@@ -124,12 +124,22 @@ int main() {
   // string s(str, str + 5);
   // psln(s);
 
-  using min_stack::MinStack;
-  MinStack s;
+/*   using min_stack::MinStack; */
+  // MinStack s;
+  // s.push(10);
+  // s.push(11);
+  // s.push(1);
+  // psln(s.top());
+  // s.pop();
+  // psln(s.top());
+  /* psln(s.getMin()); */
+  using min_stack::MinStack2;
+  MinStack2 s;
   s.push(10);
   s.push(11);
   s.push(1);
   psln(s.top());
+  psln(s.getMin());
   s.pop();
   psln(s.top());
   psln(s.getMin());
