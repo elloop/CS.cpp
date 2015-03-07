@@ -12,6 +12,7 @@
 #include "compare_version.h"
 #include "intersection_of_linklist.h"
 #include "zig_zag.h"
+#include "min_stack.h"
 
 USING_NS_ELLOOP;
 USING_NS_STD;
@@ -116,8 +117,22 @@ int main() {
   // delete p;
   // delete q;
 
-  zig_zag::Solution s;
-  psln(s.convert("sss", 3));
+  // zig_zag::Solution s;
+  // psln(s.convert("PAYPALISHIRING", 3));
+
+  // char str[] = "hello";
+  // string s(str, str + 5);
+  // psln(s);
+
+  using min_stack::MinStack;
+  MinStack s;
+  s.push(10);
+  s.push(11);
+  s.push(1);
+  psln(s.top());
+  s.pop();
+  psln(s.top());
+  psln(s.getMin());
   return 0;
 }
 
