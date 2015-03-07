@@ -135,21 +135,27 @@ int main() {
   /* psln(s.getMin()); */
   using min_stack::MinStack2;
   MinStack2 s;
-  for (int i=22; i>0; --i) {
-    s.push(i);
-  }
 
-  for (int i=1; i<22; ++i) {
-    psln(s.getMin());
-    psln(s.top());
-    s.pop();
-    psln(s.getMin());
-    // psln(s.getMin());
-  }
+  s.push(2147483646);
+  s.push(2147483646);
+  s.push(2147483647);
+
+  psln(s.top());
 
   s.pop();
-  psln(s.getMin());
 
+  psln(s.getMin());
+  s.pop();
+  psln(s.getMin());
+  s.pop();
+  s.push(2147483647);
+  psln(s.top());
+  psln(s.getMin());
+  s.push(-2147483648);
+  psln(s.top());
+  psln(s.getMin());
+  s.pop();
+  psln(s.getMin());
 
   return 0;
 }

@@ -98,7 +98,7 @@ class MinStack2 {
   int capacity_ {0};
 
   int calculateMin() {
-    if (top_ == 0) {
+    if (top_ <= 0) {
       return elems_[0];
     }
 
@@ -119,12 +119,7 @@ class MinStack2 {
         elems_ = new int[capacity_];
       }
       else if (top_ == capacity_ - 1) {
-        if (capacity_ < 10000) {
-          capacity_ *= 2;
-        }
-        else {
-          capacity_ += 10;
-        }
+        capacity_ += 10;
         int * t = new int[capacity_];
         memcpy(t, elems_, (top_ + 1) * sizeof (int));
         delete [] elems_;
@@ -145,14 +140,23 @@ class MinStack2 {
 
         --top_;
 
+        if (min_ == elems_[top_ + 1]){
+          min_ = calculateMin();
+        }
+
         if (-1 == top_)  {
           min_ = 0;
           delete [] elems_;
           elems_ = nullptr;
         }
-        else if (min_ == elems_[top_ + 1]){
-          min_ = calculateMin();
+        else if ((top_ + 1) <= capacity_ / 2) {
+          capacity_ /= 2;
+          int * t = new int[capacity_];
+          memcpy(t, elems_, (top_ + 1) * sizeof (int));
+          delete [] elems_;
+          elems_ = t;
         }
+
       }
     }
 
@@ -171,7 +175,6 @@ class MinStack2 {
 
     ~MinStack2() {
       if (elems_ != nullptr) {
-        elloop::pcln("deleting elems_");
         delete [] elems_;
       }
     }
