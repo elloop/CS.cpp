@@ -1,7 +1,6 @@
 _Pragma("once")
 
-#include <set>
-#include <vector>
+#include "inc.h"
 namespace min_stack {
 
 
@@ -105,7 +104,7 @@ class MinStack2 {
 
     int m(elems_[0]);
     for (int i=0; i<=top_; ++i) {
-      if (m < elems_[i]) {
+      if (m > elems_[i]) {
         m = elems_[i];
       }
     }
@@ -119,7 +118,7 @@ class MinStack2 {
         capacity_ = 10;
         elems_ = new int[capacity_];
       }
-      else if (top_ == capacity_) {
+      else if (top_ == capacity_ - 1) {
         if (capacity_ < 10000) {
           capacity_ *= 2;
         }
@@ -127,12 +126,12 @@ class MinStack2 {
           capacity_ += 10;
         }
         int * t = new int[capacity_];
-        memcpy(t, elems_, top_ * sizeof (int));
+        memcpy(t, elems_, (top_ + 1) * sizeof (int));
         delete [] elems_;
         elems_ = t;
       }
 
-      if (min_ < x){
+      if (min_ > x){
         min_ = x;
       }
 
@@ -149,6 +148,7 @@ class MinStack2 {
         if (-1 == top_)  {
           min_ = 0;
           delete [] elems_;
+          elems_ = nullptr;
         }
         else if (min_ == elems_[top_ + 1]){
           min_ = calculateMin();
@@ -170,7 +170,10 @@ class MinStack2 {
     }
 
     ~MinStack2() {
-      delete [] elems_;
+      if (elems_ != nullptr) {
+        elloop::pcln("deleting elems_");
+        delete [] elems_;
+      }
     }
 };
 }
