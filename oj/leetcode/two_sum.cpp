@@ -58,10 +58,10 @@ int main() {
   // string str("()[]}");
   // psln(s.isValid(str));
   
-  // rotate_array::Solution s;
-  // int nums[] = {1, 2, 3, 4, 5};
-  // int k = 6;
-  // s.rotate(nums, sizeof nums/ sizeof nums[0], k);
+  rotate_array::Solution s;
+  int nums[] = {1, 2, 3, 4, 5};
+  int k = 6;
+  s.rotate(nums, sizeof nums/ sizeof nums[0], k);
 
   // TODO: make a summary about memcpy and memmove.
   // test memcpy and memmove.
@@ -133,29 +133,30 @@ int main() {
   // s.pop();
   // psln(s.top());
   /* psln(s.getMin()); */
-  using min_stack::MinStack2;
-  MinStack2 s;
 
-  s.push(2147483646);
-  s.push(2147483646);
-  s.push(2147483647);
+  // using min_stack::MinStack2;
+  // MinStack2 s;
 
-  psln(s.top());
+  // s.push(2147483646);
+  // s.push(2147483646);
+  // s.push(2147483647);
 
-  s.pop();
+  // psln(s.top());
 
-  psln(s.getMin());
-  s.pop();
-  psln(s.getMin());
-  s.pop();
-  s.push(2147483647);
-  psln(s.top());
-  psln(s.getMin());
-  s.push(-2147483648);
-  psln(s.top());
-  psln(s.getMin());
-  s.pop();
-  psln(s.getMin());
+  // s.pop();
+
+  // psln(s.getMin());
+  // s.pop();
+  // psln(s.getMin());
+  // s.pop();
+  // s.push(2147483647);
+  // psln(s.top());
+  // psln(s.getMin());
+  // s.push(-2147483648);
+  // psln(s.top());
+  // psln(s.getMin());
+  // s.pop();
+  // psln(s.getMin());
 
   return 0;
 }
