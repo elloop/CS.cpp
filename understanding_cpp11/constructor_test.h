@@ -14,14 +14,11 @@ class ConstructorTest : public BaseTest {
     }
 
     // deleagte constructor 1.
-    ConstructorTest(int i) : try {
-      ConstructorTest()
+    ConstructorTest(int i) try : ConstructorTest() {
+      i_ = i;
     }
     catch(...) {
       pln("catch exception in ConstructorTest().");
-    }
-    {
-      i_ = i;
     }
 
     // deleagte constructor 2.

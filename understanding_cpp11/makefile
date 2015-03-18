@@ -3,8 +3,9 @@ TARGET = main
 
 OBJS = test.o \
 	   compatibility.o \
-	   thread_test.o \
-	   constructor_test.o
+	   constructor_test.o \
+		 pod_test.o
+		 # thread_test.o \
 
 REBUILDABLE = $(TARGET) $(OBJS)
 
@@ -14,7 +15,7 @@ LOCAL_CPP_FLAGS = -std=c++11 \
 				  #-DNDEBUG
 
 
-LINK_FLAGS = -lpthread 
+LINK_FLAGS = #-lpthread 
 
 # -g3 -gdwarf-2 is for gdb to expand and print macro value.
 FOR_GDB_DEBUG = -g3 \
