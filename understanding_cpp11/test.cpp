@@ -2,6 +2,7 @@
 #include "thread_test.h"
 #include "constructor_test.h"
 #include "pod_test.h"
+#include "initializer_test.h"
 
 USING_NS_ELLOOP;
 
@@ -10,6 +11,11 @@ int main() {
 
   TEST(PodTest);
 
+
+  // InitializerTest it({1, 2, 3});
+
+  
+  // TEST(InitializerTest);
   // TEST(ConstructorTest);
 
   // TEST(ThreadTest);

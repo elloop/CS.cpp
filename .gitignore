@@ -1,4 +1,5 @@
 *.[oa]
+!libgtest.a
 *.dylib
 *.la
 *.lai

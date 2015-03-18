@@ -41,6 +41,7 @@ void testC99Macro() {
   // psln(__STDC_VERSION__);
   // LOGD("C Standard Version: %d\n", __STDC_VERSION__);
   
+  // in gcc 4.8.2 __STDC_ISO_10646__ not defined....
   // LOGD("ISO/IEC: %ld\n", __STDC_ISO_10646__);
   // psln(__STDC_ISO_10646__);
 }
