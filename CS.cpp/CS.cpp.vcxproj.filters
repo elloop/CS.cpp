@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="data_structure">
+      <UniqueIdentifier>{9c148b9b-deb2-4ed6-b4f3-d59d7319a42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="algorithm">
+      <UniqueIdentifier>{f4a45a63-38af-4508-b503-f7a28de22abf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{c4ce4682-453f-432b-90f7-f9e71b03e61c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data_structure\stack">
+      <UniqueIdentifier>{471309f0-252c-4f83-a4e7-ef71867a4a18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data_structure\tree">
+      <UniqueIdentifier>{6c48b199-9842-412f-af99-0ff2454ca874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="algorithm\oj">
+      <UniqueIdentifier>{7236afe5-e086-43e1-bb13-c885cb28c143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="algorithm\leetcode">
+      <UniqueIdentifier>{9f480cb8-46e4-47f9-a670-cf8740082905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="algorithm\suffix_expression">
+      <UniqueIdentifier>{891674ad-57b4-42de-8652-fcc78836d0f3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="data_structure\stack\stack.h">
+      <Filter>data_structure\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structure\stack\stash.h">
+      <Filter>data_structure\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structure\tree\avl_tree.h">
+      <Filter>data_structure\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structure\tree\binary_tree.h">
+      <Filter>data_structure\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\leetcode\column_to_title.h">
+      <Filter>algorithm\leetcode</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\leetcode\compare_version.h">
+      <Filter>algorithm\leetcode</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\leetcode\intersection_of_linklist.h">
+      <Filter>algorithm\leetcode</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\leetcode\min_stack.h">
+      <Filter>algorithm\leetcode</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\leetcode\rotate_array.h">
+      <Filter>algorithm\leetcode</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\leetcode\title_to_number.h">
+      <Filter>algorithm\leetcode</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\leetcode\trailing_zeroes.h">
+      <Filter>algorithm\leetcode</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\leetcode\valid_parentheses.h">
+      <Filter>algorithm\leetcode</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\leetcode\zig_zag.h">
+      <Filter>algorithm\leetcode</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\suffix_expression\suffix.h">
+      <Filter>algorithm\suffix_expression</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="data_structure\stack\stash.cpp">
+      <Filter>data_structure\stack</Filter>
+    </ClCompile>
+    <ClCompile Include="data_structure\stack\stash_test.cpp">
+      <Filter>data_structure\stack</Filter>
+    </ClCompile>
+    <ClCompile Include="data_structure\tree\binary_tree_test.cpp">
+      <Filter>data_structure\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\oj\1002-telephone-numer.c">
+      <Filter>algorithm\oj</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\leetcode\two_sum.cpp">
+      <Filter>algorithm\leetcode</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\suffix_expression\suffix.cpp">
+      <Filter>algorithm\suffix_expression</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\suffix_expression\suffix_test.cpp">
+      <Filter>algorithm\suffix_expression</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+</Project>

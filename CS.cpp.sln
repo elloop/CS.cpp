@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithm", "CS.cpp\CS.cpp.vcxproj", "{6071A7C3-DA25-4737-B1E2-0A887D31A3DA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TotalSTL", "TotalSTL\TotalSTL.vcxproj", "{168DB33A-FCBB-4408-952A-C7EA4C0D260F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrainingGround", "TrainingGround\TrainingGround.vcxproj", "{09516EBB-3C53-47DB-B96D-F14894C10B16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6071A7C3-DA25-4737-B1E2-0A887D31A3DA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6071A7C3-DA25-4737-B1E2-0A887D31A3DA}.Debug|Win32.Build.0 = Debug|Win32
+		{6071A7C3-DA25-4737-B1E2-0A887D31A3DA}.Release|Win32.ActiveCfg = Release|Win32
+		{6071A7C3-DA25-4737-B1E2-0A887D31A3DA}.Release|Win32.Build.0 = Release|Win32
+		{168DB33A-FCBB-4408-952A-C7EA4C0D260F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{168DB33A-FCBB-4408-952A-C7EA4C0D260F}.Debug|Win32.Build.0 = Debug|Win32
+		{168DB33A-FCBB-4408-952A-C7EA4C0D260F}.Release|Win32.ActiveCfg = Release|Win32
+		{168DB33A-FCBB-4408-952A-C7EA4C0D260F}.Release|Win32.Build.0 = Release|Win32
+		{09516EBB-3C53-47DB-B96D-F14894C10B16}.Debug|Win32.ActiveCfg = Debug|Win32
+		{09516EBB-3C53-47DB-B96D-F14894C10B16}.Debug|Win32.Build.0 = Debug|Win32
+		{09516EBB-3C53-47DB-B96D-F14894C10B16}.Release|Win32.ActiveCfg = Release|Win32
+		{09516EBB-3C53-47DB-B96D-F14894C10B16}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="grammar">
+      <UniqueIdentifier>{ee056503-fd94-4fe1-8c07-a55ffc522b83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="effective_cpp">
+      <UniqueIdentifier>{5572951e-ba1f-4940-b76a-b75c3dd7e6b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stl">
+      <UniqueIdentifier>{3ace3213-109f-4dea-86ed-a09987c62c1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="skills">
+      <UniqueIdentifier>{3df9af99-c861-42a9-b3fd-dd776fee45e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="datastructure_algorithm">
+      <UniqueIdentifier>{8f7f43b1-f28a-44ec-90e9-fe421c3633bf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="grammar\c_lib_test.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\ClassTest.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\polymorphism_test.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\struct_array.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\TypeConvert_test.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="effective_cpp\ctr_dtr_assignment_op.cpp">
+      <Filter>effective_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="stl\algorithm_test.cpp">
+      <Filter>stl</Filter>
+    </ClCompile>
+    <ClCompile Include="stl\container_test.cpp">
+      <Filter>stl</Filter>
+    </ClCompile>
+    <ClCompile Include="stl\functor_test.cpp">
+      <Filter>stl</Filter>
+    </ClCompile>
+    <ClCompile Include="stl\iterator_test.cpp">
+      <Filter>stl</Filter>
+    </ClCompile>
+    <ClCompile Include="stl\smart_ptr.cpp">
+      <Filter>stl</Filter>
+    </ClCompile>
+    <ClCompile Include="stl\string_test.cpp">
+      <Filter>stl</Filter>
+    </ClCompile>
+    <ClCompile Include="datastructure_algorithm\algo_test.cpp">
+      <Filter>datastructure_algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="grammar\c_lib_test.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\ClassTest.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\polymorphism_test.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\struct_array.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\TypeConvert_test.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="effective_cpp\ctr_dtr_assignment_op.h">
+      <Filter>effective_cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="stl\algorithm_test.h">
+      <Filter>stl</Filter>
+    </ClInclude>
+    <ClInclude Include="stl\iterator_test.h">
+      <Filter>stl</Filter>
+    </ClInclude>
+    <ClInclude Include="stl\smart_ptr.h">
+      <Filter>stl</Filter>
+    </ClInclude>
+    <ClInclude Include="stl\string_test.h">
+      <Filter>stl</Filter>
+    </ClInclude>
+    <ClInclude Include="skills\endian_judge.h">
+      <Filter>skills</Filter>
+    </ClInclude>
+    <ClInclude Include="datastructure_algorithm\algo_test.h">
+      <Filter>datastructure_algorithm</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

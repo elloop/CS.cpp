@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="algorithm">
+      <UniqueIdentifier>{15326538-f758-4a28-82cd-80fa0b408b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="functor">
+      <UniqueIdentifier>{fa4a704c-df6e-4f1c-be0e-066d5bd02785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="iterator">
+      <UniqueIdentifier>{d7cd61a0-889d-4741-8ea5-180c3d15064e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="container">
+      <UniqueIdentifier>{553dc917-796a-4d8a-a65e-6bc12d813240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{361c9e91-7121-4828-aa22-c3674c74b433}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="algorithm\modifying_algorithms.cpp">
+      <Filter>algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\mutating_algorithms.cpp">
+      <Filter>algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\nonmodifying_algorithms.cpp">
+      <Filter>algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\numeric_algorithms.cpp">
+      <Filter>algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\removing_algorithms.cpp">
+      <Filter>algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\sorted_range_algorithms.cpp">
+      <Filter>algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\sorting_algorithms.cpp">
+      <Filter>algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="functor\functors.cpp">
+      <Filter>functor</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="algorithm\modifying_algorithms.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\mutating_algorithms.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\nonmodifying_algorithms.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\numeric_algorithms.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\removing_algorithms.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\sorted_range_algorithms.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\sorting_algorithms.h">
+      <Filter>algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="include\functors.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stl_headers.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
