@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="c++11">
+      <UniqueIdentifier>{645efa29-0a29-4aea-b19d-7b95fe5c55c5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="c++11\alignof_alignas.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\attribute.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\auto.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\compatibility.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\constexpr.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\constructor_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\decltype.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\initializer_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\lambda_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\pod_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\range_based_for_loop.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\raw_string_literal.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\rvalue_refrence_and_move_constructor.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\SFINEA.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\smart_pointer.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\std_thread.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\strongly_typed_enum.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\trailing_return_type.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\tuple_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\unlimited_union.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\user_define_literal.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\using_vs_typedef.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="c++11\variadic_template.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="c++11\thread_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="c++11\alignof_alignas.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\attribute.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\auto.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\compatibility.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\constexpr.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\constructor_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\decltype.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\inc.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\initializer_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\inline_namespace.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\lambda_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\log.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\macro_define.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\messi.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\pod_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\print_util.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\range_based_for_loop.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\raw_string_literal.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\rvalue_refrence_and_move_constructor.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\SFINEA.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\smart_pointer.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\std_thread.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\strongly_typed_enum.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\trailing_return_type.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\tuple_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\unicode_support.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\unlimited_union.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\user_define_literal.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\using_vs_typedef.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\variadic_template.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="c++11\thread_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="c++11\understanding-c++11.vcxproj">
+      <Filter>c++11</Filter>
+    </None>
+    <None Include="c++11\understanding-c++11.vcxproj.filters">
+      <Filter>c++11</Filter>
+    </None>
+  </ItemGroup>
+</Project>

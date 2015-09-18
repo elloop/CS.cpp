@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="compatibility.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="constructor_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="pod_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="thread_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="initializer_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="lambda_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="user_define_literal.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="using_vs_typedef.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="auto.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="decltype.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="range_based_for_loop.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="SFINEA.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="trailing_return_type.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="unlimited_union.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="strongly_typed_enum.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="smart_pointer.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="variadic_template.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="tuple_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="raw_string_literal.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="attribute.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="alignof_alignas.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="rvalue_refrence_and_move_constructor.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="constexpr.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="std_thread.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="macro_define.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="compatibility.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="constructor_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="initializer_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="pod_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="thread_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="messi.h" />
+    <ClInclude Include="print_util.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="lambda_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="user_define_literal.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="unlimited_union.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="auto.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="decltype.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="range_based_for_loop.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="SFINEA.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="trailing_return_type.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="using_vs_typedef.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="inline_namespace.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="strongly_typed_enum.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="smart_pointer.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="variadic_template.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="tuple_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="raw_string_literal.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="attribute.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="alignof_alignas.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="rvalue_refrence_and_move_constructor.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="constexpr.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="unicode_support.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest_pred_impl.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest_prod.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-death-test.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-message.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-param-test.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-printers.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-spi.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-test-part.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-typed-test.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="std_thread.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{79adee78-6b3d-4d8d-9e54-7a0fd8b1099a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c++11">
+      <UniqueIdentifier>{f0fb3859-0261-44c5-a9ec-b6687931184a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\gtest\gtest-param-test.h.pump">
+      <Filter>include</Filter>
+    </None>
+  </ItemGroup>
+</Project>
