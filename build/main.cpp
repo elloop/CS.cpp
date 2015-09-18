@@ -1,4 +1,4 @@
-#include "inc.h"
+#include "include/inc.h"
 #include "stash/stash.h"
 #include "stack/stack.h"
 #include <iostream>
