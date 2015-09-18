@@ -43,7 +43,7 @@ TEST(NonModifyingAlgorithm, ForEach) {
   // for_each
   vector<int> con;
   insertElements(con, 1, 10);
-  print_container(con, "con: ");  // con: 1 2 3 4 5 6 7 8 9 10
+  printContainer(con, "con: ");  // con: 1 2 3 4 5 6 7 8 9 10
 
   pcln("use lambda");               // 1 2 3 4 5 6 7 8 9 10
   for_each(con.begin(), con.end(), [](int i) {
@@ -68,14 +68,14 @@ TEST(NonModifyingAlgorithm, Count) {
 
   vector<int> con;
   insertElements(con, 1, 10);
-  print_container(con, "con: ");  // con: 1 2 3 4 5 6 7 8 9 10
+  printContainer(con, "con: ");  // con: 1 2 3 4 5 6 7 8 9 10
 
   int numOf1 = count(con.begin(), con.end(), 1);
   psln(numOf1);
   EXPECT_EQ(1, numOf1);      // one 1.
   con.push_back(1);
   con.push_back(1);
-  print_container(con, "con: ");  // con: 1 2 3 4 5 6 7 8 9 10 1 1
+  printContainer(con, "con: ");  // con: 1 2 3 4 5 6 7 8 9 10 1 1
   numOf1 = count(con.begin(), con.end(), 1);
   psln(numOf1);
   EXPECT_EQ(3, numOf1);      // three 1.
@@ -97,7 +97,7 @@ TEST(NonModifyingAlgorithm, MinMaxElem) {
   deque<int> con;
   insertElements(con, 1, 10);
   insertElements(con, -5, 5);
-  print_container(con);	// con: 1 2 3 4 5 6 7 8 9 10 -5 -4 -3 -2 -1 0 1 2 3 4 5
+  printContainer(con);	// con: 1 2 3 4 5 6 7 8 9 10 -5 -4 -3 -2 -1 0 1 2 3 4 5
 
   auto minPos = min_element(con.begin(), con.end());
   EXPECT_EQ(-5, *minPos);
@@ -114,7 +114,7 @@ TEST(NonModifyingAlgorithm, Find) {
   list<int> con;
   insertElements(con, 0, 10);
   insertElements(con, 0, 5);
-  print_container(con, "con: ");	// con: 1 2 3 4 5 6 7 8 9 10 
+  printContainer(con, "con: ");	// con: 1 2 3 4 5 6 7 8 9 10 
 
   // copy elems between two 0 into vector.
   vector<int> between0;
@@ -129,14 +129,14 @@ TEST(NonModifyingAlgorithm, Find) {
   if ( first0Pos != con.end() && second0Pos != con.end() ) {
     copy(--first0Pos, ++second0Pos, between0.begin());
   }
-  print_container(between0, "elems between 0: ");
+  printContainer(between0, "elems between 0: ");
 
 }
 
 TEST(NonModifyingAlgorithm, FindIf) {
   list<int> con;
   insertElements(con, 0, 10);
-  print_container(con, "con: ");
+  printContainer(con, "con: ");
 
   auto greater1Pos = find_if(con.begin(), con.end(),
     bind2nd(greater<int>(), 1));
@@ -147,7 +147,7 @@ TEST(NonModifyingAlgorithm, FindIf) {
 TEST(NonModifyingAlgorithm, SearchN) {
   deque<int> con;
   insertElements(con, 1, 10);
-  print_container(con);
+  printContainer(con);
 
   // search two consecutive 3 position.
   auto consecutive3Pos = search_n(con.begin(), con.end(), 2, 3);
@@ -182,11 +182,11 @@ TEST(NonModifyingAlgorithm, Search) {
   deque<int> con;
   insertElements(con, 1, 10);
   insertElements(con, 1, 10);
-  print_container(con, "con: ");
+  printContainer(con, "con: ");
 
   list<int> subCon;
   insertElements(subCon, 5, 9);
-  print_container(subCon, "subCon: ");
+  printContainer(subCon, "subCon: ");
 
   // matching subCon from begin of con, return first matching start point or con.end().
   auto pos = search(con.begin(), con.end(), subCon.begin(), subCon.end());
@@ -199,7 +199,7 @@ TEST(NonModifyingAlgorithm, Search) {
   pcln("find even odd even");
   vector<int> con2;
   insertElements(con2, 1, 7);
-  print_container(con2, "con2: ");
+  printContainer(con2, "con2: ");
   bool checkArgs[] = { true, false, true };
   auto evenPos = search(con2.begin(), con2.end(), checkArgs, checkArgs + 3, checkEven);
   while ( evenPos != con2.end() ) {
@@ -213,11 +213,11 @@ TEST(NonModifyingAlgorithm, Find_End) {
   deque<int> con;
   insertElements(con, 1, 10);
   insertElements(con, 1, 10);
-  print_container(con, "con: ");
+  printContainer(con, "con: ");
 
   list<int> subCon;
   insertElements(subCon, 5, 9);
-  print_container(subCon, "subCon: ");
+  printContainer(subCon, "subCon: ");
 
   // reverse finding. Compare this with Test: Search
   auto pos = find_end(con.begin(), con.end(), subCon.begin(), subCon.end());
@@ -236,7 +236,7 @@ TEST(NonModifyingAlgorithm, Find_End) {
   pcln("find even odd even");
   vector<int> con2;
   insertElements(con2, 1, 7);
-  print_container(con2, "con2: ");
+  printContainer(con2, "con2: ");
   bool checkArgs[] = { true, false, true };
   const int subLen = sizeof checkArgs / sizeof checkArgs[0];
   auto evenPos = find_end(con2.begin(), con2.end(), checkArgs, checkArgs + 3, checkEven);
@@ -259,11 +259,11 @@ TEST(NonModifyingAlgorithm, Find_First_Of) {
   con.push_back(2);
   insertRepeat(con, Repeat(make_pair(3, 1)));
   con.push_back(3);
-  print_container(con, "con: ");
+  printContainer(con, "con: ");
 
   searchCon.push_back(2);
   searchCon.push_back(3);
-  print_container(searchCon, "searchCon: ");
+  printContainer(searchCon, "searchCon: ");
 
   auto firstOfElem = find_first_of(con.begin(), con.end(), searchCon.begin(), searchCon.end());
   if ( firstOfElem != con.end() ) {
@@ -285,7 +285,7 @@ TEST(NonModifyingAlgorithm, Adjacent_Find) {
   insertElements(con, 1, 3);
   insertRepeat(con, Repeat(make_pair(2, 5)));
   con.push_back(25);
-  print_container( con, "con: " ); // con: 1 2 3 5 5 25
+  printContainer( con, "con: " ); // con: 1 2 3 5 5 25
 
   auto adjacentSamePos = adjacent_find(con.begin(), con.end());
   if ( adjacentSamePos != con.end()) {

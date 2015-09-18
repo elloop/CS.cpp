@@ -41,7 +41,7 @@ TEST(ModifyingAlgorithm, ForEach) {
   // for_each
   vector<int> coll;
   insertElements(coll, 1, 10);
-  print_container(coll, "coll: ");  // coll: 1 2 3 4 5 6 7 8 9 10
+  printContainer(coll, "coll: ");  // coll: 1 2 3 4 5 6 7 8 9 10
 
   pcln("changing coll use lambda");
   for_each(coll.begin(), coll.end(),
@@ -49,17 +49,17 @@ TEST(ModifyingAlgorithm, ForEach) {
       elem += 50;
     }
   );
-  print_container(coll, "coll: ");  //coll: 51 52 53 54 55 56 57 58 59 60
+  printContainer(coll, "coll: ");  //coll: 51 52 53 54 55 56 57 58 59 60
 
 
   pcln("changing coll use Functor");
   for_each(coll.begin(), coll.end(),
     AddVal<int>(50));
-  print_container(coll, "coll: ");//coll: 101 102 103 104 105 106 107 108 109 110
+  printContainer(coll, "coll: ");//coll: 101 102 103 104 105 106 107 108 109 110
 
   pcln("use return value of for_each");
   vector<int> coll2{ 1, 2, 3, 4, 5 };
-  print_container(coll2, "coll2:");   // coll2: 1 2 3 4 5
+  printContainer(coll2, "coll2:");   // coll2: 1 2 3 4 5
 
   //for_each returns a copy of MeanValue(), then use operator double().
   // same with:

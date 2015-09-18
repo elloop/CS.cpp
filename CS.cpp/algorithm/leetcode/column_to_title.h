@@ -31,7 +31,7 @@ class Solution {
         }
       }
       result.insert(0, 1, n - 1 + 'A');
-      elloop::print_container(result);
+      elloop::printContainer(result);
       return result;
     }
 };
