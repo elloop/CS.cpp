@@ -1,17 +1,19 @@
-#algorithm
-##*Data Structures and Algorithms implemented in `c++`*.
+#CS.cpp
+Computer Science Practice Using cpp.
 ---
 
-#Next  
-1. use `cmake` to deal with the building work, it can automatically generate .sln(which i can use in my Windows-PC in company) and .xcodeproj(which i can use in my Mac Book at home. In fact, i would prefer coding with vim in Mac(unix-like) system because of its flexibility and creative).
+## Projects in this repo
+|*Name*| *Description*|
+|------|--------------|
+|TrainingGround | free training place|
+|TotalSTL| STL practice code |
+|Algorithm | datastructure and algorithm practice |
+|UnderstandingCpp11 | c++11 features demo codes from a book. |
 
-#History
----
-##2015/3/19
-1. integrate with `gtest`. Add */libs* and */include/gtest* directories for `gtest`.
+Please check the README file in each project folder to learn more. 
 
-##1/23/2015
----
-1. use automake to manage projects.
+## TODO
 
+- [ ] create a new repo to replace this, because this repo has a too large .git folder(9M).
+- [ ] use cmake to manage the project building.
 
