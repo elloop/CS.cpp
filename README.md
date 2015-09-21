@@ -14,6 +14,7 @@ Please check the README file in each project folder to learn more.
 
 ## TODO
 
-- [ ] create a new repo to replace this, because this repo has a too large .git folder(9M).
 - [ ] use cmake to manage the project building.
+- [x] create a new repo to replace this, because this repo has a too large .git folder(9M).
+      After deleting `xcode` and `vim` branches, .git decrease to 3M, so I needn't create a new repo anymore.
 
