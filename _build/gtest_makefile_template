@@ -1,0 +1,21 @@
+GTEST_DIR = ../googletest-read-only
+USER_DIR = .
+GTEST_LIB_DIR = ../gtest_trunk
+
+# CPPFLAGS += -isystem $(GTEST_DIR)/include
+CPPFLAGS += -I$(GTEST_DIR)/include
+CXXFLAGS += -g -Wall -Wextra -pthread
+TESTS = test
+CLEANS = $(TESTS) *.o
+
+GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
+                $(GTEST_DIR)/include/gtest/internal/*.h
+all : $(TESTS)
+clean :
+	rm -f $(CLEANS)
+
+simple.o : $(USER_DIR)/simple.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
+
+test : simple.o test.o 
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $(GTEST_LIB_DIR)/libgtest.a $^ -o $@
