@@ -4,3 +4,9 @@
 #define NS_ELLOOP_END }
 #define NS_BEGIN(x) namespace x {
 #define NS_END(x) }
+
+#define BEGIN_TEST(__CASE__, __SUB_CASE__) TEST(__CASE__, __SUB_CASE__) { \
+                                               pcln(#__CASE__ + std::string(" ---> ") + #__SUB_CASE__);
+
+#define END_TEST }
+
