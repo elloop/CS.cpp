@@ -10,7 +10,7 @@ TEST(Auto, Advantage) {
 
 
 
-BEGIN_TEST(Auto, AutoLimited)
+BEGIN_TEST(Auto, AutoLimited, @)
 
 auto x(1), y(2);
 
@@ -39,7 +39,7 @@ int& returnGlobalRef() {
     return globalVar;
 }
 
-BEGIN_TEST(Auto, AutoAndReference)
+BEGIN_TEST(Auto, AutoAndReference, @)
 
 int val     = 10;
 int& ref1   = val;
@@ -78,7 +78,7 @@ psln(typeid(maybeRef).name());      // int
 END_TEST
 
 
-BEGIN_TEST(Auto, AutoAndPointer)
+BEGIN_TEST(Auto, AutoAndPointer, @)
 
 int val(10);
 int* ptr = &val;
@@ -110,7 +110,7 @@ END_TEST
 
 
 
-BEGIN_TEST(Auto, AutoAndConst);
+BEGIN_TEST(Auto, AutoAndConst, @);
 
 int val(10);
 const int cval(11);
@@ -138,7 +138,7 @@ END_TEST;
 
 
 
-BEGIN_TEST(Auto, AutoAndConstRefAndPtr);
+BEGIN_TEST(Auto, AutoAndConstRefAndPtr, @);
 
 int val(10);
 const int& cvalRef = val;

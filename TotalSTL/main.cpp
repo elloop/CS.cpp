@@ -12,8 +12,11 @@ void turnOnMemroyCheck() {
 
 #include "inc.h"
 #include "gtest/gtest.h"
+#include "FileReader.h"
 
 void dummyExitFunction() {
+    elloop::FileReader::getInstance()->purege();
+
 	char c = getchar();
 }
 
@@ -24,6 +27,8 @@ int main(int argc, char** argv) {
 	atexit(dummyExitFunction);
 	turnOnMemroyCheck();
 #endif
+
+    //_CrtSetBreakAlloc(2443); // break at 2443th memory alloc.
 
 	// use gtest.
 	testing::InitGoogleTest(&argc, argv);

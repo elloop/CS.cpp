@@ -19,10 +19,13 @@ template <typename T> class TreeHelper;
 template <typename T>
 class BinaryTreeNode {
 public:
-  BinaryTreeNode(const T & value,
-    BinaryTreeNode* left = nullptr,
-    BinaryTreeNode* right = nullptr)
-    : value_(value), left_(left), right_(right) {}
+  BinaryTreeNode(const T & value, 
+                    BinaryTreeNode* left    = nullptr, 
+                    BinaryTreeNode* right   = nullptr): 
+    value_(value), 
+    left_(left), 
+    right_(right) 
+  {}
 
   ~BinaryTreeNode() {
     p("deleting node, value:");
@@ -42,9 +45,9 @@ public:
   friend BinaryTree<T>;
   friend TreeHelper<T>;
 private:
-  T value_;
-  BinaryTreeNode* left_;
-  BinaryTreeNode* right_;
+  T                 value_;
+  BinaryTreeNode*   left_;
+  BinaryTreeNode*   right_;
 };
 
 template <typename T>
@@ -54,7 +57,10 @@ public:
   typedef void(*const_visitor)( const BinaryTreeNode<T>* );
   typedef void(*visitor)( BinaryTreeNode<T>* & );
 
-  BinaryTree(Node* root = nullptr) : root_(root) {}
+  BinaryTree(Node* root = nullptr) : 
+      root_(root) 
+  {}
+
   ~BinaryTree() {
     clear();
   }

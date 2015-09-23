@@ -43,6 +43,12 @@
       <Filter>functor</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="container\map_vs_unordered_map.cpp">
+      <Filter>container</Filter>
+    </ClCompile>
+    <ClCompile Include="container\Dictionary.cpp">
+      <Filter>container</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="algorithm\modifying_algorithms.h">
@@ -71,6 +77,12 @@
     </ClInclude>
     <ClInclude Include="include\stl_headers.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="container\map_vs_unordered_map.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="container\Dictionary.h">
+      <Filter>container</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

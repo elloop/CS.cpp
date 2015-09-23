@@ -6,10 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithm", "CS.cpp\CS.cpp.vcxproj", "{6071A7C3-DA25-4737-B1E2-0A887D31A3DA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TotalSTL", "TotalSTL\TotalSTL.vcxproj", "{168DB33A-FCBB-4408-952A-C7EA4C0D260F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B8C7023F-AE2F-4F56-BFF6-3BC9CFABAE67} = {B8C7023F-AE2F-4F56-BFF6-3BC9CFABAE67}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrainingGround", "TrainingGround\TrainingGround.vcxproj", "{09516EBB-3C53-47DB-B96D-F14894C10B16}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnderstandingCpp11", "UnderstandingCpp11\UnderstandingCpp11.vcxproj", "{03740B06-4EF2-4319-9D71-74D77E3AB0D7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "util", "util\util.vcxproj", "{B8C7023F-AE2F-4F56-BFF6-3BC9CFABAE67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{03740B06-4EF2-4319-9D71-74D77E3AB0D7}.Debug|Win32.Build.0 = Debug|Win32
 		{03740B06-4EF2-4319-9D71-74D77E3AB0D7}.Release|Win32.ActiveCfg = Release|Win32
 		{03740B06-4EF2-4319-9D71-74D77E3AB0D7}.Release|Win32.Build.0 = Release|Win32
+		{B8C7023F-AE2F-4F56-BFF6-3BC9CFABAE67}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B8C7023F-AE2F-4F56-BFF6-3BC9CFABAE67}.Debug|Win32.Build.0 = Debug|Win32
+		{B8C7023F-AE2F-4F56-BFF6-3BC9CFABAE67}.Release|Win32.ActiveCfg = Release|Win32
+		{B8C7023F-AE2F-4F56-BFF6-3BC9CFABAE67}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

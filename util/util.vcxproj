@@ -11,13 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{168DB33A-FCBB-4408-952A-C7EA4C0D260F}</ProjectGuid>
+    <ProjectGuid>{B8C7023F-AE2F-4F56-BFF6-3BC9CFABAE67}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TotalSTL</RootNamespace>
+    <RootNamespace>util</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -41,6 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.lib</TargetExt>
+    <OutDir>$(SolutionDir)libs\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -52,14 +54,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)include;$(ProjectDir);$(ProjectDir)include;$(SolutionDir)util\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)include;$(ProjectDir);$(ProjectDir)include;</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(solutiondir)libs;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>util.lib;jsoncpp_0_50.lib;gtestd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,30 +80,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algorithm\modifying_algorithms.cpp" />
-    <ClCompile Include="algorithm\mutating_algorithms.cpp" />
-    <ClCompile Include="algorithm\nonmodifying_algorithms.cpp" />
-    <ClCompile Include="algorithm\numeric_algorithms.cpp" />
-    <ClCompile Include="algorithm\removing_algorithms.cpp" />
-    <ClCompile Include="algorithm\sorted_range_algorithms.cpp" />
-    <ClCompile Include="algorithm\sorting_algorithms.cpp" />
-    <ClCompile Include="container\Dictionary.cpp" />
-    <ClCompile Include="container\map_vs_unordered_map.cpp" />
-    <ClCompile Include="functor\functors.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="file\FileReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algorithm\modifying_algorithms.h" />
-    <ClInclude Include="algorithm\mutating_algorithms.h" />
-    <ClInclude Include="algorithm\nonmodifying_algorithms.h" />
-    <ClInclude Include="algorithm\numeric_algorithms.h" />
-    <ClInclude Include="algorithm\removing_algorithms.h" />
-    <ClInclude Include="algorithm\sorted_range_algorithms.h" />
-    <ClInclude Include="algorithm\sorting_algorithms.h" />
-    <ClInclude Include="container\Dictionary.h" />
-    <ClInclude Include="container\map_vs_unordered_map.h" />
-    <ClInclude Include="include\functors.h" />
-    <ClInclude Include="include\stl_headers.h" />
+    <ClInclude Include="include\FileReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
