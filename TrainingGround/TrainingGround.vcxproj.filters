@@ -16,6 +16,9 @@
     <Filter Include="datastructure_algorithm">
       <UniqueIdentifier>{8f7f43b1-f28a-44ec-90e9-fe421c3633bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="third_party">
+      <UniqueIdentifier>{e73ed0e7-1343-4a66-b19e-2b103b0e6ff3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="grammar\c_lib_test.cpp">
@@ -58,6 +61,9 @@
       <Filter>datastructure_algorithm</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="third_party\rapid_json_test.cpp">
+      <Filter>third_party</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="grammar\c_lib_test.h">

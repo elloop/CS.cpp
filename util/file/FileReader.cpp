@@ -20,10 +20,16 @@ unsigned  char* FileReader::getFileData(const std::string& fileName, const char*
         fp = fopen(fileName.c_str(), mode);
         EL_BREAK_IF(!fp);
         fseek(fp, 0, SEEK_END);
-        *pSize = ftell(fp);
+        unsigned long fileSize(0);
+        if (!pSize) {
+            fileSize = ftell(fp);
+        }
+        else {
+            fileSize = *pSize = ftell(fp);
+        }
         fseek(fp, 0, SEEK_SET);
-        res = new unsigned char[*pSize];
-        fread(res, sizeof (unsigned char), *pSize, fp);
+        res = new unsigned char[fileSize];
+        fread(res, sizeof (unsigned char), fileSize, fp);
         fclose(fp);
     } while (0);
 

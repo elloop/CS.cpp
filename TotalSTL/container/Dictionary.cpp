@@ -118,6 +118,8 @@ void Dictionary::purge() {
     //TODO:  need i clear the map, before delete this object?
     clear();
     clearHash();
+    clearKeys();
+    clearSmartKeys();
 
     EL_SAFE_DELETE(instance_);
 }
@@ -185,7 +187,7 @@ const std::string & Dictionary::getValueFromHash(const std::string& key) {
         return key;
 }
 
-void Dictionary::saveKeys(const std::string& languagefile) {
+void Dictionary::parseKeys(const std::string& languagefile) {
     Json::Reader jreader;
     Json::Value data;
     unsigned long filesize;
@@ -209,20 +211,22 @@ void Dictionary::saveKeys(const std::string& languagefile) {
 
         EL_SAFE_DELETE_ARRAY(pBuffer);
 
+        size_t keyCount(0);
         if (data["version"].asInt() == 1) {
             Json::Value files = data["strings"];
             if (!files.empty() && files.isArray()) {
                 for (int i = 0; i < files.size(); ++i) {
                     Json::Value unit = files[i];
                     if (unit["k"].empty()) continue;
-                    std::string key = unit["k"].asString();
-                    std::string value = unit["v"].asString();
+                    std::string key     = unit["k"].asString();
+                    std::string value   = unit["v"].asString();
                     replaceEnter(key);
                     if (!keys_) {
-                        numOfKeys_ = files.size();
-                        keys_ = new std::string*[numOfKeys_];
+                        numOfKeys_  = files.size();
+                        keys_       = new std::string*[numOfKeys_];
                     }
-                    keys_[i] = new std::string(key);
+                    keys_[keyCount++]   = new std::string(key);
+                    numOfKeys_          = keyCount;
                 }
             }
         }
@@ -236,9 +240,64 @@ void Dictionary::clearKeys() {
     }
     for (size_t i = 0; i < numOfKeys_; ++i) {
         LOGD("releasing %d th string in keys_\n", i + 1);
-        delete keys_[i];
+        EL_SAFE_DELETE(keys_[i]);
     }
-    delete[] keys_;
-    keys_ = nullptr;
+    EL_SAFE_DELETE_ARRAY(keys_);
+}
+
+void Dictionary::parseKeysWithSmartPtr(const std::string& languagefile) {
+    Json::Reader jreader;
+    Json::Value data;
+    unsigned long filesize;
+
+    using elloop::FileReader;
+    char* pBuffer = (char*)FileReader::getInstance()->getFileData(languagefile, "rt", &filesize);
+
+    if (!pBuffer) {
+        char msg[256];
+        sprintf(msg, "Failed open file: %s!\n", languagefile.c_str());
+        LOGD(msg);
+    }
+    else {
+        unsigned char* dataPtr = (unsigned char*)pBuffer;
+        if (filesize >= 2 && dataPtr[0] == 0xFF && dataPtr[1] == 0xFE)
+            jreader.parse(pBuffer + 2, data, false);
+        else if (filesize >= 3 && dataPtr[0] == 0xEF && dataPtr[1] == 0xBB && dataPtr[1] == 0xBF)
+            jreader.parse(pBuffer + 3, data, false);
+        else
+            jreader.parse(pBuffer, data, false);
+
+        EL_SAFE_DELETE_ARRAY(pBuffer);
+
+        size_t keyCount(0);
+        if (data["version"].asInt() == 1) {
+            Json::Value files = data["strings"];
+            if (!files.empty() && files.isArray()) {
+                for (int i = 0; i < files.size(); ++i) {
+                    Json::Value unit = files[i];
+                    if (unit["k"].empty()) continue;
+                    std::string key = unit["k"].asString();
+                    std::string value = unit["v"].asString();
+                    replaceEnter(key);
+                    if (!smartKeys_) {
+                        numOfKeys_ = files.size();
+                        smartKeys_ = new std::shared_ptr<StringWrapper>[numOfKeys_];
+                        for (int i=0; i<numOfKeys_; ++i) {
+                            smartKeys_[i] = nullptr;
+                        }
+                    }
+                    smartKeys_[i] = std::make_shared<StringWrapper>(key);
+                }
+            }
+        }
+    }
+    EL_SAFE_DELETE_ARRAY(pBuffer);
+}
+
+void Dictionary::clearSmartKeys() {
+    if (!smartKeys_) {
+        return;
+    }
+    EL_SAFE_DELETE_ARRAY(smartKeys_);
 }
 

@@ -6,26 +6,30 @@
 // with detail description of memory leak.
 #define new new( _CLIENT_BLOCK, __FILE__, __LINE__)
 void turnOnMemroyCheck() {
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 }
 #endif
 
 #include "inc.h"
+#include "FileReader.h"
 #include "gtest/gtest.h"
 
 void dummyExitFunction() {
-  char c = getchar();
+    elloop::FileReader::getInstance()->purege();
+    char c = getchar();
 }
 
 int main(int argc, char** argv) {
 
 #if defined(_MSC_VER) && defined(_DEBUG)
-	// make program stop when debug.
+    // make program stop when debug.
     turnOnMemroyCheck();
-    //atexit(dummyExitFunction);
+    atexit(dummyExitFunction);
 #endif
+    //_CrtSetBreakAlloc(2857);
 
-	// use gtest.
-	testing::InitGoogleTest(&argc, argv);
-	return RUN_ALL_TESTS();
+
+    // use gtest.
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

@@ -21,6 +21,7 @@ if (lan) {
 
     const int numOfKeys = lan->numOfKeys();
     std::string* const * keys = lan->keys();
+    std::shared_ptr<Dictionary::StringWrapper>* smartKeys = lan->smartKeys();
     int randIndex(0);
 
     // test init.
@@ -32,14 +33,27 @@ if (lan) {
     psln(timeConsumed);
 
     // test find.
-    begin  = clock();
+    /*begin  = clock();
     for (int i = 0; i < kSearchCount; ++i) {
         randIndex = rand() % numOfKeys;
         if (!keys[randIndex]) {
             continue;
         }
         lan->getValue(*(keys[randIndex]));
+    }*/
+
+    begin = clock();
+    for (int i = 0; i < kSearchCount; ++i) {
+        randIndex = rand() % numOfKeys;
+        if (!smartKeys[randIndex]) {
+            continue;
+        }
+        auto pWrapper = smartKeys[randIndex];
+
+        //lan->getValue((smartKeys[randIndex])->str_);
+        lan->getValue(pWrapper->str_);
     }
+
     end = clock();
     timeConsumed = ((double)end - begin) / CLOCKS_PER_SEC;
     p("map find consumed: ");
@@ -55,15 +69,25 @@ if (lan) {
     psln(timeConsumed);
 
     // test find.
-    begin = clock();
+    /*begin = clock();
     for (int i = 0; i < kSearchCount; ++i) {
         randIndex = rand() % numOfKeys;
         if (!keys[randIndex]) {
             continue;
         }
         lan->getValueFromHash(*(keys[randIndex]));
-        //lan->getValueFromHash("@MPQuantity");
+    }*/
+
+    begin = clock();
+    for (int i = 0; i < kSearchCount; ++i) {
+        randIndex = rand() % numOfKeys;
+        if (!smartKeys[randIndex]) {
+            continue;
+        }
+        auto pWrapper = smartKeys[randIndex];
+        lan->getValueFromHash(pWrapper->str_);
     }
+
     end = clock();
     timeConsumed = ((double)end - begin) / CLOCKS_PER_SEC;
     p("hash find consumed: ");
