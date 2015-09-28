@@ -8,6 +8,8 @@ _Pragma("once")
 #include <iostream>
 #include <string>
 #include <cstdio>
+#include <cassert>
+#include <functional>
 
 namespace elloop {
 
@@ -166,3 +168,10 @@ void print_array<T*, N>(const T (&a)[N]) {
 
 } // end namespace elloop;
 
+template <typename Dummy = int>
+void assertCond(bool cond, const std::function<void()>& func, Dummy x = 0) {
+    if (!cond) {
+        func();
+        assert(false);
+    }
+}

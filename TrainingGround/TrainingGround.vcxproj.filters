@@ -102,5 +102,8 @@
     <ClInclude Include="datastructure_algorithm\algo_test.h">
       <Filter>datastructure_algorithm</Filter>
     </ClInclude>
+    <ClInclude Include="third_party\rapid_json_test.h">
+      <Filter>third_party</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
