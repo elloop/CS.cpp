@@ -137,7 +137,12 @@ using rapidjson::Value;
 
 unsigned long fileSize(0);
 std::string jsonName("chinese.lang");
-unsigned char * jsonData = FileReader::getInstance()->getFileData(jsonName, "rt", &fileSize);
+
+// TODO: if not "rb", i will get "様様様様様様" at the end of the string constructed with jsonData.
+unsigned char * jsonData = FileReader::getInstance()->getFileData(jsonName, "rb", &fileSize);
+
+std::string jsons = std::string((const char*)jsonData, fileSize);
+
 EL_SAFE_DELETE_ARRAY(jsonData);
 
 
@@ -153,10 +158,21 @@ if (in.is_open()) {
     }
     in.close();
 }
-psln(str);
+//psln(str);
+
 Document d;
 //d.Parse((char*)jsonData);
-d.Parse(str.c_str());
+//psln(str);
+
+psln(jsons);
+d.Parse<0>(jsons.c_str());
+
+if (d.HasParseError()) {
+
+    rapidjson::ParseErrorCode code = d.GetParseError();
+    //LOGD("parse error: %s\n", d.GetParseError());
+    return;
+}
 
 Value& v = d["version"];
 if (v.IsInt()) {
