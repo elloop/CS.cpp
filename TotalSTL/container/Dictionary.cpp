@@ -16,7 +16,6 @@ void Dictionary::init( const std::string& languagefile )
 // 	lib->registerCCNodeLoader("CCLabelTTF", CCLabelTTFLoader_Language::loader());
 }
 
-
 void Dictionary::parseFromFile( const std::string& languagefile )
 {
 	Json::Reader jreader;
@@ -65,7 +64,6 @@ void Dictionary::parseFromFile( const std::string& languagefile )
 					}
 				}
 			}
-
 		}
 	}
     EL_SAFE_DELETE_ARRAY(pBuffer);
@@ -85,7 +83,6 @@ bool Dictionary::hasKey( const std::string& _key )
 	std::map<std::string,std::string>::iterator it = mStrings.find(_key);
 	return (it!=mStrings.end());
 }
-
 
 void Dictionary::replaceEnter( std::string &_str )
 {

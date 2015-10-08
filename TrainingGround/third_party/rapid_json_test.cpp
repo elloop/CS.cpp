@@ -63,14 +63,24 @@ do {
     }
     */
 
+    /* parse from binary buffer failed.
     doc.Parse<0>((const char*)jsonData);
     if (doc.HasParseError()) {
         rapidjson::ParseErrorCode code = doc.GetParseError();
 
         break;
-    }
+    }*/
 
-    if (doc.ParseInsitu(buff).HasParseError()) {
+
+    /* parseInsitu (ิญตุฝโฮ๖) binary buffer failed.
+    if (doc.ParseInsitu((char*)jsonData).HasParseError()) {
+        rapidjson::ParseErrorCode code = doc.GetParseError();
+
+        break;
+    }*/
+
+    // ParseInsitu from string is ok.
+    if ( doc.ParseInsitu((char*)jsonString.c_str()).HasParseError() ) {
         rapidjson::ParseErrorCode code = doc.GetParseError();
 
         break;
@@ -120,12 +130,11 @@ struct MyHandler {
     bool EndArray(SizeType elementCount) { cout << "EndArray(" << elementCount << ")" << endl; return true; }
 };
 
-unsigned long fileSize(0);
-std::string jsonName("chinese.lang");
-unsigned char * jsonData = FileReader::getInstance()->getFileData(jsonName, "rt", &fileSize);
+unsigned long   fileSize(0);
+unsigned char * jsonData = FileReader::getInstance()->getFileData("chinese.lang", "rt", &fileSize);
 
-MyHandler handler;
-Reader reader;
+MyHandler   handler;
+Reader      reader;
 StringStream ss((char*)jsonData);
 reader.Parse(ss, handler);
 
@@ -144,6 +153,7 @@ BEGIN_TEST(RapidJson, SimpleDom, @);
 using std::cout;
 using std::endl;
 using std::boolalpha;
+using std::string;
 using rapidjson::SizeType;
 using rapidjson::Reader;
 using rapidjson::StringStream;
@@ -155,7 +165,7 @@ unsigned long   fileSize(0);
 // TODO: if not "rb", i will get "ออออออออออออ" at the end of the string constructed with jsonData.
 unsigned char * jsonData = FileReader::getInstance()->getFileData("chinese.lang", "rb", &fileSize);
 
-std::string jsons = std::string((const char*)jsonData, fileSize);
+string jsons = string((const char*)jsonData, fileSize);
 
 EL_SAFE_DELETE_ARRAY(jsonData);
 
@@ -163,9 +173,9 @@ using std::ifstream;
 
 ifstream in;
 in.open("chinese.lang", ifstream::in);
-std::string str;
+string str;
 if (in.is_open()) {
-    std::string line;
+    string line;
     while (getline(in, line)) {
         str.append(line + "\n");
     }
