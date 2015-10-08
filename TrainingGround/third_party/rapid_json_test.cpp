@@ -14,66 +14,77 @@ NS_BEGIN(third_party);
 BEGIN_TEST(RapidJson, Read, @);
 
 
-#if 1
+#if 0
     return;
 #endif
 
-unsigned long fileSize(0);
-std::string jsonName("chinese.lang");
-unsigned char * jsonData = FileReader::getInstance()->getFileData(jsonName, "rt", &fileSize);
+using std::ifstream;
+using std::string;
+
+
+unsigned long   fileSize(0);
+unsigned char * jsonData = FileReader::getInstance()->getFileData("chinese.lang", "rb", &fileSize);
 //jsonData[fileSize - 1] = 0;
-std::string jsonString((char*)(jsonData), fileSize);
+string jsonString((const char*)(jsonData), fileSize);
 //p(jsonString);
 
-using std::ifstream;
-
-std::string stringFromStream;
-ifstream in;
-in.open("chinese.lang", ifstream::in);
-if (in.is_open()) {
-    std::string line;
-    while (in >> line) {
-        stringFromStream.append(line + "\n");
-    }
-    in.close();
-}
+//string      stringFromStream;
+//ifstream    in;
+//in.open("chinese.lang", ifstream::in);
+//if (in.is_open()) {
+//    string line;
+//    while (in >> line) {
+//        stringFromStream.append(line + "\n");
+//    }
+//    in.close();
+//}
 //p(stringFromStream);
 
-using rapidjson::Document;
-
-const char json[] = " { \"hello\" : \"world\", \"t\" : true , \"f\" : false, \"n\": null, \"i\":123, \"pi\": 3.1416, \"a\":[1, 2, 3, 4] } ";
-printf("Original JSON:\n %s\n", json);
-
-Document doc;
+//const char json[] = " { \"hello\" : \"world\", \"t\" : true , \"f\" : false, \"n\": null, \"i\":123, \"pi\": 3.1416, \"a\":[1, 2, 3, 4] } ";
+//printf("Original JSON:\n %s\n", json);
 
 char* buff = new char[fileSize];
-//memcpy(buff, stringFromStream.c_str(), stringFromStream.size());
-//memcpy(buff, json, sizeof(json));
-
 memcpy(buff, jsonData, fileSize);
 
 auto freeMem = [&buff, &jsonData](){ 
     EL_SAFE_DELETE_ARRAY(buff);
     EL_SAFE_DELETE_ARRAY(jsonData);
 };
+
+using rapidjson::Document;
+Document doc;
 do {
+    /* parse from string is ok.
+    doc.Parse<0>(jsonString.c_str());
+    if (doc.HasParseError()) {
+    rapidjson::ParseErrorCode code = doc.GetParseError();
+
+    break;
+    }
+    */
+
+    doc.Parse<0>((const char*)jsonData);
+    if (doc.HasParseError()) {
+        rapidjson::ParseErrorCode code = doc.GetParseError();
+
+        break;
+    }
+
     if (doc.ParseInsitu(buff).HasParseError()) {
+        rapidjson::ParseErrorCode code = doc.GetParseError();
+
         break;
     }
     assertCond(doc.IsObject(),          freeMem);
-    assertCond(doc.HasMember("hello"),  freeMem);
-    assertCond(doc.HasMember("t"),      freeMem);
+    assertCond(!doc.HasMember("hello"),  freeMem);
+    assertCond(!doc.HasMember("t"),      freeMem);
 } while (0);
 
 freeMem();
-
-
-
 END_TEST;
 
 
-//---------------------- test seperator ----------------------
-
+//---------------------- seperator ----------------------
 BEGIN_TEST(RapidJson, SimpleReader, @);
 
 #if 1
@@ -123,8 +134,12 @@ EL_SAFE_DELETE_ARRAY(jsonData);
 END_TEST;
 
 
-//---------------------- test seperator ----------------------
+//---------------------- seperator ----------------------
 BEGIN_TEST(RapidJson, SimpleDom, @);
+
+#if 1
+    return;
+#endif
 
 using std::cout;
 using std::endl;
@@ -135,16 +150,14 @@ using rapidjson::StringStream;
 using rapidjson::Document;
 using rapidjson::Value;
 
-unsigned long fileSize(0);
-std::string jsonName("chinese.lang");
+unsigned long   fileSize(0);
 
 // TODO: if not "rb", i will get "様様様様様様" at the end of the string constructed with jsonData.
-unsigned char * jsonData = FileReader::getInstance()->getFileData(jsonName, "rb", &fileSize);
+unsigned char * jsonData = FileReader::getInstance()->getFileData("chinese.lang", "rb", &fileSize);
 
 std::string jsons = std::string((const char*)jsonData, fileSize);
 
 EL_SAFE_DELETE_ARRAY(jsonData);
-
 
 using std::ifstream;
 
@@ -164,13 +177,11 @@ Document d;
 //d.Parse((char*)jsonData);
 //psln(str);
 
-psln(jsons);
+//psln(jsons);
 d.Parse<0>(jsons.c_str());
 
 if (d.HasParseError()) {
-
     rapidjson::ParseErrorCode code = d.GetParseError();
-    //LOGD("parse error: %s\n", d.GetParseError());
     return;
 }
 
@@ -180,7 +191,6 @@ if (v.IsInt()) {
 }
 
 using util = RapidJsonUtil;
-
 
 Value & ary = d["strings"];
 if (ary.IsArray()) {
