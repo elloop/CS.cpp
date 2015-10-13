@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
     turnOnMemroyCheck();
     atexit(dummyExitFunction);
 #endif
-    _CrtSetBreakAlloc(227);
+    //_CrtSetBreakAlloc(227);
 
 
     // use gtest.

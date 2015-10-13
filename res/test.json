@@ -1,0 +1,11 @@
+{
+    "dictVersion": 1,  
+    "content":  
+    [   
+     	{"key": "word1", "value": "单词1"} ,
+     	{"key": "word2", "value": "单词2"} ,
+     	{"key": "word3", "value": "单词3"} ,
+     	{"key": "word4", "value": "单词4"} ,
+     	{"key": "word5", "value": "单词5"} 
+    ]
+}

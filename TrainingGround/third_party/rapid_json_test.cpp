@@ -2,104 +2,144 @@
 #include "rapidjson/reader.h"
 #include "rapidjson/document.h"
 #include "FileReader.h"
+#include <string>
 #include <fstream>
 #include <iostream>
-
-#include <string>
 
 NS_BEGIN(elloop);
 NS_BEGIN(third_party);
 
-
-BEGIN_TEST(RapidJson, Read, @);
-
-
-#if 0
-    return;
-#endif
-
-using std::ifstream;
-using std::string;
-
-
-unsigned long   fileSize(0);
-unsigned char * jsonData = FileReader::getInstance()->getFileData("chinese.lang", "rb", &fileSize);
-//jsonData[fileSize - 1] = 0;
-string jsonString((const char*)(jsonData), fileSize);
-//p(jsonString);
-
-//string      stringFromStream;
-//ifstream    in;
-//in.open("chinese.lang", ifstream::in);
-//if (in.is_open()) {
-//    string line;
-//    while (in >> line) {
-//        stringFromStream.append(line + "\n");
-//    }
-//    in.close();
+// test.json content:
+//{
+//    "dictVersion": 1,
+//    "content" :
+//    [   
+//      { "key": "word1", "value":  "单词1" },
+//      { "key": "word2", "value" : "单词2" },
+//      { "key": "word3", "value" : "单词3" },
+//      { "key": "word4", "value" : "单词4" },
+//      { "key": "word5", "value" : "单词5" }
+//    ]
 //}
-//p(stringFromStream);
 
-//const char json[] = " { \"hello\" : \"world\", \"t\" : true , \"f\" : false, \"n\": null, \"i\":123, \"pi\": 3.1416, \"a\":[1, 2, 3, 4] } ";
-//printf("Original JSON:\n %s\n", json);
-
-char* buff = new char[fileSize];
-memcpy(buff, jsonData, fileSize);
-
-auto freeMem = [&buff, &jsonData](){ 
-    EL_SAFE_DELETE_ARRAY(buff);
-    EL_SAFE_DELETE_ARRAY(jsonData);
-};
+//---------------------- begin of new test ----------------------
+BEGIN_TEST(RapidJson, SimpleDomUseStreamContent, @);
+//return;
+using namespace std;
+string      stringFromStream;
+ifstream    in;
+in.open("test.json", ifstream::in);
+if (in.is_open()) {
+    string line;
+    while (getline(in, line)) {
+        stringFromStream.append(line + "\n");
+    }
+    in.close();
+}
 
 using rapidjson::Document;
 Document doc;
-do {
-    /* parse from string is ok.
-    doc.Parse<0>(jsonString.c_str());
-    if (doc.HasParseError()) {
+//parse from string is ok.
+doc.Parse<0>(stringFromStream.c_str());
+// doc.ParseInsitu((char*)stringFromStream.c_str()) // 原地解析
+if (doc.HasParseError()) {
     rapidjson::ParseErrorCode code = doc.GetParseError();
+    psln(code);
+    return;
+}
 
-    break;
+EXPECT_TRUE(doc.IsObject());
+EXPECT_TRUE(doc.HasMember("dictVersion") && doc["dictVersion"].IsInt());
+EXPECT_TRUE(doc.HasMember("content") && doc["content"].IsArray());
+EXPECT_FALSE(doc.HasMember("hello"));
+
+auto& v = doc["dictVersion"];       // v's type is rapidjson::Value
+EXPECT_TRUE(v.IsInt());
+EXPECT_EQ(1, v.GetInt());
+
+using util = RapidJsonUtil;        // defined in rapid_json_test.h
+auto & contents = doc["content"];
+if (contents.IsArray()) {
+    for (size_t i = 0; i < contents.Size(); ++i) {
+        auto & v = contents[i];
+        psln(util::getString(v, "key"));
+        psln(util::getString(v, "value"));
     }
-    */
+}
 
-    /* parse from binary buffer failed.
-    doc.Parse<0>((const char*)jsonData);
-    if (doc.HasParseError()) {
-        rapidjson::ParseErrorCode code = doc.GetParseError();
-
-        break;
-    }*/
-
-
-    /* parseInsitu (原地解析) binary buffer failed.
-    if (doc.ParseInsitu((char*)jsonData).HasParseError()) {
-        rapidjson::ParseErrorCode code = doc.GetParseError();
-
-        break;
-    }*/
-
-    // ParseInsitu from string is ok.
-    if ( doc.ParseInsitu((char*)jsonString.c_str()).HasParseError() ) {
-        rapidjson::ParseErrorCode code = doc.GetParseError();
-
-        break;
-    }
-    assertCond(doc.IsObject(),          freeMem);
-    assertCond(!doc.HasMember("hello"),  freeMem);
-    assertCond(!doc.HasMember("t"),      freeMem);
-} while (0);
-
-freeMem();
 END_TEST;
 
 
-//---------------------- seperator ----------------------
+//---------------------- begin of new test ----------------------
+BEGIN_TEST(RapidJson, SimpleDomUseBinaryBuffer, @);
+//return;
+using namespace std;
+unsigned long   fileSize(0);
+unsigned char * jsonData = FileReader::getInstance()->getFileData(
+                                "test.json", "rb", &fileSize);
+// TODO: if i don't use "rb", i will get "屯屯屯屯屯屯" at 
+// the end of jsonString. why?
+string jsonString((const char*)(jsonData), fileSize);
+EL_SAFE_DELETE_ARRAY(jsonData);
+
+using rapidjson::Document;
+Document doc;
+//parse from string is ok.
+//doc.Parse<0>(jsonString.c_str());
+//if (doc.HasParseError()) {
+//    rapidjson::ParseErrorCode code = doc.GetParseError();
+//    psln(code);
+//    return;
+//}
+
+
+// ParseInsitu from string is ok.
+if (doc.ParseInsitu((char*)jsonString.c_str()).HasParseError()) {
+    rapidjson::ParseErrorCode code = doc.GetParseError();
+    psln(code);
+    return;
+}
+
+/* parse from binary buffer failed.
+doc.Parse<0>((const char*)jsonData);
+if (doc.HasParseError()) {
+    rapidjson::ParseErrorCode code = doc.GetParseError();
+    psln(code);
+    return;
+}*/
+
+/* parseInsitu (原地解析) binary buffer failed.
+if (doc.ParseInsitu((char*)jsonData).HasParseError()) {
+    rapidjson::ParseErrorCode code = doc.GetParseError();
+    psln(code);
+    return;
+}*/
+
+EXPECT_TRUE(doc.IsObject());
+EXPECT_TRUE(doc.HasMember("dictVersion") && doc["dictVersion"].IsInt());
+EXPECT_TRUE(doc.HasMember("content") && doc["content"].IsArray());
+EXPECT_FALSE(doc.HasMember("hello"));
+
+auto & v = doc["dictVersion"];      // v's type is rapidjson::Value
+EXPECT_TRUE(v.IsInt());
+EXPECT_EQ(1, v.GetInt());
+
+using util = RapidJsonUtil;        // defined in rapid_json_test.h
+auto & contents = doc["content"];
+if (contents.IsArray()) {
+    for (size_t i = 0; i < contents.Size(); ++i) {
+        auto & v = contents[i];
+        psln(util::getString(v, "key"));
+        psln(util::getString(v, "value"));
+    }
+}
+END_TEST;
+
+
+//---------------------- begin of new test ----------------------
 BEGIN_TEST(RapidJson, SimpleReader, @);
 
-#if 1
-    return;
-#endif
+return;
 
 using std::cout;
 using std::endl;
@@ -131,7 +171,9 @@ struct MyHandler {
 };
 
 unsigned long   fileSize(0);
-unsigned char * jsonData = FileReader::getInstance()->getFileData("chinese.lang", "rt", &fileSize);
+// TODO: is "rt" ok ?
+unsigned char * jsonData = FileReader::getInstance()->getFileData(
+                            "test.json", "rt", &fileSize);
 
 MyHandler   handler;
 Reader      reader;
@@ -142,76 +184,6 @@ EL_SAFE_DELETE_ARRAY(jsonData);
 
 END_TEST;
 
-
-//---------------------- seperator ----------------------
-BEGIN_TEST(RapidJson, SimpleDom, @);
-
-#if 1
-    return;
-#endif
-
-using std::cout;
-using std::endl;
-using std::boolalpha;
-using std::string;
-using rapidjson::SizeType;
-using rapidjson::Reader;
-using rapidjson::StringStream;
-using rapidjson::Document;
-using rapidjson::Value;
-
-unsigned long   fileSize(0);
-
-// TODO: if not "rb", i will get "屯屯屯屯屯屯" at the end of the string constructed with jsonData.
-unsigned char * jsonData = FileReader::getInstance()->getFileData("chinese.lang", "rb", &fileSize);
-
-string jsons = string((const char*)jsonData, fileSize);
-
-EL_SAFE_DELETE_ARRAY(jsonData);
-
-using std::ifstream;
-
-ifstream in;
-in.open("chinese.lang", ifstream::in);
-string str;
-if (in.is_open()) {
-    string line;
-    while (getline(in, line)) {
-        str.append(line + "\n");
-    }
-    in.close();
-}
-//psln(str);
-
-Document d;
-//d.Parse((char*)jsonData);
-//psln(str);
-
-//psln(jsons);
-d.Parse<0>(jsons.c_str());
-
-if (d.HasParseError()) {
-    rapidjson::ParseErrorCode code = d.GetParseError();
-    return;
-}
-
-Value& v = d["version"];
-if (v.IsInt()) {
-    psln(v.GetInt());
-}
-
-using util = RapidJsonUtil;
-
-Value & ary = d["strings"];
-if (ary.IsArray()) {
-    for (size_t i=0; i<ary.Size(); ++i) {
-        Value& v = ary[i];
-        psln(util::getString(v, "k"));
-        psln(util::getString(v, "v"));
-    }
-}
-
-END_TEST;
 
 NS_END(third_party);
 NS_END(elloop);
