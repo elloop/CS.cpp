@@ -19,6 +19,9 @@
     <Filter Include="third_party">
       <UniqueIdentifier>{e73ed0e7-1343-4a66-b19e-2b103b0e6ff3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="temp">
+      <UniqueIdentifier>{f0d36c58-8dac-404f-b020-5b39f14ac147}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="grammar\c_lib_test.cpp">
@@ -63,6 +66,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="third_party\rapid_json_test.cpp">
       <Filter>third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="temp\temp_test.cpp">
+      <Filter>temp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

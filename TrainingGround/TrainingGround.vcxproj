@@ -93,6 +93,7 @@
     <ClCompile Include="stl\iterator_test.cpp" />
     <ClCompile Include="stl\smart_ptr.cpp" />
     <ClCompile Include="stl\string_test.cpp" />
+    <ClCompile Include="temp\temp_test.cpp" />
     <ClCompile Include="third_party\rapid_json_test.cpp" />
   </ItemGroup>
   <ItemGroup>
