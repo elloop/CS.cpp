@@ -90,6 +90,8 @@ void mergeContainer(const StringArray& src1, const StringArray& src2, StringArra
 //---------------------- begin of new test ----------------------
 BEGIN_TEST(TempTest, CompareFile, $);
 
+return;
+
 StringArray dic1, dic2, dest;
 dic1.reserve(2800);
 dic2.reserve(350);
@@ -131,6 +133,8 @@ void copyVecFast(vector<int>& original) {
 }
 
 BEGIN_TEST(TempTest, PassByRef, $);
+
+return;
 
 string str("he");
 passStringByRef(str);

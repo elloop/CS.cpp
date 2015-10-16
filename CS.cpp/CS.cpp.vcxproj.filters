@@ -69,6 +69,9 @@
     <ClInclude Include="algorithm\suffix_expression\suffix.h">
       <Filter>algorithm\suffix_expression</Filter>
     </ClInclude>
+    <ClInclude Include="data_structure\tree\BinarySearchTree.h">
+      <Filter>data_structure\tree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="data_structure\stack\stash.cpp">
@@ -93,5 +96,8 @@
       <Filter>algorithm\suffix_expression</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="data_structure\tree\BinarySearchTreeTest.cpp">
+      <Filter>data_structure\tree</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
