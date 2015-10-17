@@ -16,6 +16,28 @@ void turnOnMemroyCheck() {
 void dummyExitFunction() {
 	char c = getchar();
 }
+using namespace std;
+#define TYPE_INFO(x) do { \
+    std::cout << "type name of #x " << typeid(#x).name() << std::endl; \
+    std::cout << "type name of aa " << typeid("aa").name() << std::endl; \
+    std::cout << "type name of bb " << typeid("bb").name() << std::endl; \
+    std::cout << "type name of aaa " << typeid("aaa").name() << std::endl; \
+    std::cout << "type name of bbb " << typeid("bbb").name() << std::endl; \
+    cout << "#x hash code: " << typeid(#x).hash_code() << endl; \
+    cout << "aa hash code: " << typeid("aa").hash_code() << endl; \
+    cout << "bb hash code: " << typeid("bb").hash_code() << endl; \
+    cout << "aaa hash code: " << typeid("aaa").hash_code() << endl; \
+    cout << "bbb hash code: " << typeid("bbb").hash_code() << endl; \
+    const char * hello = "hello world"; \
+    std::cout << "type name of const char* val " << typeid(hello).name() << std::endl; \
+    std::cout << "type name of const char* type " << typeid(const char *).name() << std::endl; \
+    cout << "const char* val hash code: " << typeid(hello).hash_code() << endl; \
+    cout << "const char* type hash code: " << typeid(const char *).hash_code() << endl; \
+    std::string str = #x; \
+    cout << str << endl; \
+    char h = #x[0]; \
+    cout << h << endl; \
+    } while (0);
 
 int main(int argc, char** argv) {
 
@@ -25,6 +47,7 @@ int main(int argc, char** argv) {
 	turnOnMemroyCheck();
 #endif
 
+    TYPE_INFO(hello);
 	// use gtest.
 	testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();

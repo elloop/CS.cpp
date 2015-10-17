@@ -15,14 +15,14 @@ public:
 	void test();
 	std::string suffix2midfix ( std::string & suffixStr );
 private:
-	bool _isFirstOpPriorityHigher(char, char);
+	bool isFirstOpPriorityHigher(char, char);
 	enum OpType {
 		NUM,
 		OP,
 		LEFT_BRACKET,
 		RIGHT_BRACKET,
 	};
-	OpType _fectchAElement(char elem);
+	OpType fectchAElement(char elem);
 };
 
 NS_END(suffix)

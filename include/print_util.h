@@ -19,12 +19,12 @@ namespace elloop {
 #define ps(x) do { std::cout << #x " = " << (x); } while (0);
 #define	cr do { std::cout << std::endl; } while (0);
 
-#define __VLOGD(...)  do { \
+#define LOGV__(...)  do { \
                       fprintf(stdout, "%s:%d: ", __FILE__, __LINE__);\
                       fprintf(stdout, __VA_ARGS__);\
                   } while (0);
 
-#define __LOGD(...)  do { \
+#define LOGD__(...)  do { \
                       fprintf(stdout, __VA_ARGS__);\
                   } while (0);
 
@@ -32,13 +32,13 @@ namespace elloop {
 #ifdef NDEBUG
 #define LOGD(...) 
 #else
-#define LOGD(...)  __LOGD(__VA_ARGS__)
+#define LOGD(...)  LOGD__(__VA_ARGS__)
 #endif
 
 #ifdef NDEBUG
 #define VLOGD(...) 
 #else
-#define VLOGD(...)  __VLOGD(__VA_ARGS__)
+#define LOGV(...)  LOGV__(__VA_ARGS__)
 #endif
 
 
@@ -166,8 +166,6 @@ void print_array<T*, N>(const T (&a)[N]) {
     /* std::cout << _TEXT(x) << " = " << x << std::endl; */
 /* } */
 
-} // end namespace elloop;
-
 template <typename Dummy = int>
 void assertCond(bool cond, const std::function<void()>& func, Dummy x = 0) {
     if (!cond) {
@@ -175,3 +173,5 @@ void assertCond(bool cond, const std::function<void()>& func, Dummy x = 0) {
         assert(false);
     }
 }
+
+} // end namespace elloop;
