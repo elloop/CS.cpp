@@ -13,6 +13,10 @@ public:
         insert(root_, value);
     }
     void printTree() const {
+        if (empty()) {
+            pln("tree is empty!");
+            return;
+        }
         printTree(root_, 1);
     }
     void clear() {
@@ -20,6 +24,9 @@ public:
     }
     bool empty() const {
         return (root_ == nullptr);
+    }
+    bool contains(const Comparable & v) {
+        return contains(root_, v);
     }
 private:
     struct BSTNode {
@@ -60,6 +67,20 @@ private:
              clear(tree->left);
              clear(tree->right);
              EL_SAFE_DELETE(tree);
+         }
+     }
+     bool contains(const BSTNode* tree, const Comparable & v) {
+         if (!tree) {
+             return false;
+         }
+         else if (tree->data == v) {
+             return true;
+         }
+         else if (v < tree->data) {
+             return contains(tree->left, v);
+         }
+         else {
+             return contains(tree->right, v);
          }
      }
 };

@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
 	turnOnMemroyCheck();
 #endif
 
-    TYPE_INFO(hello);
+    //TYPE_INFO(hello);
 	// use gtest.
 	testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
