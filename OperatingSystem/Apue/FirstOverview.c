@@ -1,5 +1,7 @@
+#include "include/FirstOverview.h"
 #include "include/apue.h"
-#include "include/inc.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <errno.h> // EACCES
 #include <dirent.h>
 
@@ -74,7 +76,7 @@ void simpleShell(void) {
     }
 }
 
-int main(int argc, char* argv[]) {
+void overviewTest(int argc, char* argv[]) {
 
     printf("uid = %d, gid = %d\n", getuid(), getgid());
 
@@ -101,7 +103,6 @@ int main(int argc, char* argv[]) {
     pc("simpleShell");
     simpleShell();
 
-    exit(0);
 }
 
 

@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1445332068 source:/home/elloop/git/codeblock/apue/myls.c
+	"include/apue.h"
+	"include/inc.h"
+	<errno.h>
+	<dirent.h>
+
+1445332013 /home/elloop/git/codeblock/apue/include/apue.h
+	<sys/types.h>
+	<sys/stat.h>
+	<sys/termios.h>
+	<sys/ioctl.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<string.h>
+	<unistd.h>
+	<signal.h>
+
+1445332013 /home/elloop/git/codeblock/apue/include/inc.h
+
+1445332374 source:/home/elloop/git/codeblock/apue/inc.c
+	"include/inc.h"
+	<stdio.h>
+
+1445335538 source:/home/elloop/git/codeblock/apue/FirstOverview.c
+	"include/FirstOverview.h"
+	"include/apue.h"
+	<stdio.h>
+	<stdlib.h>
+	<errno.h>
+	<dirent.h>
+
+1445332998 /home/elloop/git/codeblock/apue/include/FirstOverview.h
+
+1445348931 source:/home/elloop/git/codeblock/apue/main.c
+	"include/FirstOverview.h"
+	"include/FileSystemTest.h"
+
+1445349919 /home/elloop/git/codeblock/apue/include/FileSystemTest.h
+
