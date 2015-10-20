@@ -8,56 +8,56 @@ _Pragma("once")
 
 NS_BEGIN(elloop)
 
-template <typename T> class stack;
+template <typename T> class Stack;
 
 template <typename T>
-class list_node {
-	list_node(const T & data, list_node<T> * next = nullptr) : data_(data), next_(next) { }
-	~list_node() { }
-	T data_;
-	list_node * next_;
-	friend stack<T>;
+class ListNode {
+	ListNode(const T & data, ListNode<T> * next = nullptr) 
+        : data_(data), next_(next)
+    { }
+
+	~ListNode() { }
+	T           data_;
+	ListNode   *next_;
+	friend      Stack<T>;
 };
 
 template <typename T>
-class stack {
+class Stack {
 public:
-	typedef list_node<T> node_type;
+	typedef ListNode<T> NodeType;
 
-	stack() : head_(nullptr) {}
+	Stack() : head_(nullptr) {}
 
 	// disallow copy.
-	stack(const stack & rhs) = delete;
+	Stack(const Stack & rhs) = delete;
 	// disallow move.
 	// stack(const stack && rhs) = delete;
 
-	T top() _NOEXCEPT{
+	T top() noexcept {
 		assert(head_ != nullptr);
 		return head_->data_;
 	}
 
 	void pop() {
 		if (head_ != nullptr) {
-			auto old_top = head_;
+			auto oldTop = head_;
 			head_ = head_->next_;
-			delete old_top;
-			old_top = nullptr;
+            EL_SAFE_DELETE(oldTop);
 		}
 	}
 
 	void push(const T & elem) {
-		head_ = new node_type(elem, head_);
+		head_ = new NodeType(elem, head_);
 	}
 
-	~stack() {
-		// DEBUG_LOG("deleting stack ...");
+	~Stack() {
 		clear();
 	}
 
 	void clear() {
-		// DEBUG_LOG("clearig stack ...");
 		auto temp = head_;
-		while (temp != nullptr) {
+		while (temp) {
 			head_ = temp->next_;
 			delete temp;
 			temp = head_;
@@ -71,7 +71,7 @@ public:
 	// testing how to define a template member function outside of a class.
 	void test();
 private:
-	node_type* head_;
+	NodeType* head_;
 }; // end class stack;
 
 NS_END(elloop)

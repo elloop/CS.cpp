@@ -52,7 +52,7 @@ string SuffixTest::suffix2midfix ( string & suffixStr ) {
 	while ( pos < suffixStr.size() ) {
 		char elem = suffixStr[pos];
 		char * head ( 0 );
-		switch ( _fectchAElement ( elem ) ) {
+		switch ( fectchAElement ( elem ) ) {
 			case NUM:
 				result += elem;
 				break;
@@ -62,12 +62,12 @@ string SuffixTest::suffix2midfix ( string & suffixStr ) {
 				} else {
 					// newOp > oldOp, push newOp
 					char * oldOpPtr = ( char * ) stack.peek();
-					if ( _isFirstOpPriorityHigher ( elem, *oldOpPtr ) ) {
+					if ( isFirstOpPriorityHigher ( elem, *oldOpPtr ) ) {
 						stack.push ( new char ( elem ) );
 					} else {
 						// else, pop and output oldOp, push newOp !! a BUG: don't push directly
 						// modified on 20140326 fix the bug: pop all the ops that higer or equal to newOp
-						while ( !stack.empty() && !_isFirstOpPriorityHigher ( elem, *oldOpPtr ) ) {
+						while ( !stack.empty() && !isFirstOpPriorityHigher ( elem, *oldOpPtr ) ) {
 							result += *oldOpPtr; // output ops whose priority >= newOp's
 							delete ( char * ) stack.pop();
 							oldOpPtr = ( char * ) stack.peek();
@@ -109,7 +109,7 @@ string SuffixTest::suffix2midfix ( string & suffixStr ) {
 }
 
 // return true when op1's priority is higher than ops's; else return false.
-bool SuffixTest::_isFirstOpPriorityHigher ( char op1, char op2 ) {
+bool SuffixTest::isFirstOpPriorityHigher ( char op1, char op2 ) {
 	// todo : check the validity of op1 and op2( ensure both are contained in '+-*/')
 	if ( op2 == '(' ) {
 		return true;
@@ -121,7 +121,7 @@ bool SuffixTest::_isFirstOpPriorityHigher ( char op1, char op2 ) {
 	return  ( isOp1InHigherOps && isOp2InLowerOps );
 }
 
-SuffixTest::OpType SuffixTest::_fectchAElement ( char elem ) {
+SuffixTest::OpType SuffixTest::fectchAElement ( char elem ) {
 	// todo: ensure validity of elem
 	if ( elem >= '0' && elem <= '9' ) {
 		return NUM;

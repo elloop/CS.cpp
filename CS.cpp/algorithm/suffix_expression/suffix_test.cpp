@@ -1,19 +1,14 @@
 #include "suffix.h"
-#include "inc.h"
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
-#include <iomanip>
-#include "gtest/gtest.h"
 
 NS_BEGIN(elloop)
 NS_BEGIN(suffix)
 
-
-TEST(SuffixTesting, BasicTest) {
-	SuffixTest suffix;
-	suffix.test();
-}
+//---------------------- begin of new test ----------------------
+BEGIN_TEST(SuffixTesting, BasicTest, == )
+return;
+SuffixTest suffix;
+suffix.test();
+END_TEST;
 
 NS_END(suffix)
 NS_END(elloop)

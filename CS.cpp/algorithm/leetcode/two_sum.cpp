@@ -15,8 +15,10 @@
 #include "min_stack.h"
 #include "gtest/gtest.h"
 
-USING_NS_ELLOOP;
-USING_NS_STD;
+NS_BEGIN(elloop);
+
+using std::vector;
+using std::map;
 
 class S {
   public:
@@ -31,7 +33,7 @@ class S {
           return result;
         }
         else {
-          half.insert(make_pair(target-numbers[i], i+1));
+          half.insert(std::make_pair(target-numbers[i], i+1));
         }
       }
 
@@ -40,7 +42,7 @@ class S {
 
 };
 
-TEST(TwoSum, Test1) {
+BEGIN_TEST(TwoSum, Test1, @@);
   /*
   int a[] = {1, 2, 3, 4, 5, 6, 7, 8};
   vector<int> src;
@@ -158,7 +160,7 @@ TEST(TwoSum, Test1) {
   // s.pop();
   // psln(s.getMin());
 
-}
+END_TEST;
 
 
-
+NS_END(elloop);

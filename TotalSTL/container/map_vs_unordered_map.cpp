@@ -7,6 +7,8 @@ NS_BEGIN(container);
 
 BEGIN_TEST(Container, MapVsUnorderedMap, @);
 
+return;
+
 clock_t begin(0), end(0);
 
 const int kSearchCount(100);

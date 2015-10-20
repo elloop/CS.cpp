@@ -4,16 +4,9 @@
 NS_BEGIN( elloop )
 
 
-#ifdef _MSC_VER
-void Stash::push( void * data ) _NOEXCEPT{
-  head_ = new Link( data, head_ );
-}
-#else
 void Stash::push( void * data ) noexcept {
   head_ = new Link( data, head_ );
 }
-#endif // _MSC_VER
-
 
 void * Stash::peek() {
   if ( nullptr == head_ ) {
