@@ -53,7 +53,8 @@ int main(int argc, char* argv[]) {
     //testFileSystem();
     //printS(41, 'X');
 
-    testFileSystem();
+    // testFileSystem();
+    testPthread();
 
     exit(0);
 }

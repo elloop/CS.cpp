@@ -14,8 +14,10 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-std=c99" />
+					<Add option="-pthread" />
 				</Compiler>
 				<Linker>
+					<Add option="-pthread" />
 					<Add library="lib/libapue.a" />
 				</Linker>
 			</Target>
@@ -41,11 +43,15 @@
 		<Unit filename="FirstOverview.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="PthreadTest.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="inc.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="include/FileSystemTest.h" />
 		<Unit filename="include/FirstOverview.h" />
+		<Unit filename="include/PthreadTest.h" />
 		<Unit filename="include/apue.h" />
 		<Unit filename="include/inc.h" />
 		<Unit filename="main.c">
