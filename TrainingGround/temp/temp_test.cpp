@@ -146,5 +146,14 @@ printContainer(origin, "after origin: ");
 
 END_TEST;
 
+RUN_GTEST(TempTest, ScanInput, @@);
+
+char str[4];
+memset(str, 0, 4);
+scanf("%c%c%c", &str[0], &str[1], &str[2]);
+printf("%s\n", str);
+
+END_TEST;
+
 NS_END(temp);
 NS_END(elloop);
