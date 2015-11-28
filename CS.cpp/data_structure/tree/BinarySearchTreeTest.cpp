@@ -30,9 +30,5 @@ RUN_GTEST(BinarySearchTree, Construct, @0);
 
 END_TEST;
 
-RUN_GTEST(BinarySearchTree, a, @@);
-
-END_TEST;
-
 
 NS_END(elloop);

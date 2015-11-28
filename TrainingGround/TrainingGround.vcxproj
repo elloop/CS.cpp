@@ -86,6 +86,7 @@
     <ClCompile Include="grammar\polymorphism_test.cpp" />
     <ClCompile Include="grammar\struct_array.cpp" />
     <ClCompile Include="grammar\TypeConvert_test.cpp" />
+    <ClCompile Include="grammar\va_args_test.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stl\algorithm_test.cpp" />
     <ClCompile Include="stl\container_test.cpp" />
@@ -104,11 +105,13 @@
     <ClInclude Include="grammar\polymorphism_test.h" />
     <ClInclude Include="grammar\struct_array.h" />
     <ClInclude Include="grammar\TypeConvert_test.h" />
+    <ClInclude Include="grammar\va_args_test.h" />
     <ClInclude Include="skills\endian_judge.h" />
     <ClInclude Include="stl\algorithm_test.h" />
     <ClInclude Include="stl\iterator_test.h" />
     <ClInclude Include="stl\smart_ptr.h" />
     <ClInclude Include="stl\string_test.h" />
+    <ClInclude Include="temp\temp_test.h" />
     <ClInclude Include="third_party\rapid_json_test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -11,7 +11,7 @@ NS_BEGIN(elloop);
 using namespace std;
 using namespace std::placeholders;
 
-TEST(IteratorTest, AdapterBackInserter) {
+BEGIN_TEST(IteratorTest, AdapterBackInserter, @);
   //pcln("IteratorTest --> AdapterBackInserter");
   //vector<string> vs;
   //pln("input some strings(one per line), ctrl-z to terminate input:");
@@ -27,8 +27,10 @@ TEST(IteratorTest, AdapterBackInserter) {
 
   //// output by line.
   //copy(vs.begin(), vs.end(), ostream_iterator<string>(cout, "\n"));
-}
-TEST(IteratorTest, ISTREAMBUF_ITERATORTEST) {
+END_TEST;
+
+
+BEGIN_TEST(IteratorTest, ISTREAMBUF_ITERATORTEST, @);
 
   pcln("IteratorTest --> AdapterBackInserter");
   ifstream in("iterator_test.h", ios::in);
@@ -40,6 +42,7 @@ TEST(IteratorTest, ISTREAMBUF_ITERATORTEST) {
 
   pln(data);
   in.close();
-}
+
+END_TEST;
 
 NS_END(elloop);

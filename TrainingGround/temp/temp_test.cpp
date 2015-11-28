@@ -1,4 +1,5 @@
 #include "inc.h"
+#include "temp_test.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -143,15 +144,6 @@ vector<int> origin{1, 2, 3, 4, 5};
 printContainer(origin, "before origin: ");
 copyVecFast(origin);
 printContainer(origin, "after origin: ");
-
-END_TEST;
-
-RUN_GTEST(TempTest, ScanInput, @@);
-
-char str[4];
-memset(str, 0, 4);
-scanf("%c%c%c", &str[0], &str[1], &str[2]);
-printf("%s\n", str);
 
 END_TEST;
 

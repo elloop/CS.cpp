@@ -12,7 +12,7 @@ NS_BEGIN(elloop);
 using namespace std;
 using namespace std::placeholders;
 
-TEST(ContainerTest, DeleteFromVector) {
+BEGIN_TEST(ContainerTest, DeleteFromVector, @);
   pcln("ContainerTest --> DeleteFromVector");
   vector<int> vi{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
   printContainer(vi, "vi: ");
@@ -47,9 +47,9 @@ TEST(ContainerTest, DeleteFromVector) {
 
   printConainterInfo(vi2, "vi2: ");
 
+END_TEST;
 
-}
-TEST(ContainerTest, DeleteFromList) {
+BEGIN_TEST(ContainerTest, DeleteFromList, @);
   pcln("ContainerTest --> DeleteFromList");
 
   list<int> li{ 1, 2, 3, 4, 5 };
@@ -85,9 +85,9 @@ TEST(ContainerTest, DeleteFromList) {
   printConainterInfo(li2, "list2: ");
   psln(li2.max_size());
 
-}
+END_TEST;
 
-TEST(ContainerTest, DeleteFromSet) {
+BEGIN_TEST(ContainerTest, DeleteFromSet, @);
   pcln("ContainerTest --> DeleteFromSet");
 
   set<int> si{ 1, 2, 3, 4, 5 };
@@ -120,9 +120,9 @@ TEST(ContainerTest, DeleteFromSet) {
   }
   printContainer(si2, "set2: ");
 
-}
+END_TEST;
 
-TEST(ContainerTest, DeleteFromMap) {
+BEGIN_TEST(ContainerTest, DeleteFromMap, @);
   pcln("ContainerTest --> DeleteFromMap");
 
   map<int, int> mi{ { 1, 2 }, { 4, 8 }, { 5, 10 }, { 2, 4 }, { 3, 6 } };
@@ -151,9 +151,9 @@ TEST(ContainerTest, DeleteFromMap) {
   printConainterInfo(mi2, "map: ");
   psln(mi2.max_size());
 
-}
+END_TEST;
 
-TEST(ContainerTest, SwapSkills) {
+BEGIN_TEST(ContainerTest, SwapSkills, @);
   pcln("ContainerTest --> SwapSkills");
 
   pln("delete redundant capacity");
@@ -170,5 +170,6 @@ TEST(ContainerTest, SwapSkills) {
   printContainer(vi, "vector: ");
   psln(vi.size());            // 0
   psln(vi.capacity());        // 0
-}
+END_TEST;
+
 NS_END(elloop);
