@@ -12,7 +12,11 @@ NS_BEGIN(elloop);
 using namespace std;
 using namespace std::placeholders;
 
+<<<<<<< HEAD
 BEGIN_TEST(ContainerTest, DeleteFromVector, @) 
+=======
+BEGIN_TEST(ContainerTest, DeleteFromVector, @);
+>>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> DeleteFromVector");
   vector<int> vi{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
   printContainer(vi, "vi: ");
@@ -47,10 +51,16 @@ BEGIN_TEST(ContainerTest, DeleteFromVector, @)
 
   printConainterInfo(vi2, "vi2: ");
 
+<<<<<<< HEAD
 END_TEST
 
 
 BEGIN_TEST(ContainerTest, DeleteFromList, @)
+=======
+END_TEST;
+
+BEGIN_TEST(ContainerTest, DeleteFromList, @);
+>>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> DeleteFromList");
 
   list<int> li{ 1, 2, 3, 4, 5 };
@@ -86,10 +96,16 @@ BEGIN_TEST(ContainerTest, DeleteFromList, @)
   printConainterInfo(li2, "list2: ");
   psln(li2.max_size());
 
+<<<<<<< HEAD
 END_TEST
 
 
 BEGIN_TEST(ContainerTest, DeleteFromSet, @)
+=======
+END_TEST;
+
+BEGIN_TEST(ContainerTest, DeleteFromSet, @);
+>>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> DeleteFromSet");
 
   set<int> si{ 1, 2, 3, 4, 5 };
@@ -123,7 +139,13 @@ BEGIN_TEST(ContainerTest, DeleteFromSet, @)
   printContainer(si2, "set2: ");
 END_TEST
 
+<<<<<<< HEAD
 BEGIN_TEST(ContainerTest, DeleteFromMap, @)
+=======
+END_TEST;
+
+BEGIN_TEST(ContainerTest, DeleteFromMap, @);
+>>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> DeleteFromMap");
 
   map<int, int> mi{ { 1, 2 }, { 4, 8 }, { 5, 10 }, { 2, 4 }, { 3, 6 } };
@@ -153,8 +175,14 @@ BEGIN_TEST(ContainerTest, DeleteFromMap, @)
   psln(mi2.max_size());
 END_TEST
 
+<<<<<<< HEAD
 
 BEGIN_TEST(ContainerTest, SwapSkills, @)
+=======
+END_TEST;
+
+BEGIN_TEST(ContainerTest, SwapSkills, @);
+>>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> SwapSkills");
 
   pln("delete redundant capacity");
@@ -171,6 +199,7 @@ BEGIN_TEST(ContainerTest, SwapSkills, @)
   printContainer(vi, "vector: ");
   psln(vi.size());            // 0
   psln(vi.capacity());        // 0
+<<<<<<< HEAD
 END_TEST
 
 BEGIN_TEST(ContainerTest, GenerateNumberSequence, %)
@@ -196,5 +225,8 @@ printContainer(num, "num: ");
 
 
 END_TEST
+=======
+END_TEST;
+>>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
 
 NS_END(elloop);

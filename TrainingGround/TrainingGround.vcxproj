@@ -111,6 +111,7 @@
     <ClInclude Include="stl\iterator_test.h" />
     <ClInclude Include="stl\smart_ptr.h" />
     <ClInclude Include="stl\string_test.h" />
+    <ClInclude Include="temp\temp_test.h" />
     <ClInclude Include="third_party\rapid_json_test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,9 +1,11 @@
 #include "mutating_algorithms.h"
 
 NS_BEGIN(elloop)
-TEST(MutatingingAlgorithm, Basic) {
+BEGIN_TEST(MutatingingAlgorithm, Basic, @);
+
 	pcln("MutatingingAlgorithm");
-}
+
+END_TEST
 
 
 NS_END(elloop)

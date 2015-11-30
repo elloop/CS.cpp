@@ -1,5 +1,6 @@
 #include "va_args_test.h"
 #include <cstdarg>
+<<<<<<< HEAD
 
 NS_BEGIN(elloop);
 
@@ -34,6 +35,29 @@ int vsum(int count, ...) {
 //---------------------- begin of new test case ----------------------
 BEGIN_TEST(GrammarTest, VA_Args, @@);
 
+=======
+#include <string>
+
+NS_BEGIN(elloop);
+
+int vsum(int count, ...) {
+    va_list ap;
+    va_start(ap, count);
+
+    int val(0);
+    int sum(0);
+    for (int i=0; i<count; ++i) {
+        sum += va_arg(ap, int);
+    }
+    va_end(ap);
+    return sum;
+}
+
+// ------------------ begin of new test case ------------------
+RUN_GTEST(GrammarTest, VA_Args, @@);
+
+// ------------------ function vsum using va_list ------------------
+>>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
 EXPECT_EQ(0, vsum(0));
 EXPECT_EQ(10, vsum(1, 10));
 EXPECT_EQ(10, vsum(2, 5, 5));
@@ -42,6 +66,7 @@ EXPECT_EQ(10, vsum(4, 2, 3, 2, 3));
 EXPECT_EQ(10, vsum(5, 2, 3, 2, 2, 1));
 EXPECT_EQ(10, vsum(10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1));
 
+<<<<<<< HEAD
 END_TEST;
 
 template <typename T, typename ... Args>
@@ -105,5 +130,42 @@ END_TEST;
 [==========] 1 test from 1 test case ran. (4 ms total)
 [  PASSED  ] 1 test.
 */
+=======
+// ------------------ template function vsum1 ------------------
+EXPECT_EQ(0, vsum1(0));
+EXPECT_EQ(10, vsum1(5, 5));
+EXPECT_EQ(10, vsum1(3, 3, 3, 1));
+EXPECT_EQ(10, vsum1(2, 2, 2, 2, 2));
+EXPECT_EQ(10, vsum1(1, 1, 1, 1, 1, 1, 1, 1, 1, 1));
+EXPECT_EQ(6, vsum1(1, 2.5, 3));
+EXPECT_EQ(6.5, vsum1(1.5, 2, 3));
+
+std::string t1 = typeid(decltype(vsum1(1, 2.5, 3))).name();
+EXPECT_STREQ("int", t1.c_str());
+
+std::string t2 = typeid( decltype( vsum1(1.5, 2, 3) ) ).name();
+EXPECT_STREQ("double", t2.c_str());
+
+// ------------------ template class vsum2 ------------------
+long s = vsum2<>::value;                         EXPECT_EQ(0, s);
+
+s = vsum2<5, 5>::value;                          EXPECT_EQ(10, s);
+
+s = vsum2<5, 2, 3>::value;                       EXPECT_EQ(10, s);
+
+s = vsum2<3, 3, 1, 3>::value;                    EXPECT_EQ(10, s);
+
+s = vsum2<1, 1, 1, 1, 1, 1, 1, 1, 1, 1>::value;  EXPECT_EQ(10, s);
+
+
+long f = vsum2<>()();                            EXPECT_EQ(0, f);
+
+f = vsum2<1>()();                                EXPECT_EQ(1, f);
+
+END_TEST;
+
+
+
+>>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
 
 NS_END(elloop);
