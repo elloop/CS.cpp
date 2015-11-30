@@ -146,5 +146,149 @@ printContainer(origin, "after origin: ");
 
 END_TEST;
 
+BEGIN_TEST(TempTest, Birth, @@@);
+
+int boy, girl;
+int n;
+boy = girl = 0;
+scanf("%d", &n);
+srand(time(0));
+const int N = 1000000;
+for (int i=0; i<N; ++i) {
+    int p0 = rand() % 2;
+    if (p0 == 1) {
+        // sheng 
+        int p1 = rand() % 2;
+        if (p1 == 1) {
+            boy = boy + 1;
+        }
+        else {
+            girl = girl + 1;
+        }
+    }
+    else {
+        // bu sheng hai zi.
+    }
+}
+
+
+for (int i=0; i<girl; ++i) {
+    int p2 = rand() % 2;
+    if (p2 == 1) {
+        // sheng
+        int p3 = rand() % 100 + 1;
+        if (p3 > (50 + n)) {
+            girl = girl + 1;
+        }
+        else {
+            boy = boy + 1;
+        }
+    }
+    else {
+        // bu zai sheng.
+    }
+    
+}
+
+
+printf("%.2lf\n", (double)boy / girl);
+
+END_TEST;
+
+
+template <typename T>
+class BinaryTree {
+public:
+    class Node {
+    public:
+        Node(const T &data, Node *left, Node *right) :
+            data_(data),
+            left_(left),
+            right_(right) {
+        }
+
+        T       data_;
+        Node    *left_;
+        Node    *right_;
+    };
+    BinaryTree() : root_(nullptr) {}
+    ~BinaryTree() {
+        clear();
+    }
+    void insert(const T & val) {
+        insert(root_, val);
+    }
+    void print() {
+        print(root_, 1);
+    }
+    void clear() {
+        clear(root_);
+    }
+    void invert() {
+        invert(root_);
+    }
+    bool empty() const { return (!root_); }
+private:
+    void insert(Node *&root, const T &val) {
+        if (!root) {
+            root = new Node(val, nullptr, nullptr);
+        }
+        else if (val < root->data_) {
+            insert(root->left_, val);
+        }
+        else if (val > root->data_) {
+            insert(root->right_, val);
+        }
+        else {
+            LOGD("val already exists!\n");
+        }
+    }
+    void print(const Node *root, int indent) {
+        if (root) {
+            print(root->right_, indent + 3);
+            for (int i=0; i<indent; ++i) {
+                p(" ");
+            }
+            pln(root->data_);
+            print(root->left_, indent + 3);
+        }
+    }
+    void clear(Node *&root) {
+        if (root) {
+            clear(root->left_);
+            clear(root->right_);
+            EL_SAFE_DELETE(root);
+        }
+    }
+    void invert(Node *& root) {
+        if (root) {
+            invert(root->left_);
+            invert(root->right_);
+            Node *temp = root->left_;
+            root->left_ = root->right_;
+            root->right_ = temp;
+        }
+    }
+    Node        *root_;
+};
+
+BEGIN_TEST(TempTest, BinaryTreeReview, @@@);
+
+BinaryTree<int> btree;
+btree.insert(100);
+btree.insert(1330);
+btree.insert(10);
+btree.insert(20);
+btree.insert(40);
+btree.print();
+btree.invert();
+btree.print();
+btree.clear();
+
+
+END_TEST;
+
+
+
 NS_END(temp);
 NS_END(elloop);

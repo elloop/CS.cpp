@@ -6,7 +6,7 @@ NS_BEGIN(elloop);
 
 using namespace std;
 
-TEST(TypeConvertTest, OperatorAndConvert) {
+BEGIN_TEST(TypeConvertTest, OperatorAndConvert, @)
   pcln("TypeConvertTest --> OperatorAndConvert");
   Convertable ct(10);
   psln(ct());
@@ -17,5 +17,6 @@ TEST(TypeConvertTest, OperatorAndConvert) {
   psln(d);
 
   //Convertable ct2 = d;  // explicit ctr().
-}
+END_TEST
+
 NS_END(elloop);

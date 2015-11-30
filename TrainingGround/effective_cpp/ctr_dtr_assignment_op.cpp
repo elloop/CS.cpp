@@ -2,7 +2,7 @@
 #include <string>
 
 NS_BEGIN(elloop);
-TEST(CopyControl, AssignmentDontworkWithConstAndRef) {
+BEGIN_TEST(CopyControl, AssignmentDontworkWithConstAndRef, @)
   using std::string;
   string str("he");
   HasRefAndConst hr(str);
@@ -15,7 +15,6 @@ TEST(CopyControl, AssignmentDontworkWithConstAndRef) {
   string str2("she");
   HasRefAndConst hrByAssignment(str2);
   //hrByAssignment = hr; // error: “operator = ”函数在“elloop::HasRefAndConst”中不可用
-
-}
+END_TEST
 
 NS_END(elloop);

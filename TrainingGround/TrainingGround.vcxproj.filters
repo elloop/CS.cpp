@@ -70,6 +70,9 @@
     <ClCompile Include="temp\temp_test.cpp">
       <Filter>temp</Filter>
     </ClCompile>
+    <ClCompile Include="grammar\va_args_test.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="grammar\c_lib_test.h">
@@ -110,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="third_party\rapid_json_test.h">
       <Filter>third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\va_args_test.h">
+      <Filter>grammar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,11 +3,9 @@
 
 NS_BEGIN(elloop);
 
-TEST(PolymorphismTest, InterviewProblem) {
+BEGIN_TEST(PolymorphismTest, InterviewProblem, @)
   pcln("PolymorphismTest --> InterviewProblem");
   
-
-
-}
+END_TEST
 
 NS_END(elloop);

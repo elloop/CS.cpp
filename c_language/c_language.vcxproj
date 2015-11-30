@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{09516EBB-3C53-47DB-B96D-F14894C10B16}</ProjectGuid>
+    <ProjectGuid>{2656E26F-25D8-4F0A-A47C-DF086E079620}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TrainingGround</RootNamespace>
+    <RootNamespace>c_language</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -52,13 +52,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)include;$(ProjectDir);$(ProjectDir)include;$(SolutionDir)util\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)libs;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>util.lib;gtestd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -79,39 +78,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="datastructure_algorithm\algo_test.cpp" />
-    <ClCompile Include="effective_cpp\ctr_dtr_assignment_op.cpp" />
-    <ClCompile Include="grammar\ClassTest.cpp" />
-    <ClCompile Include="grammar\c_lib_test.cpp" />
-    <ClCompile Include="grammar\polymorphism_test.cpp" />
-    <ClCompile Include="grammar\struct_array.cpp" />
-    <ClCompile Include="grammar\TypeConvert_test.cpp" />
-    <ClCompile Include="grammar\va_args_test.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="stl\algorithm_test.cpp" />
-    <ClCompile Include="stl\container_test.cpp" />
-    <ClCompile Include="stl\functor_test.cpp" />
-    <ClCompile Include="stl\iterator_test.cpp" />
-    <ClCompile Include="stl\smart_ptr.cpp" />
-    <ClCompile Include="stl\string_test.cpp" />
-    <ClCompile Include="temp\temp_test.cpp" />
-    <ClCompile Include="third_party\rapid_json_test.cpp" />
+    <ClInclude Include="grammar\cau_oj.h" />
+    <ClInclude Include="grammar\test_printf.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="datastructure_algorithm\algo_test.h" />
-    <ClInclude Include="effective_cpp\ctr_dtr_assignment_op.h" />
-    <ClInclude Include="grammar\ClassTest.h" />
-    <ClInclude Include="grammar\c_lib_test.h" />
-    <ClInclude Include="grammar\polymorphism_test.h" />
-    <ClInclude Include="grammar\struct_array.h" />
-    <ClInclude Include="grammar\TypeConvert_test.h" />
-    <ClInclude Include="grammar\va_args_test.h" />
-    <ClInclude Include="skills\endian_judge.h" />
-    <ClInclude Include="stl\algorithm_test.h" />
-    <ClInclude Include="stl\iterator_test.h" />
-    <ClInclude Include="stl\smart_ptr.h" />
-    <ClInclude Include="stl\string_test.h" />
-    <ClInclude Include="third_party\rapid_json_test.h" />
+    <ClCompile Include="grammar\cau_oj.c" />
+    <ClCompile Include="grammar\test_printf.c" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

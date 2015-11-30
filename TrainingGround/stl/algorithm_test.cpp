@@ -13,7 +13,7 @@ NS_BEGIN(elloop);
 using namespace std;
 using namespace std::placeholders;
 
-TEST(AlgorithmTest, Basic) {
+BEGIN_TEST(AlgorithmTest, Basic, @)
   pcln("AlgorithmTest --> Basic");
   vector<int> vi{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
   printContainer(vi, "vi: ");
@@ -31,8 +31,7 @@ TEST(AlgorithmTest, Basic) {
   }
 
   printContainer(vi, "vi: ");
-
-}
+END_TEST
 
 std::ostream& operator<<(std::ostream& os, const PeoplePutInConainter& people) {
   people.acceptVisitor(os);
@@ -41,7 +40,7 @@ std::ostream& operator<<(std::ostream& os, const PeoplePutInConainter& people) {
 
 
 
-TEST(AlgorithmTest, SortCustomClass) {
+BEGIN_TEST(AlgorithmTest, SortCustomClass, @)
   pcln("AlgorithmTest --> SortCustomClass");
 
   typedef shared_ptr<PeoplePutInConainter> Item;
@@ -84,8 +83,10 @@ TEST(AlgorithmTest, SortCustomClass) {
   printFunc(vpCopy);
 
   decltype(vp)().swap(vp);
-}
-TEST(AlgorithmTest, PutObjectInSet) {
+
+END_TEST
+
+BEGIN_TEST(AlgorithmTest, PutObjectInSet, @)
   pcln("AlgorithmTest --> PutObjectInSet");
   set<PeoplePutInConainter> sp;
   sp.insert(PeoplePutInConainter("aa", 100));
@@ -102,7 +103,8 @@ TEST(AlgorithmTest, PutObjectInSet) {
   print(sp);
 
   sp.clear();
-}
+
+END_TEST
 
 
 NS_END(elloop);

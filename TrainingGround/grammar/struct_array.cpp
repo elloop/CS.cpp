@@ -3,7 +3,7 @@
 
 NS_BEGIN(elloop);
 
-TEST(StructArrayTest, SingleStructInit) {
+BEGIN_TEST(StructArrayTest, SingleStructInit, @)
     pcln("StructArrayTest -------------> SingleStructInit");
 
     auto printSimple = [](const Simple& s) {
@@ -28,9 +28,10 @@ TEST(StructArrayTest, SingleStructInit) {
 
     Combo   c2 = {{1, 2}, c2.z=3};
     printCombo(c2);
-}
+END_TEST
 
-TEST(StructArrayTest, StructArrayInit) {
+
+BEGIN_TEST(StructArrayTest, StructArrayInit, @)
     pcln("StructArrayTest -------------> StructArrayInit");
 
     auto printSimple = [](const Simple& s) {
@@ -139,7 +140,7 @@ TEST(StructArrayTest, StructArrayInit) {
     EXPECT_TRUE(4 == c4[1].sim.x);
     EXPECT_TRUE(0 == c4[1].sim.y);
     EXPECT_TRUE(6 == c4[1].z);
-}
+END_TEST
 
 
 NS_END(elloop);

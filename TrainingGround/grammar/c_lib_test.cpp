@@ -4,7 +4,7 @@
 NS_BEGIN(elloop);
 NS_BEGIN(c_lib_test);
 
-TEST(CLibTest, TimeTest) {
+BEGIN_TEST(CLibTest, TimeTest, @)
 	pcln("CLibTest ---> TimeTest");
 
 	time_t timeVar;
@@ -18,7 +18,7 @@ TEST(CLibTest, TimeTest) {
 	typedef int IInt;
 	IInt ii = 10000;
 	psln(ii);
-}
+END_TEST
 
 NS_END(c_lib_test);
 NS_END(elloop);

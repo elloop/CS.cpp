@@ -22,7 +22,7 @@ double divide(double d1, double d2) {
 	return d1 / d2;
 }
 
-TEST(FunctorTest, Bind) {
+BEGIN_TEST(FunctorTest, Bind, @)
 	pcln("Bind Test");
 	int i(100);
 	double d(3.0);
@@ -48,9 +48,7 @@ TEST(FunctorTest, Bind) {
 	bool isSameType = is_same<int, decltype(i1)>::value;
 	EXPECT_TRUE(isSameType);
 	EXPECT_EQ(3, i1);
+END_TEST
 
 
-
-
-}
 NS_END(elloop);
