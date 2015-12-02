@@ -22,15 +22,8 @@ double divide(double d1, double d2) {
     return d1 / d2;
 }
 
-<<<<<<< HEAD
-BEGIN_TEST(FunctorTest, Bind, @)
-	pcln("Bind Test");
-	int i(100);
-	double d(3.0);
-	auto result = add(i, d);
-=======
+
 BEGIN_TEST(FunctorTest, Bind, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
 
 pcln("Bind Test");
 int i(100);
@@ -46,16 +39,7 @@ EXPECT_EQ(200.0, doublize(i));
 auto double20 = bind(multiply, 2, 10);
 EXPECT_EQ(20.0, double20());
 
-<<<<<<< HEAD
-	auto rounding = bind<int>(divide, _1, _2);
-	auto i1 = rounding(10, 3);
-	bool isSameType = is_same<int, decltype(i1)>::value;
-	EXPECT_TRUE(isSameType);
-	EXPECT_EQ(3, i1);
-END_TEST
 
-
-=======
 auto revertDivide = bind(divide, _2, _1);
 double d1 = divide(10, 2);
 EXPECT_EQ(5, d1);
@@ -71,7 +55,4 @@ EXPECT_EQ(3, i1);
 END_TEST;
 
 
-
-
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
 NS_END(elloop);

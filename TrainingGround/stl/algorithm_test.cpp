@@ -13,11 +13,8 @@ NS_BEGIN(elloop);
 using namespace std;
 using namespace std::placeholders;
 
-<<<<<<< HEAD
-BEGIN_TEST(AlgorithmTest, Basic, @)
-=======
+
 BEGIN_TEST(AlgorithmTest, Basic, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("AlgorithmTest --> Basic");
   vector<int> vi{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
   printContainer(vi, "vi: ");
@@ -35,12 +32,8 @@ BEGIN_TEST(AlgorithmTest, Basic, @);
   }
 
   printContainer(vi, "vi: ");
-<<<<<<< HEAD
-END_TEST
-=======
 
 END_TEST;
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
 
 std::ostream& operator<<(std::ostream& os, const PeoplePutInConainter& people) {
   people.acceptVisitor(os);
@@ -49,11 +42,8 @@ std::ostream& operator<<(std::ostream& os, const PeoplePutInConainter& people) {
 
 
 
-<<<<<<< HEAD
-BEGIN_TEST(AlgorithmTest, SortCustomClass, @)
-=======
+
 BEGIN_TEST(AlgorithmTest, SortCustomClass, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("AlgorithmTest --> SortCustomClass");
 
   typedef shared_ptr<PeoplePutInConainter> Item;
@@ -96,16 +86,10 @@ BEGIN_TEST(AlgorithmTest, SortCustomClass, @);
   printFunc(vpCopy);
 
   decltype(vp)().swap(vp);
-<<<<<<< HEAD
 
-END_TEST
-
-BEGIN_TEST(AlgorithmTest, PutObjectInSet, @)
-=======
 END_TEST;
 
 BEGIN_TEST(AlgorithmTest, PutObjectInSet, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("AlgorithmTest --> PutObjectInSet");
   set<PeoplePutInConainter> sp;
   sp.insert(PeoplePutInConainter("aa", 100));
@@ -122,12 +106,8 @@ BEGIN_TEST(AlgorithmTest, PutObjectInSet, @);
   print(sp);
 
   sp.clear();
-<<<<<<< HEAD
 
-END_TEST
-=======
 END_TEST;
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
 
 
 NS_END(elloop);

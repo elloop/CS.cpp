@@ -1,11 +1,5 @@
 #pragma once
-<<<<<<< HEAD
 
-#include "inc.h"
-
-NS_BEGIN(elloop);
-NS_END(elloop);
-=======
 #include "inc.h"
 
 NS_BEGIN(elloop);
@@ -51,4 +45,3 @@ public:
     }
 };
 NS_END(elloop);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340

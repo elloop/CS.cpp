@@ -19,11 +19,8 @@ void permutation(vector<char>& ary, int begin, int end, vector<vector<char>> & r
   }
 }
 
-<<<<<<< HEAD
-BEGIN_TEST(AlgoTest, Permutation, @)
-=======
+
 BEGIN_TEST(AlgoTest, Permutation, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("AlgoTest --> Permutation");
   vector<vector<char>> result;
   vector<char> ary{ 'a', 'b', 'c', 'd' };
@@ -36,10 +33,7 @@ BEGIN_TEST(AlgoTest, Permutation, @);
     }
     cr;
   }
-<<<<<<< HEAD
-END_TEST
-=======
+
 END_TEST;
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
 
 NS_END(elloop);

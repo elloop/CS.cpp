@@ -70,13 +70,9 @@
     <ClCompile Include="temp\temp_test.cpp">
       <Filter>temp</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="grammar\va_args_test.cpp">
       <Filter>grammar</Filter>
     </ClCompile>
-=======
-    <ClCompile Include="grammar\va_args_test.cpp" />
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="grammar\c_lib_test.h">
@@ -118,12 +114,9 @@
     <ClInclude Include="third_party\rapid_json_test.h">
       <Filter>third_party</Filter>
     </ClInclude>
-<<<<<<< HEAD
-=======
     <ClInclude Include="temp\temp_test.h">
       <Filter>temp</Filter>
     </ClInclude>
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
     <ClInclude Include="grammar\va_args_test.h">
       <Filter>grammar</Filter>
     </ClInclude>

@@ -12,11 +12,8 @@ NS_BEGIN(elloop);
 using namespace std;
 using namespace std::placeholders;
 
-<<<<<<< HEAD
-BEGIN_TEST(ContainerTest, DeleteFromVector, @) 
-=======
+
 BEGIN_TEST(ContainerTest, DeleteFromVector, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> DeleteFromVector");
   vector<int> vi{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
   printContainer(vi, "vi: ");
@@ -51,16 +48,9 @@ BEGIN_TEST(ContainerTest, DeleteFromVector, @);
 
   printConainterInfo(vi2, "vi2: ");
 
-<<<<<<< HEAD
-END_TEST
-
-
-BEGIN_TEST(ContainerTest, DeleteFromList, @)
-=======
 END_TEST;
 
 BEGIN_TEST(ContainerTest, DeleteFromList, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> DeleteFromList");
 
   list<int> li{ 1, 2, 3, 4, 5 };
@@ -96,16 +86,9 @@ BEGIN_TEST(ContainerTest, DeleteFromList, @);
   printConainterInfo(li2, "list2: ");
   psln(li2.max_size());
 
-<<<<<<< HEAD
-END_TEST
-
-
-BEGIN_TEST(ContainerTest, DeleteFromSet, @)
-=======
 END_TEST;
 
 BEGIN_TEST(ContainerTest, DeleteFromSet, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> DeleteFromSet");
 
   set<int> si{ 1, 2, 3, 4, 5 };
@@ -137,15 +120,10 @@ BEGIN_TEST(ContainerTest, DeleteFromSet, @);
     // iter= si2.erase(iter); ++iter; // will skip items.
   }
   printContainer(si2, "set2: ");
-END_TEST
 
-<<<<<<< HEAD
-BEGIN_TEST(ContainerTest, DeleteFromMap, @)
-=======
 END_TEST;
 
 BEGIN_TEST(ContainerTest, DeleteFromMap, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> DeleteFromMap");
 
   map<int, int> mi{ { 1, 2 }, { 4, 8 }, { 5, 10 }, { 2, 4 }, { 3, 6 } };
@@ -173,16 +151,9 @@ BEGIN_TEST(ContainerTest, DeleteFromMap, @);
   printMap(mi2, "map2: ");
   printConainterInfo(mi2, "map: ");
   psln(mi2.max_size());
-END_TEST
-
-<<<<<<< HEAD
-
-BEGIN_TEST(ContainerTest, SwapSkills, @)
-=======
 END_TEST;
 
 BEGIN_TEST(ContainerTest, SwapSkills, @);
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
   pcln("ContainerTest --> SwapSkills");
 
   pln("delete redundant capacity");
@@ -199,34 +170,7 @@ BEGIN_TEST(ContainerTest, SwapSkills, @);
   printContainer(vi, "vector: ");
   psln(vi.size());            // 0
   psln(vi.capacity());        // 0
-<<<<<<< HEAD
-END_TEST
 
-BEGIN_TEST(ContainerTest, GenerateNumberSequence, %)
-
-typedef std::vector<int> NumberList;
-
-std::map<int, std::string> m;
-m[0] = "s";
-m[1] = "s";
-m[7] = "s";
-m[3] = "s";
-m[4] = "s";
-NumberList num;
-num.reserve(m.size());
-std::map<int, std::string>::const_iterator itr = m.begin();
-while (itr != m.end()) {
-    num.push_back(itr->first);
-    ++itr;
-}
-psln(num.size());
-printContainer(num, "num: ");
-
-
-
-END_TEST
-=======
 END_TEST;
->>>>>>> 1e82cf24461c09c7effbaf80bd1821a35acce340
 
 NS_END(elloop);
