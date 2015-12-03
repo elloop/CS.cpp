@@ -14,7 +14,7 @@ class D1 : public Super {
 public:
 
 private:
-    void addChild(int i, int j /* = 0 */) override;
+    void addChild(int i, int j /* = 0 */) override {}
 };
 
 NS_END(override_test);

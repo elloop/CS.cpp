@@ -76,6 +76,9 @@
     <ClCompile Include="grammar\override_member_function_test.cpp">
       <Filter>grammar</Filter>
     </ClCompile>
+    <ClCompile Include="grammar\template_function_test.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="grammar\c_lib_test.h">
@@ -124,6 +127,9 @@
       <Filter>grammar</Filter>
     </ClInclude>
     <ClInclude Include="grammar\override_member_function_test.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\template_function_test.h">
       <Filter>grammar</Filter>
     </ClInclude>
   </ItemGroup>
