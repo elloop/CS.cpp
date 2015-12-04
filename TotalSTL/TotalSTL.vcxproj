@@ -89,6 +89,7 @@
     <ClCompile Include="algorithm\sorting_algorithms.cpp" />
     <ClCompile Include="container\Dictionary.cpp" />
     <ClCompile Include="container\map_vs_unordered_map.cpp" />
+    <ClCompile Include="container\set_with_pointer.cpp" />
     <ClCompile Include="functor\functors.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -102,6 +103,7 @@
     <ClInclude Include="algorithm\sorting_algorithms.h" />
     <ClInclude Include="container\Dictionary.h" />
     <ClInclude Include="container\map_vs_unordered_map.h" />
+    <ClInclude Include="container\set_with_pointer.h" />
     <ClInclude Include="include\functors.h" />
     <ClInclude Include="include\stl_headers.h" />
   </ItemGroup>

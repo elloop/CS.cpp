@@ -49,6 +49,9 @@
     <ClCompile Include="container\Dictionary.cpp">
       <Filter>container</Filter>
     </ClCompile>
+    <ClCompile Include="container\set_with_pointer.cpp">
+      <Filter>container</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="algorithm\modifying_algorithms.h">
@@ -82,6 +85,9 @@
       <Filter>container</Filter>
     </ClInclude>
     <ClInclude Include="container\Dictionary.h">
+      <Filter>container</Filter>
+    </ClInclude>
+    <ClInclude Include="container\set_with_pointer.h">
       <Filter>container</Filter>
     </ClInclude>
   </ItemGroup>
