@@ -87,6 +87,7 @@
     <ClCompile Include="algorithm\removing_algorithms.cpp" />
     <ClCompile Include="algorithm\sorted_range_algorithms.cpp" />
     <ClCompile Include="algorithm\sorting_algorithms.cpp" />
+    <ClCompile Include="container\container_overall_test.cpp" />
     <ClCompile Include="container\Dictionary.cpp" />
     <ClCompile Include="container\map_vs_unordered_map.cpp" />
     <ClCompile Include="container\set_with_pointer.cpp" />
@@ -101,6 +102,7 @@
     <ClInclude Include="algorithm\removing_algorithms.h" />
     <ClInclude Include="algorithm\sorted_range_algorithms.h" />
     <ClInclude Include="algorithm\sorting_algorithms.h" />
+    <ClInclude Include="container\container_overall_test.h" />
     <ClInclude Include="container\Dictionary.h" />
     <ClInclude Include="container\map_vs_unordered_map.h" />
     <ClInclude Include="container\set_with_pointer.h" />

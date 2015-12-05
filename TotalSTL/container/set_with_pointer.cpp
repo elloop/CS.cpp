@@ -10,7 +10,7 @@ using std::vector;
 using std::shared_ptr;
 
 //----------------------------------- begin of new test-----------------------
-RUN_GTEST(Container, NoCustomOrder, @@);
+BEGIN_TEST(Container, NoCustomOrder, @@);
 
 Elem a(1),b(2),c(3),d(4);
 ps(&a); p(" "); psln(a.weight_);
@@ -30,7 +30,7 @@ printContainer(elems, "elems: ");
 END_TEST;
 
 //----------------------------------- begin of new test-----------------------
-RUN_GTEST(Container, WithCustomOrder, @@);
+BEGIN_TEST(Container, WithCustomOrder, @@);
 
 ElemWithLess a(1), b(2), c(3), d(4);
 ps(&a); p(" "); psln(a.weight_);
@@ -52,7 +52,7 @@ END_TEST;
 
 
 //----------------------------------- begin of new test-----------------------
-RUN_GTEST(Container, ModifyElem, @@);
+BEGIN_TEST(Container, ModifyElem, @@);
 
 set<int> is;
 
