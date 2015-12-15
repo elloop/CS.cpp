@@ -5,7 +5,7 @@
 NS_BEGIN(elloop);
 NS_BEGIN(template_test);
 
-RUN_GTEST(GrammarTest, TemplateFunctionTest, @@);
+BEGIN_TEST(GrammarTest, TemplateFunctionTest, @@);
 
 returnT(1);
 returnT(1.1);

@@ -7,7 +7,7 @@ void Super::addChild(int i, int j /*= 0*/) {
 
 }
 
-RUN_GTEST(GrammarTest, OverrideTest, @@);
+BEGIN_TEST(GrammarTest, OverrideTest, @@);
 
 D1 d;
 //d.addChild(1, 2); // hide super's public function.

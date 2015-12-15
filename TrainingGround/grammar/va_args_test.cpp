@@ -19,7 +19,7 @@ int vsum(int count, ...) {
 }
 
 // ------------------ begin of new test case ------------------
-RUN_GTEST(GrammarTest, VA_Args, @@);
+BEGIN_TEST(GrammarTest, VA_Args, @@);
 
 // ------------------ function vsum using va_list ------------------
 EXPECT_EQ(0, vsum(0));
