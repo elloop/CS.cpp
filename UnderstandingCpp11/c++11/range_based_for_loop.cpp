@@ -2,7 +2,7 @@
 NS_BEGIN(elloop)
 NS_BEGIN(range_based_for_loop)
 
-TEST(RangeFor, Usage) {
+BEGIN_TEST(RangeFor, Usage, @);
 	// array type.
 	int ary[] {1, 2, 3, 4, 5};
 	for (auto i:ary) {
@@ -14,9 +14,7 @@ TEST(RangeFor, Usage) {
 	for (auto e : vec) {
 		psln(e);
 	}
-
-
-}
+END_TEST;
 
 NS_END(range_based_for_loop)
 NS_END(elloop)

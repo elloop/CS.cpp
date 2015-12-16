@@ -24,12 +24,17 @@ double multiply(double d1, double d2)
     return d1 * d2;
 }
 
-double divide(double d1, double d2)
+double divide(double d1, int n)
 {
-    assert(d2 != 0);
-    return d1 / d2;
+    assert(n != 0);
+    return d1 / n;
 }
 
+int ret4()
+{
+    pln("ret4() called");
+    return 4;
+}
 
 class Foo
 {
@@ -38,8 +43,50 @@ public:
     {
         p(n1); p(" "); p(n2); p(" "); p(n3); cr;
     }
+    int a_ { 100 };
 };
 
+class Movable
+{
+public:
+    Movable(int size = 1000000) : size_(size)
+    {
+        hugeMem_ = new int[size_];
+    }
+
+    ~Movable()
+    {
+        if (hugeMem_) 
+        {
+            delete hugeMem_;
+        }
+    }
+
+    Movable(Movable&& moved) : hugeMem_(moved.hugeMem_)
+    {
+        pln("Movable move ctr called");
+        moved.hugeMem_ = nullptr;
+    }
+
+    int     *hugeMem_;
+    int     size_;
+};
+
+Movable returnMovable()
+{
+    Movable m;
+    LOGD("in %s, m.hugeMem_ is : %x\n", __FUNCTION__, m.hugeMem_);
+    return m;
+}
+
+void useMoveable(Movable m1, Movable m2)
+{
+    psln(m1.hugeMem_);
+    psln(m2.hugeMem_);
+}
+
+
+//----------------------------- begin of new test -----------------------------
 RUN_GTEST(FunctorTest, Bind, @);
 
 // prototype of template function bind.
@@ -49,17 +96,24 @@ RUN_GTEST(FunctorTest, Bind, @);
 // template <class Ret, class Fn, class... Args>
 // /* unspecified */ bind(Fn&& fn, Args&&... args);
 
-pcln("Bind Test");
-int i(100);
-double d(3.0);
-auto result = add(i, d);
+//----------------------------- extreme situation ------------------------------
+auto emptyArg = bind(multiply, 1, 2);
+EXPECT_EQ(2, emptyArg());
 
+auto need2arg = bind(multiply, _1, _2);
+EXPECT_EQ(2, need2arg(1, 2));
+EXPECT_EQ(2, need2arg(1, 2, ret4()));
+
+//--------------------- bind normal function -----------------------------------
+
+auto same = bind(multiply, _1, _2);
+EXPECT_EQ(200.0, same(2, 100));
 
 auto doublize = bind(multiply, _1, 2.0);
-EXPECT_EQ(200.0, doublize(i));
+EXPECT_EQ(200.0, doublize(100));
 
-auto double20 = bind(multiply, 2, 10);
-EXPECT_EQ(20.0, double20());
+auto ret_20 = bind(multiply, 2, 10);
+EXPECT_EQ(20.0, ret_20());
 
 double d1 = divide(10, 2);
 EXPECT_EQ(5, d1);
@@ -106,15 +160,21 @@ auto hold2 = bind(print, _1, _2);           // 个数必须一致 in definition
 // error, too few args, caused by too few placeholders in definition of hold2.
 //hold2(1, 2, 3);
 
+//auto hold_100 = bind(print, _100, _1, _2);    // max placeholders is _20 (VC++)
+
 cr; cr;
 
 //-------------------------- bind member function ----------------------
 Foo foo;
+Foo& foo_ref = foo;
 
 auto mfarg4 = bind(&Foo::f, _1, _2, _3, _4);
-mfarg4(&foo, 10, 20, 30);   // 10 20 30; 
 // or use object directly.
 mfarg4(foo, 10, 20, 30);    // 10 20 30; 
+// use object pointer.
+mfarg4(&foo, 10, 20, 30);   // 10 20 30; 
+// use object ref.
+mfarg4(foo_ref, 10, 20, 30);    // 10 20 30; 
 
 auto mfarg3 = bind(&Foo::f, _1, _2, _3, 30);
 mfarg3(&foo, 10, 20);       // 10 20 30; 
@@ -125,16 +185,37 @@ mfarg2(&foo, 10);           // 10 20 30;
 auto mfarg1 = bind(&Foo::f, _1, 10, 20, 30);
 mfarg1(foo);                // 10 20 30;
 
-auto mfarg0 = bind(&Foo::f, &foo, 10, 20, 30);
+auto mfarg0 = bind(&Foo::f, foo, 10, 20, 30);
 mfarg0();                   // 10 20 30
 
-std::function<void(int, int, int)> ff;
-ff = bind(&Foo::f, &foo, _1, _2, _3);
+auto mfarg01 = bind(&Foo::f, &foo, 10, 20, 30);
+mfarg01();                  // 10 20 30
+auto mfarg02 = bind(&Foo::f, foo_ref, 10, 20, 30);
+mfarg02();                      // 10 20 30
+
+// assign a mem_func to std::function.
+std::function<void(int, int, int)> normal_func;
+normal_func = bind(&Foo::f, foo, _1, _2, _3);
+normal_func(10, 20, 30);        // 10 20 30
+
+//------------------------------ bind member var ----------------------------
+auto bindMv = bind(&Foo::a_, _1);
+psln(bindMv(foo));             // bindMv(foo) = 100
+//psln(bindMv(&foo));          // bindMv(foo) = 100
+psln(bindMv(foo_ref));         // bindMv(foo) = 100
+
+cr;cr;
 
 //--------------------------------- nested bind--------------------------------
-auto lambdaf = [](int x) -> int { return x;};
-auto nestedf = bind(print, _1, bind(lambdaf, _1), _2);
-nestedf(1, 2);
+auto addby1 = [](int x) -> int
+{
+    cout << "addby1() called" << endl;
+    return (x + 1);
+};
+
+auto nestedF = bind(print, _1, bind(addby1, _1), _2);  
+nestedF(1, 3);                 // addby1() called<cr> 1 2 3
+
 
 // work with template function.
 auto addby2 = bind(add<double, double>, _1, 2.0);
@@ -148,8 +229,21 @@ psln(addby2(10.2));       // 12.2
 auto addby2_int = bind<int>(add<double, double>, _1, 2.0);
 psln(addby2_int(10.2));     // 12
 
-END_TEST;
+//--------------------------------- test ref ---------------------------------
+int x(10);
+auto bindRef = bind(print, 1, std::cref(x), x);
+bindRef();                // 1 10 10;
+x = 100;
+bindRef();                // 1 100 10;
 
+//-------------------------------- moved obj --------------------------------
+//Movable movable;
+//psln(movable.hugeMem_);
+//auto bindMoved = bind(useMoveable, _1, _2);
+//bindMoved(returnMovable(), returnMovable());
+//psln(movable.hugeMem_);
+
+END_TEST;
 
 
 NS_END(elloop);

@@ -17,13 +17,13 @@ int sum( int count, ... ) {
     return result;
 }
 
-TEST( VariadicTemplate, OldVa_arg ) {
+BEGIN_TEST( VariadicTemplate, OldVa_arg, @);
     EXPECT_EQ( 5, sum( 2, 1, 4 ) );
     EXPECT_EQ( 10, sum( 3, 1, 4, 5 ) );
     EXPECT_EQ( 75, sum( 15, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5) );
-}
+END_TEST;
 
-TEST( VariadicTemplate, TupleTest ) {
+BEGIN_TEST( VariadicTemplate, TupleTest, @);
 
     Tuple<int> t1;
     t1.first;
@@ -33,9 +33,9 @@ TEST( VariadicTemplate, TupleTest ) {
 
     Tuple<int, float, double, int> t;
     //t.head;
-}
+END_TEST;
 
-TEST( VariadicTemplate, FactorialTest ) {
+BEGIN_TEST( VariadicTemplate, FactorialTest, @);
     long f = Multiply<1>::value;
     EXPECT_EQ( 1, f );
 
@@ -47,23 +47,23 @@ TEST( VariadicTemplate, FactorialTest ) {
 
     f = Multiply<1, 2, 10, 10, 10, 10, 10, 10, 10>::value;
     EXPECT_EQ( 20000000, f );
-}
+END_TEST;
 
-TEST( VariadicTemplate, PrintfTest ) {
+BEGIN_TEST( VariadicTemplate, PrintfTest, @);
     Printf( "hello, world in Printf\n" );
     Printf( "hello, world in Printf£¬ following a str: %s\n",
             std::string( "here" ) );
+END_TEST;
 
-}
 
-TEST(VariadicTemplate, VariadicPrintf) {
+BEGIN_TEST(VariadicTemplate, VariadicPrintf, @);
 	using Dog = smart_pointer::Dog;
 	Dog dog("Henry");
 	vPrint("hello\n", std::string("world\n"), 'h', '\n', 10, '\n', 11.111, 
 		'\n', dog, '\n');
-}
+END_TEST;
 
-TEST(VariadicTemplate, VariadicCountTest) {
+BEGIN_TEST(VariadicTemplate, VariadicCountTest, @);
 
 	auto c = VariadicCount<int>::value;
 	EXPECT_EQ(1, c);
@@ -77,25 +77,23 @@ TEST(VariadicTemplate, VariadicCountTest) {
 
 	c = numOfVariadic(1, 2.0, 3.0, "hello", smart_pointer::Dog("Alves"));
 	EXPECT_EQ(5, c);
+END_TEST;
 
-}
-
-TEST(VariadicTemplate, TemplateVariadicTemplate) {
+BEGIN_TEST(VariadicTemplate, TemplateVariadicTemplate, @);
 	Container<int, A>;
 	Container<int, A, B>;
 	//Container<A, B>;	//error: A is a template class. need type for 1st param.
+END_TEST;
 
-}
-
-TEST(VariadicTemplate, PerfectForwardUsingVariadicTemplate) {
+BEGIN_TEST(VariadicTemplate, PerfectForwardUsingVariadicTemplate, @);
 	Fa fa;
 	Fb fb;
 	auto mul = build<MultiTypes>(fa, fb);
     //Fa fa1 = mul.t_;
     EXPECT_EQ( &mul.t_, &fa );
     // how to find fb in mul?
+END_TEST;
 
-}
 
 NS_END( variadic_template )
 NS_END( elloop )

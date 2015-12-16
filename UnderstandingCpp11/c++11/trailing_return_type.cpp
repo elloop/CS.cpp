@@ -3,7 +3,7 @@
 NS_BEGIN(elloop)
 NS_BEGIN(trailing_return_type)
 
-TEST(TrailingReturnType, UsedInTemplate) {
+BEGIN_TEST(TrailingReturnType, UsedInTemplate, @);
 	int i = 10;
 	double d = 1.11;
 	auto result = sum(i, d);
@@ -12,9 +12,9 @@ TEST(TrailingReturnType, UsedInTemplate) {
 	// or
 	bool same = std::is_same<double, decltype(result)>::value;
 	EXPECT_TRUE(same);
-}
+END_TEST;
 
-TEST(TrailingReturnType, UsefulTest) {
+BEGIN_TEST(TrailingReturnType, UsefulTest, @);
     /*
     int( *(*pf())() )() {
         return nullptr;
@@ -40,6 +40,7 @@ TEST(TrailingReturnType, UsefulTest) {
 	// used int class template member function.
 	IntWrapper<int> q(new int(1000));
 	EXPECT_EQ(1000, q.data());
-}
+END_TEST;
+
 NS_END(trailing_return_type)
 NS_END(elloop)

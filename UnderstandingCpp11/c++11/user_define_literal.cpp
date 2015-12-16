@@ -15,7 +15,7 @@ Person operator "" _person(const char * data, unsigned int len) {
 #endif
 
 
-TEST(UserDefineLiteral, Construct) {
+BEGIN_TEST(UserDefineLiteral, Construct, @);
     Person p("lionel", 10);
     EXPECT_EQ(10, p.age());
     EXPECT_EQ(0, strcmp("lionel", p.name()));
@@ -34,18 +34,18 @@ TEST(UserDefineLiteral, Construct) {
     EXPECT_EQ(0, strcmp("fine", p.name()));
     EXPECT_EQ(0, strcmp(p.name(), p2.name()));
 
-}
+END_TEST;
 
 void takePersion(Person p)
 {
 
 }
-TEST(UserDefineLiteral, UsingLiteralConstruct) {
+BEGIN_TEST(UserDefineLiteral, UsingLiteralConstruct, @);
 #ifdef _MSC_VER
 #else
 	takePersion("Tom"_person);
 #endif
-}
+END_TEST;
 
 
 

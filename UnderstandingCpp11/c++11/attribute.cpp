@@ -21,9 +21,9 @@ void foo() {
     pln( "can't reach here" );
 }
 
-TEST( Attribute, NoReturn ) {
+BEGIN_TEST( Attribute, NoReturn, @);
     foo();
-}
+END_TEST;
 
 
 

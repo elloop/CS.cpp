@@ -3,7 +3,7 @@
 NS_BEGIN(elloop)
 NS_BEGIN(strongly_typed_enum)
 
-TEST(StrongEnum, UseTest) {
+BEGIN_TEST(StrongEnum, UseTest, @);
 	//kSampleEnum e1(Dog);				// error: strong scope type. must use::
 	Animal dog(Animal::kDog);
 	EXPECT_EQ(-111, (int)dog);
@@ -20,7 +20,7 @@ TEST(StrongEnum, UseTest) {
 	EXPECT_EQ(1, (int)tank);
 
 	//EXPECT_GT(jeep, dog);			// error:different enum type.
-}
+END_TEST;
 
 NS_END(strongly_typed_enum)
 NS_END(elloop)

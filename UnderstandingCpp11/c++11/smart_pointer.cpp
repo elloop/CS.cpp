@@ -9,7 +9,7 @@ NS_BEGIN( smart_pointer )
 // s_ptr<T> = std::shared_ptr<T>
 // w_ptr<T> = std::weak_ptr<T>
 
-TEST( SmartPointer, UniquePointer ) {
+BEGIN_TEST( SmartPointer, UniquePointer, @);
 
     u_ptr<int> p { new int( 10 ) };
     EXPECT_EQ( 10, *p );
@@ -32,9 +32,9 @@ TEST( SmartPointer, UniquePointer ) {
 	ptr_vec.push_back(pd1);				// fail, copy constructor is deleted.
 	ptr_vec.push_back(pd2);*/
 
+END_TEST;
 
-}
-TEST(SmartPointer, SharedPointer) {
+BEGIN_TEST(SmartPointer, SharedPointer, @);
 	// shared_ptr 放到容器里，引用计数加1，那么容器销毁他会自动减1吗？
 	s_ptr<Dog> pd1(new Dog("Jerry"));
 	EXPECT_EQ(1, pd1.use_count());
@@ -73,9 +73,10 @@ TEST(SmartPointer, SharedPointer) {
 	s_ptr<Dog> pd3;
 	//EXPECT_NE(nullptr, pd3);			// fail, they are equal.
 
-}
+END_TEST;
 
-TEST(SmartPointer, WeakPointer) {
+
+BEGIN_TEST(SmartPointer, WeakPointer, @);
 	s_ptr<Dog> sp1(new Dog("David"));
 	w_ptr<Dog> wp1 = sp1;
 	EXPECT_EQ(1, sp1.use_count());
@@ -96,7 +97,7 @@ TEST(SmartPointer, WeakPointer) {
 	EXPECT_EQ(0, wp1.use_count());
 	//EXPECT_EQ(nullptr, wp1);
 
-}
+END_TEST;
 
 std::ostream& operator<<(std::ostream & os, const Dog & dog) {
 	os << dog.name();

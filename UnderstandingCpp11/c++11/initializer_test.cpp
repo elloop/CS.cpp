@@ -3,7 +3,7 @@
 #include <type_traits>
 
 NS_ELLOOP_BEGIN
-TEST(Initializer_List, InitTest) {
+BEGIN_TEST(Initializer_List, InitTest, @);
     USING_NS_STD;
     InitializerTest it1({});
     EXPECT_EQ(0, it1.data().size());
@@ -19,9 +19,9 @@ TEST(Initializer_List, InitTest) {
         EXPECT_EQ(*iter, it2.data()[counter++]);
         ++iter;
     }
-}
+END_TEST;
 
-TEST(Initializer_List, IndexOperator) {
+BEGIN_TEST(Initializer_List, IndexOperator, @);
     USING_NS_STD;
     initializer_list<int> il = { 1, 2, 3 };
     InitializerTest it(il);
@@ -36,9 +36,9 @@ TEST(Initializer_List, IndexOperator) {
         EXPECT_EQ(*iter, it.indexes()[counter++]);
         ++iter;
     }
-}
+END_TEST;
 
-TEST(Initializer_List, AssignmentOperator) {
+BEGIN_TEST(Initializer_List, AssignmentOperator, @);
     USING_NS_STD;
     InitializerTest it({ 1, 2, 3 });
     it[{1, 2, 3, 4}] = 10;
@@ -47,12 +47,12 @@ TEST(Initializer_List, AssignmentOperator) {
     while (len--) {
         EXPECT_EQ(10, it.data()[len]);
     }
-}
+END_TEST;
 
 void funcA(A a) {}
 void funcB(B b) {}
 
-TEST(TypeConvert, CustomConverter) {
+BEGIN_TEST(TypeConvert, CustomConverter, @);
     
     // ??: why? 
     //EXPECT_EQ(10, ConvertToInt());
@@ -85,5 +85,6 @@ TEST(TypeConvert, CustomConverter) {
     B b1(cb);
     //B b2 = cb;     // error: cannot convert cb to B. (explicit operator B()). 
     B b3 = static_cast<B>(cb);
-}
+END_TEST;
+
 NS_ELLOOP_END

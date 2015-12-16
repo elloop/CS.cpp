@@ -11,7 +11,7 @@ void taskThreadFunc(std::shared_ptr<Task> pTask) {
 	pln("threading terminating...");
 }
 
-TEST(ThreadTest, PassArguments) {
+BEGIN_TEST(ThreadTest, PassArguments, @);
 
 	pcln("ThreadTest --> PassArguments");
 	using std::shared_ptr;
@@ -21,7 +21,7 @@ TEST(ThreadTest, PassArguments) {
 	using std::thread;
 	thread t1(taskThreadFunc, pTask);
 	t1.join();
-}
+END_TEST;
 
 NS_END(thread_test)
 NS_END(elloop)

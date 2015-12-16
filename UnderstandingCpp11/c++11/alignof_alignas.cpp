@@ -3,7 +3,7 @@
 NS_BEGIN( elloop )
 NS_BEGIN( alignof_alignas )
 
-TEST( Align, Alignof ) {
+BEGIN_TEST( Align, Alignof , @);
 #ifdef _MSC_VER
 #else
     int a;
@@ -13,9 +13,9 @@ TEST( Align, Alignof ) {
     //psln( alignof( int ) );
 #endif
     
-}
+END_TEST;
 
-TEST( Align, Alignas ) {
+BEGIN_TEST( Align, Alignas, @);
 #ifdef _MSC_VER
 #else
     alignas(10) char c;
@@ -23,7 +23,7 @@ TEST( Align, Alignas ) {
     alignas(alignof(double)) c2;
 #endif
 
-}
+END_TEST;
 
 NS_END( alignof_alignas )
 NS_END( elloop )

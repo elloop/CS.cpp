@@ -3,7 +3,7 @@
 NS_BEGIN( elloop )
 NS_BEGIN( decltype_test )
 
-TEST( Decltype, TypeId ) {
+BEGIN_TEST( Decltype, TypeId, @);
     // typeid requires RTTI mechanism.
     // to turn it off, use -fno-rttion in GCC, use /GR- in _MSC.
     TypeA a;
@@ -18,9 +18,9 @@ TEST( Decltype, TypeId ) {
     psln( typeid(a_hash_code).name() ); // size_t
     EXPECT_EQ( a_hash_code, c_hash_code );
     EXPECT_NE( b_hash_code, c_hash_code );
-}
+END_TEST;
 
-TEST( Decltype, UsedInStandard ) {
+BEGIN_TEST( Decltype, UsedInStandard, @);
     // examples of using decltype in cpp11 standard.
     //using size_t = decltype(sizeof(0));
     //using ptrdiff_t = decltype((int*)0 - (int*)0);
@@ -36,25 +36,25 @@ TEST( Decltype, UsedInStandard ) {
 
     EXPECT_EQ( typeid(int).hash_code(), typeid(f2).hash_code() );
 
-}
+END_TEST;
 
-TEST( Decltype, ReuseAnonymouseType ) {
+BEGIN_TEST( Decltype, ReuseAnonymouseType, @);
     // a_struct_value is a value of anonymouse struct type.
     decltype(a_struct_value) another;
     another.a = 100;
     EXPECT_EQ( 100, another.a );
-}
+END_TEST;
 
-TEST( Decltype, TemplateFunction ) {
+BEGIN_TEST( Decltype, TemplateFunction, @);
     int i( 10 );
     double d( 1.2 );
     double sumid( 0 );
     // restriction: sumid's type must be (i + d)'s type: double.
     Sum2( i, d, sumid );
     EXPECT_EQ( 11.2, sumid );
-}
+END_TEST;
 
-TEST( Decltype, FourRulesForUsingDecltype ) {
+BEGIN_TEST( Decltype, FourRulesForUsingDecltype, @);
     int i( 10 );
     int arr[10];
     int *ptr = arr;
@@ -153,9 +153,9 @@ TEST( Decltype, FourRulesForUsingDecltype ) {
     EXPECT_TRUE( std::is_lvalue_reference<decltype(v9)>::value );
 
     EXPECT_TRUE( std::is_rvalue_reference < decltype(v52) >::value );
-}
+END_TEST
 
-TEST( Decltype, CVQualifier ) {
+BEGIN_TEST( Decltype, CVQualifier, @);
     // unlike auto keyword, decltype will be affected with c-v qualifier.
     const int ci = 10;
     volatile int vi;
@@ -170,10 +170,9 @@ TEST( Decltype, CVQualifier ) {
     same = std::is_same<decltype(i2), volatile int>::value;
     EXPECT_TRUE( same );
     EXPECT_TRUE( std::is_volatile<decltype(i2)>::value );
+END_TEST;
 
-}
-
-TEST( Decltype, IgnoreRepeatSpecifier ) {
+BEGIN_TEST( Decltype, IgnoreRepeatSpecifier, @);
     int i = 1;
     int & ri = i;
     int * p = &i;
@@ -202,7 +201,7 @@ TEST( Decltype, IgnoreRepeatSpecifier ) {
     const decltype(k) ck = 10;	// ck is const int. begenning 'const' is ignored.
     same = std::is_same<const int, decltype(ck)>::value;
     EXPECT_TRUE( same );
-}
+END_TEST;
 
 NS_END( decltype_test )
 NS_END( elloop )

@@ -6,7 +6,7 @@ NS_BEGIN(rvalue_refrence_and_move_constructor)
 
 
 
-TEST( RValueReference, CopyConstructorWithPointer ) {
+BEGIN_TEST( RValueReference, CopyConstructorWithPointer, @);
 
 	pcln( "old TEST" );
 
@@ -35,8 +35,7 @@ TEST( RValueReference, CopyConstructorWithPointer ) {
     //new (&dd)Dog();
     //psln( dd->name_ );
 
-	
-}
+END_TEST;
 
 // record how many times each constructor(destructor) are called.
 int BigDog::ctr = 0;
@@ -51,7 +50,7 @@ BigDog getTempBigDog() {
 	return dog;
 }
 
-TEST(RValueReference, MoveConstructorTest) {
+RUN_GTEST(RValueReference, MoveConstructorTest, @);
 	// bad practice of using move semantics.
 	BigDog bd;
 	LOGD("bd ptr is %d\n", (int*)bd.knowledge_);
@@ -75,8 +74,7 @@ TEST(RValueReference, MoveConstructorTest) {
 	BigDog&& rvalueDog = getTempBigDog();
 	EXPECT_TRUE(std::is_rvalue_reference<decltype(rvalueDog)>::value);
 
-
-}
+END_TEST;
 
 Movable getTempMovable()
 {
@@ -84,12 +82,12 @@ Movable getTempMovable()
 	LOGD("moveable in getTempMovable is %d\n", temp.hm_.data_);
 	return temp;
 }
-TEST(RValueReference, UsingStdMove) {
+BEGIN_TEST(RValueReference, UsingStdMove, @);
 	Movable m(getTempMovable());
 	LOGD("movable in testbody is %d\n", m.hm_.data_);
-}
+END_TEST;
 
-TEST(RValueReference, ReferenceFolding) {
+BEGIN_TEST(RValueReference, ReferenceFolding, @);
 	typedef int& T1;
 	EXPECT_TRUE(std::is_lvalue_reference<T1>::value);
 	EXPECT_TRUE(std::is_lvalue_reference<T1&>::value);
@@ -100,7 +98,7 @@ TEST(RValueReference, ReferenceFolding) {
 	EXPECT_TRUE(std::is_lvalue_reference<T2&>::value);
 	EXPECT_TRUE(std::is_rvalue_reference<T2&&>::value);
 
-}
+END_TEST;
 
 void targetFunction(int && m) { LOGD("rvalue reference target\n"); }
 void targetFunction(int & m) { LOGD("lvalue reference target\n"); }
@@ -113,7 +111,7 @@ void forwarding(T&& t) {
 }
 */
 
-TEST(RValueReference, PerfectForward) {
+BEGIN_TEST(RValueReference, PerfectForward, @);
 	int a;
 	int b;
 	const int c = 1;
@@ -124,7 +122,7 @@ TEST(RValueReference, PerfectForward) {
 	forwarding(c);
 	forwarding(std::move(d));
 
-}
+END_TEST;
 
 NS_END( rvalue_refrence_and_move_constructor )
 NS_END( elloop )
