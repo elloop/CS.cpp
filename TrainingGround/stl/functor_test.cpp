@@ -101,8 +101,6 @@ void useMoveable(Movable m1, Movable m2)
 // /* unspecified */ bind(Fn&& fn, Args&&... args);
 
 
-
-
 //----------------------------- begin of new test -----------------------------
 BEGIN_TEST(FunctorTest, BindNormalFunction, @);
 
@@ -302,7 +300,7 @@ END_TEST;
 
 
 //----------------------------- Bind Predefined Functors -----------------------------
-RUN_GTEST(FunctorTest, BindPredefinedFunctors, @);
+BEGIN_TEST(FunctorTest, BindPredefinedFunctors, @);
 
 // all predefined functors:
 // negate, plus, minus, multiplies, divides, modulus, equal_to, 
@@ -314,9 +312,8 @@ EXPECT_EQ(100, tenTimes(10));
 EXPECT_EQ(200, tenTimes(20));
 EXPECT_EQ(300, tenTimes(30));
 
-// nested bind.
 vector<int> v {1, 2, 3, 4, 5, 6, 7, 8};
-// output v[i] if 10*v[i] > 50.
+// nested bind. output v[i] if 10*v[i] > 50.
 copy_if(v.begin(), v.end(), 
     ostream_iterator<int>(cout, ", "), 
     bind(greater<int>(), 
@@ -330,11 +327,13 @@ END_TEST;
 
 
 //----------------------------- Bind container Ref  -----------------------------
-RUN_GTEST(FunctorTest, BindContainerElemByRef, @);
+BEGIN_TEST(FunctorTest, BindContainerElemByRef, @);
 
 
 
 END_TEST;
+
+
 
 
 //----------------------- c++98 mem_fun and c++11 mem_fn -----------------------
@@ -351,6 +350,9 @@ fpv.push_back(new Foo());
 fpv.push_back(new Foo());
 
 for_each(fpv.begin(), fpv.end(), mem_fun(&Foo::print));
+cr;
+for_each(fpv.begin(), fpv.end(), bind(&Foo::print, _1));    // also can use bind
+cr;
 
 for_each(fpv.begin(), fpv.end(), [&](Foo* foo)
 {
@@ -366,6 +368,9 @@ fv.push_back(Foo());
 fv.push_back(Foo());
 
 for_each(fv.begin(), fv.end(), mem_fun_ref(&Foo::print));
+cr;
+for_each(fv.begin(), fv.end(), bind(&Foo::print, _1));      // also can use bind
+cr;
 
 // 3. mem_fn work for obj, ref to obj and ptr to obj.
 Foo foo;
