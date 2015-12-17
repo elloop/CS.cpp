@@ -1,6 +1,8 @@
 #include "gtest/gtest.h"
 #include "inc.h"
 #include <functional>
+#include <algorithm>
+#include <iterator>
 #include <type_traits>
 
 NS_BEGIN(elloop);
@@ -43,6 +45,12 @@ public:
     {
         p(n1); p(" "); p(n2); p(" "); p(n3); cr;
     }
+
+    void print()
+    {
+        psln(a_);    
+    }
+
     int a_ { 100 };
 };
 
@@ -85,16 +93,18 @@ void useMoveable(Movable m1, Movable m2)
     psln(m2.hugeMem_);
 }
 
-
-//----------------------------- begin of new test -----------------------------
-RUN_GTEST(FunctorTest, Bind, @);
-
 // prototype of template function bind.
 // template <class Fn, class... Args>
 // /* unspecified */ bind(Fn&& fn, Args&&... args);
 
 // template <class Ret, class Fn, class... Args>
 // /* unspecified */ bind(Fn&& fn, Args&&... args);
+
+
+
+
+//----------------------------- begin of new test -----------------------------
+BEGIN_TEST(FunctorTest, BindNormalFunction, @);
 
 //----------------------------- extreme situation ------------------------------
 auto emptyArg = bind(multiply, 1, 2);
@@ -105,7 +115,6 @@ EXPECT_EQ(2, need2arg(1, 2));
 EXPECT_EQ(2, need2arg(1, 2, ret4()));
 
 //--------------------- bind normal function -----------------------------------
-
 auto same = bind(multiply, _1, _2);
 EXPECT_EQ(200.0, same(2, 100));
 
@@ -127,7 +136,13 @@ bool isSameType = is_same<int, decltype(i1)>::value;
 EXPECT_TRUE(isSameType);
 EXPECT_EQ(3, i1);
 
-//-------------------------------- place holder --------------------------------
+END_TEST;
+
+
+
+
+//----------------------------- begin of new test -----------------------------
+BEGIN_TEST(FunctorTest, UsePlaceholders, @);
 auto arg3 = bind(print, _3, _2, _1);
 arg3(1, 2, 3);  // 3 2 1
 auto arg2 = bind(print, _1, _1, _2);
@@ -141,17 +156,22 @@ arg0(2,2,2);    // 1 1 1, 2 2 2 is ignored.
 
 // try to accept 4 args
 auto arg4 = bind(print, _2, _3, _4);
-//arg4(1, 2, 3);    // compile error, too few args.可多不可少 in call
-arg4(1, 2, 3, 4);   // 2 3 4; 1 is ignored.
-arg4(1, 2, 3, 4, 5);    // ok, 5 is ignored.
-arg4(1, 2, 3, 4, 5, 6, 7, 8);  // ok, 5~8 are ignored. 可多不可少 in call
+//arg4(1, 2, 3);                // compile error, too few args.可多不可少 in call
+arg4(1, 2, 3, 4);               // 2 3 4; 1 is ignored.
+arg4(1, 2, 3, 4, 5);            // ok, 5 is ignored.
+arg4(1, 2, 3, 4, 5, 6, 7, 8);   // ok, 5~8 are ignored. 可多不可少 in call
 
 // try to accept 5 args
 auto arg5 = bind(print, _1, _3, _5);
 arg5(1, 2, 3, 4, 5);    // 1 3 5; 2,4 is ingored.
 
+
+/*
+if fn() need N args, then the number of placeholders S, and the number of normal args
+V, should satisfy N == S + V.
+*/
 // try to use more than 3 placeholders
-auto hold4 = bind(print, _1, _2, _3, _4);   // 个数必须一致 in definition
+auto hold4 = bind(print, _1, _2, _3, _4);   // 个数必须一致 in bind
 // error, too many args, caused by too many placeholders in definition of hold4.
 //hold4(1, 2, 3, 4);    
 
@@ -161,12 +181,15 @@ auto hold2 = bind(print, _1, _2);           // 个数必须一致 in definition
 //hold2(1, 2, 3);
 
 //auto hold_100 = bind(print, _100, _1, _2);    // max placeholders is _20 (VC++)
+END_TEST;
 
-cr; cr;
 
-//-------------------------- bind member function ----------------------
+
+
+//----------------------------- begin of new test -----------------------------
+BEGIN_TEST(FunctorTest, BindMemberFunction, @);
 Foo foo;
-Foo& foo_ref = foo;
+Foo &foo_ref = foo;
 
 auto mfarg4 = bind(&Foo::f, _1, _2, _3, _4);
 // or use object directly.
@@ -204,7 +227,14 @@ psln(bindMv(foo));             // bindMv(foo) = 100
 //psln(bindMv(&foo));          // bindMv(foo) = 100
 psln(bindMv(foo_ref));         // bindMv(foo) = 100
 
-cr;cr;
+END_TEST;
+
+
+
+
+
+//----------------------------- begin of new test -----------------------------
+BEGIN_TEST(FunctorTest, SubexpressionOfBind, @);
 
 //--------------------------------- nested bind--------------------------------
 auto addby1 = [](int x) -> int
@@ -216,6 +246,13 @@ auto addby1 = [](int x) -> int
 auto nestedF = bind(print, _1, bind(addby1, _1), _2);  
 nestedF(1, 3);                 // addby1() called<cr> 1 2 3
 
+END_TEST;
+
+
+
+
+//----------------------------- begin of new test -----------------------------
+BEGIN_TEST(FunctorTest, BindTemplateFunction, @);
 
 // work with template function.
 auto addby2 = bind(add<double, double>, _1, 2.0);
@@ -226,8 +263,17 @@ psln(addby2(10.2));       // 12.2
 // ANSWER: stupid! 
 // bind<T> means bind's return value f, will return a value of type T.
 // for example:
+
 auto addby2_int = bind<int>(add<double, double>, _1, 2.0);
 psln(addby2_int(10.2));     // 12
+
+END_TEST;
+
+
+
+
+//----------------------------- begin of new test -----------------------------
+BEGIN_TEST(FunctorTest, ReferenceWrapperBind, @);
 
 //--------------------------------- test ref ---------------------------------
 int x(10);
@@ -236,7 +282,14 @@ bindRef();                // 1 10 10;
 x = 100;
 bindRef();                // 1 100 10;
 
-//-------------------------------- moved obj --------------------------------
+END_TEST;
+
+
+
+
+//-------------------------------- bind movable obj --------------------------------
+BEGIN_TEST(FunctorTest, BindMovable, @);
+
 //Movable movable;
 //psln(movable.hugeMem_);
 //auto bindMoved = bind(useMoveable, _1, _2);
@@ -245,5 +298,85 @@ bindRef();                // 1 100 10;
 
 END_TEST;
 
+
+
+
+//----------------------------- Bind Predefined Functors -----------------------------
+RUN_GTEST(FunctorTest, BindPredefinedFunctors, @);
+
+// all predefined functors:
+// negate, plus, minus, multiplies, divides, modulus, equal_to, 
+// not_equal_to, less, greater, less_equal, greater_equal,
+// logical_not, logical_and, logical_or, bit_and, bit_or, bit_xor
+
+auto tenTimes = bind(multiplies<int>(), _1, 10);
+EXPECT_EQ(100, tenTimes(10));
+EXPECT_EQ(200, tenTimes(20));
+EXPECT_EQ(300, tenTimes(30));
+
+// nested bind.
+vector<int> v {1, 2, 3, 4, 5, 6, 7, 8};
+// output v[i] if 10*v[i] > 50.
+copy_if(v.begin(), v.end(), 
+    ostream_iterator<int>(cout, ", "), 
+    bind(greater<int>(), 
+        bind(multiplies<int>(), _1, 10),
+        50));                               // 6,7,8,
+cr;
+
+END_TEST;
+
+
+
+
+//----------------------------- Bind container Ref  -----------------------------
+RUN_GTEST(FunctorTest, BindContainerElemByRef, @);
+
+
+
+END_TEST;
+
+
+//----------------------- c++98 mem_fun and c++11 mem_fn -----------------------
+BEGIN_TEST(FunctorTest, Mem_FunTest, @);
+
+using std::for_each;
+using std::mem_fun;
+
+// 1. mem_fun is for a pointer to an obj.
+vector<Foo*> fpv;
+fpv.push_back(new Foo());
+fpv.push_back(new Foo());
+fpv.push_back(new Foo());
+fpv.push_back(new Foo());
+
+for_each(fpv.begin(), fpv.end(), mem_fun(&Foo::print));
+
+for_each(fpv.begin(), fpv.end(), [&](Foo* foo)
+{
+    delete foo;
+    foo = nullptr;
+});
+
+// 2. mem_fun_ref is for obj.
+vector<Foo> fv;
+fv.push_back(Foo());
+fv.push_back(Foo());
+fv.push_back(Foo());
+fv.push_back(Foo());
+
+for_each(fv.begin(), fv.end(), mem_fun_ref(&Foo::print));
+
+// 3. mem_fn work for obj, ref to obj and ptr to obj.
+Foo foo;
+Foo &foo_ref = foo;
+Foo *fp = &foo;
+
+auto callMemFn = mem_fn(&Foo::f);
+callMemFn(foo, 1, 2, 3);
+callMemFn(foo_ref, 1, 2, 3);
+callMemFn(fp, 1, 2, 3);
+
+END_TEST;
 
 NS_END(elloop);
