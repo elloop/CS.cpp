@@ -12,6 +12,18 @@ Computer Science Practice Using cpp.
 
 Please check the README file in each project folder to learn more. 
 
+## Test Framework In This Repo
+
+`RUN_GTEST` and `BEGIN_TEST` are two macros I defined as a switch tha can control which gtest case can be tested.
+
+codes wrapped with `RUN_GTEST` and `END_TEST` will be run.
+
+codes wrapped with `BEGIN_TEST` and `END_TEST` won't be run, unless `SKIP_ALL_TEST` is defined.
+
+by defining these macros, i can decide only one test case to be run without deleting other test cases' codes.
+
+see `macro_define.h` to learn more.
+
 ## TODO
 
 - [ ] remove jsoncpp.lib(2.1M), integrate src as a git submodule.
