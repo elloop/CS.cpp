@@ -13,7 +13,7 @@ NS_BEGIN(accumulate_test);
 
 
 
-RUN_GTEST(NumericAlgorithm, SimpleUse, @);
+BEGIN_TEST(NumericAlgorithm, SimpleUse, @);
 
 vector<int> vi{1, 2, 3};
 EXPECT_EQ(6, accumulate(vi.begin(), vi.end(), 0) );
@@ -23,7 +23,7 @@ END_TEST;
 
 
 
-RUN_GTEST(NumericAlgorithm, NormalUse, @);
+BEGIN_TEST(NumericAlgorithm, NormalUse, @);
 
 vector<int> vi{ 1, 2, 3 };
 EXPECT_EQ(6, accumulate(vi.begin(), vi.end(), 0, plus<int>()));
@@ -35,7 +35,7 @@ END_TEST;
 
 
 
-RUN_GTEST(NumericAlgorithm, ReturnValue, @);
+BEGIN_TEST(NumericAlgorithm, ReturnValue, @);
 
 vector<int> vi{ 1, 2, 3 };
 int init(0);
@@ -62,7 +62,7 @@ struct Functor
     }
 };
 
-RUN_GTEST(NumericAlgorithm, MoreExamples, @);
+BEGIN_TEST(NumericAlgorithm, MoreExamples, @);
 
 vector<int> vi{ 1, 2, 3 };
 EXPECT_EQ(6, accumulate(vi.begin(), vi.end(), 0, func));
@@ -104,7 +104,7 @@ END_TEST;
 
 
 
-RUN_GTEST(NumericAlgorithm, AdvancedUse, @);
+BEGIN_TEST(NumericAlgorithm, AdvancedUse, @);
 
 map<string, int> m;
 m.insert({ "dog",   3 });
@@ -129,13 +129,13 @@ END_TEST;
 
 
 
-RUN_GTEST(NumericAlgorithm, TryToChangeInit, @);
+BEGIN_TEST(NumericAlgorithm, TryToChangeInit, @);
 
 // try1.
 vector<int> vi{ 1, 2, 3 };
 int init = 0;
 //accumulate(vi.begin(), vi.end(), ref(init));  // compile error
-EXPECT_NE(0, init);                 
+//EXPECT_NE(0, init);                 
 
 
 // try2.
@@ -157,7 +157,7 @@ EXPECT_EQ(0, inita.i_);
 
 vector<Addable> aa = {Addable(1), Addable(2), Addable(3)};
 //accumulate(aa.begin(), aa.end(), ref(inita), plus<Addable>());  // also error.
-EXPECT_NE(0, inita.i_);
+//EXPECT_NE(0, inita.i_);
 
 END_TEST;
 

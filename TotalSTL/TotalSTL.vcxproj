@@ -92,7 +92,9 @@
     <ClCompile Include="container\Dictionary.cpp" />
     <ClCompile Include="container\map_vs_unordered_map.cpp" />
     <ClCompile Include="container\set_with_pointer.cpp" />
+    <ClCompile Include="functor\bind_test.cpp" />
     <ClCompile Include="functor\functors.cpp" />
+    <ClCompile Include="functor\mem_fn_and_mem_fun.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

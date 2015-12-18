@@ -3,12 +3,26 @@
 #include <functional>
 #include <algorithm>
 #include <iterator>
+#include <memory>       // shared_ptr.
 #include <type_traits>
 
 NS_BEGIN(elloop);
 
 using namespace std;
 using namespace std::placeholders;
+
+/*
+
+prototype of template function bind.
+
+template <class Fn, class... Args>
+unspecified bind(Fn&& fn, Args&&... args);
+
+template <class Ret, class Fn, class... Args>
+unspecified bind(Fn&& fn, Args&&... args);
+
+*/
+
 
 void print(int n1, int n2, int n3)
 {
@@ -48,10 +62,10 @@ public:
 
     void print()
     {
-        psln(a_);    
+        psln(a_);
     }
 
-    int a_ { 100 };
+    int a_{ 100 };
 };
 
 class Movable
@@ -64,7 +78,7 @@ public:
 
     ~Movable()
     {
-        if (hugeMem_) 
+        if (hugeMem_)
         {
             delete hugeMem_;
         }
@@ -93,18 +107,10 @@ void useMoveable(Movable m1, Movable m2)
     psln(m2.hugeMem_);
 }
 
-// prototype of template function bind.
-// template <class Fn, class... Args>
-// /* unspecified */ bind(Fn&& fn, Args&&... args);
 
-// template <class Ret, class Fn, class... Args>
-// /* unspecified */ bind(Fn&& fn, Args&&... args);
-
-
-//----------------------------- begin of new test -----------------------------
+//----------------------------- BindNormalFunction ------------------------------
 BEGIN_TEST(FunctorTest, BindNormalFunction, @);
 
-//----------------------------- extreme situation ------------------------------
 auto emptyArg = bind(multiply, 1, 2);
 EXPECT_EQ(2, emptyArg());
 
@@ -112,7 +118,6 @@ auto need2arg = bind(multiply, _1, _2);
 EXPECT_EQ(2, need2arg(1, 2));
 EXPECT_EQ(2, need2arg(1, 2, ret4()));
 
-//--------------------- bind normal function -----------------------------------
 auto same = bind(multiply, _1, _2);
 EXPECT_EQ(200.0, same(2, 100));
 
@@ -139,7 +144,7 @@ END_TEST;
 
 
 
-//----------------------------- begin of new test -----------------------------
+//----------------------------- UsePlaceholders -----------------------------
 BEGIN_TEST(FunctorTest, UsePlaceholders, @);
 auto arg3 = bind(print, _3, _2, _1);
 arg3(1, 2, 3);  // 3 2 1
@@ -150,7 +155,7 @@ arg1(1);        // 1 1 1
 auto arg0 = bind(print, 1, 1, 1);
 arg0();         // 1 1 1
 arg0(2);        // 1 1 1, 2 is ignored.
-arg0(2,2,2);    // 1 1 1, 2 2 2 is ignored.
+arg0(2, 2, 2);    // 1 1 1, 2 2 2 is ignored.
 
 // try to accept 4 args
 auto arg4 = bind(print, _2, _3, _4);
@@ -184,7 +189,7 @@ END_TEST;
 
 
 
-//----------------------------- begin of new test -----------------------------
+//----------------------------- BindMemberFunction -----------------------------
 BEGIN_TEST(FunctorTest, BindMemberFunction, @);
 Foo foo;
 Foo &foo_ref = foo;
@@ -231,17 +236,16 @@ END_TEST;
 
 
 
-//----------------------------- begin of new test -----------------------------
+//--------------------------- SubexpressionOfBind ---------------------------
 BEGIN_TEST(FunctorTest, SubexpressionOfBind, @);
 
-//--------------------------------- nested bind--------------------------------
 auto addby1 = [](int x) -> int
 {
     cout << "addby1() called" << endl;
     return (x + 1);
 };
 
-auto nestedF = bind(print, _1, bind(addby1, _1), _2);  
+auto nestedF = bind(print, _1, bind(addby1, _1), _2);
 nestedF(1, 3);                 // addby1() called<cr> 1 2 3
 
 END_TEST;
@@ -249,7 +253,7 @@ END_TEST;
 
 
 
-//----------------------------- begin of new test -----------------------------
+//-------------------------- BindTemplateFunction ---------------------------
 BEGIN_TEST(FunctorTest, BindTemplateFunction, @);
 
 // work with template function.
@@ -270,10 +274,9 @@ END_TEST;
 
 
 
-//----------------------------- begin of new test -----------------------------
+//--------------------------------- test ref ---------------------------------
 BEGIN_TEST(FunctorTest, ReferenceWrapperBind, @);
 
-//--------------------------------- test ref ---------------------------------
 int x(10);
 auto bindRef = bind(print, 1, std::cref(x), x);
 bindRef();                // 1 10 10;
@@ -312,17 +315,44 @@ EXPECT_EQ(100, tenTimes(10));
 EXPECT_EQ(200, tenTimes(20));
 EXPECT_EQ(300, tenTimes(30));
 
-vector<int> v {1, 2, 3, 4, 5, 6, 7, 8};
+vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8 };
 // nested bind. output v[i] if 10*v[i] > 50.
-copy_if(v.begin(), v.end(), 
-    ostream_iterator<int>(cout, ", "), 
-    bind(greater<int>(), 
+copy_if(v.begin(), v.end(),
+    ostream_iterator<int>(cout, ", "),
+    bind(greater<int>(),
         bind(multiplies<int>(), _1, 10),
         50));                               // 6,7,8,
 cr;
 
 END_TEST;
 
+
+
+
+//----------------------------- Bind smart pointer -----------------------------
+RUN_GTEST(FunctorTest, BindSmartPointer, @);
+
+struct Temp 
+{
+    Temp(int i=0) : i_(i) {}
+    void print() { pln(i_); }
+    int i_;
+};
+
+vector<shared_ptr<Temp>> vs =
+{
+    shared_ptr<Temp>(new Temp(1)),
+    shared_ptr<Temp>(new Temp(2)),
+    shared_ptr<Temp>(new Temp(3)),
+};
+
+for_each(vs.begin(), vs.end(), bind(&Temp::print, _1));  // 1<cr>2<cr>3<cr>
+
+bind(&Temp::print, vs[0])();        // 1
+bind(&Temp::print, vs[1])();        // 2
+bind(&Temp::print, vs[2])();        // 3
+
+END_TEST;
 
 
 
