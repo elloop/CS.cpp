@@ -83,6 +83,7 @@
     <ClCompile Include="algorithm\modifying_algorithms.cpp" />
     <ClCompile Include="algorithm\mutating_algorithms.cpp" />
     <ClCompile Include="algorithm\nonmodifying_algorithms.cpp" />
+    <ClCompile Include="algorithm\numeric\accumulate_test.cpp" />
     <ClCompile Include="algorithm\numeric_algorithms.cpp" />
     <ClCompile Include="algorithm\removing_algorithms.cpp" />
     <ClCompile Include="algorithm\sorted_range_algorithms.cpp" />

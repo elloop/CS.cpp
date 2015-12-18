@@ -9,7 +9,10 @@ using std::set;
 using std::vector;
 using std::shared_ptr;
 
-//----------------------------------- begin of new test-----------------------
+
+
+
+
 BEGIN_TEST(Container, NoCustomOrder, @@);
 
 Elem a(1),b(2),c(3),d(4);
@@ -29,7 +32,10 @@ printContainer(elems, "elems: ");
 
 END_TEST;
 
-//----------------------------------- begin of new test-----------------------
+
+
+
+
 BEGIN_TEST(Container, WithCustomOrder, @@);
 
 ElemWithLess a(1), b(2), c(3), d(4);
@@ -51,7 +57,9 @@ printContainer(elems, "elems: ");
 END_TEST;
 
 
-//----------------------------------- begin of new test-----------------------
+
+
+
 BEGIN_TEST(Container, ModifyElem, @@);
 
 set<int> is;
@@ -65,5 +73,9 @@ iv.push_back(10);
 (*(iv.begin())) = 100;  // ok.
 
 END_TEST;
+
+
+
+
 NS_END(set_test);
 NS_END(elloop);

@@ -37,7 +37,7 @@ public:
   }
 };
 
-TEST(NonModifyingAlgorithm, ForEach) {
+BEGIN_TEST(NonModifyingAlgorithm, ForEach, @);
   pcln("NonModifyingAlgorithm");
 
   // for_each
@@ -61,10 +61,12 @@ TEST(NonModifyingAlgorithm, ForEach) {
   for_each(con.rbegin(), con.rbegin() + ( con.rend() - con.rbegin() ) / 2,
     PrintFunctor<int>());
   cr;
+END_TEST;
 
-}
 
-TEST(NonModifyingAlgorithm, Count) {
+
+
+BEGIN_TEST(NonModifyingAlgorithm, Count, @);
 
   vector<int> con;
   insertElements(con, 1, 10);
@@ -87,13 +89,19 @@ TEST(NonModifyingAlgorithm, Count) {
   });
   psln(numOfEven);
   EXPECT_EQ(5, numOfEven);
-}
+
+END_TEST;
+
+
+
 
 bool absLess(int a, int b) {
   return abs(a) < abs(b);
 }
 
-TEST(NonModifyingAlgorithm, MinMaxElem) {
+
+
+BEGIN_TEST(NonModifyingAlgorithm, MinMaxElem, @);
   deque<int> con;
   insertElements(con, 1, 10);
   insertElements(con, -5, 5);
@@ -108,9 +116,12 @@ TEST(NonModifyingAlgorithm, MinMaxElem) {
   EXPECT_EQ(0, *absMinPos);
   auto absMaxPos = max_element(con.begin(), con.end(), absLess);
   EXPECT_EQ(10, *absMaxPos);
-}
+END_TEST;
 
-TEST(NonModifyingAlgorithm, Find) {
+
+
+
+BEGIN_TEST(NonModifyingAlgorithm, Find, @);
   list<int> con;
   insertElements(con, 0, 10);
   insertElements(con, 0, 5);
@@ -131,9 +142,13 @@ TEST(NonModifyingAlgorithm, Find) {
   }
   printContainer(between0, "elems between 0: ");
 
-}
+END_TEST;
 
-TEST(NonModifyingAlgorithm, FindIf) {
+
+
+
+
+BEGIN_TEST(NonModifyingAlgorithm, FindIf, @);
   list<int> con;
   insertElements(con, 0, 10);
   printContainer(con, "con: ");
@@ -142,9 +157,13 @@ TEST(NonModifyingAlgorithm, FindIf) {
     bind2nd(greater<int>(), 1));
   LOGD("first element greater than 1 is in location: %d\n",
     distance(con.begin(), greater1Pos) + 1);
-}
+END_TEST;
 
-TEST(NonModifyingAlgorithm, SearchN) {
+
+
+
+
+BEGIN_TEST(NonModifyingAlgorithm, SearchN, @);
   deque<int> con;
   insertElements(con, 1, 10);
   printContainer(con);
@@ -168,7 +187,11 @@ TEST(NonModifyingAlgorithm, SearchN) {
   else {
     pln("no 2 consecutive >3");
   }
-}
+END_TEST;
+
+
+
+
 
 bool checkEven(int elem, bool even) {
   if ( even ) {
@@ -178,7 +201,8 @@ bool checkEven(int elem, bool even) {
     return ( elem % 2 == 1 );
   }
 }
-TEST(NonModifyingAlgorithm, Search) {
+
+BEGIN_TEST(NonModifyingAlgorithm, Search, @);
   deque<int> con;
   insertElements(con, 1, 10);
   insertElements(con, 1, 10);
@@ -206,9 +230,13 @@ TEST(NonModifyingAlgorithm, Search) {
     LOGD("found match point at pos: %d\n", distance(con2.begin(), evenPos) + 1);
     evenPos = search(++evenPos, con2.end(), checkArgs, checkArgs + 3, checkEven);
   }
-}
+END_TEST;
 
-TEST(NonModifyingAlgorithm, Find_End) {
+
+
+
+
+BEGIN_TEST(NonModifyingAlgorithm, Find_End, @);
   // find_end is correspond to search, it return last occurrence of matching range.
   deque<int> con;
   insertElements(con, 1, 10);
@@ -250,9 +278,14 @@ TEST(NonModifyingAlgorithm, Find_End) {
     }
     evenPos = newPos;
   }
-}
 
-TEST(NonModifyingAlgorithm, Find_First_Of) {
+END_TEST;
+
+
+
+
+
+BEGIN_TEST(NonModifyingAlgorithm, Find_First_Of, @);
   vector<int> con;
   list<int> searchCon;
   insertRepeat(con, Repeat(make_pair(3, 1)));
@@ -277,10 +310,13 @@ TEST(NonModifyingAlgorithm, Find_First_Of) {
 
   // TODO: add examples of first_find_of using BinaryPredicate op.
   // bool op(elem, searchElem) { //...}
+END_TEST;
 
-}
 
-TEST(NonModifyingAlgorithm, Adjacent_Find) {
+
+
+
+BEGIN_TEST(NonModifyingAlgorithm, Adjacent_Find, @);
   vector<int> con;
   insertElements(con, 1, 3);
   insertRepeat(con, Repeat(make_pair(2, 5)));
@@ -305,6 +341,9 @@ TEST(NonModifyingAlgorithm, Adjacent_Find) {
   else {
     pln("no adjacent");
   }
+END_TEST;
 
-}
+
+
+
 NS_END(elloop)

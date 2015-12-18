@@ -8,7 +8,9 @@ using std::unordered_map;
 NS_BEGIN(elloop);
 NS_BEGIN(container_overall);
 
-//----------------------------------- begin of new test-----------------------
+
+
+
 BEGIN_TEST(Container, SetInMap, @@);
 //put a set into map
 // modify the set through iterator
@@ -35,8 +37,10 @@ for (auto seti : setmap)
 END_TEST;
 
 
-//----------------------------------- begin of new test-----------------------
-RUN_GTEST(Container, InvalidIterator, @@);
+
+
+
+BEGIN_TEST(Container, InvalidIterator, @@);
 
 set<int> si;
 si.insert(10);
@@ -81,6 +85,10 @@ for (auto i : vi)
 }
 
 END_TEST;
+
+
+
+
 
 NS_END(container_overall);
 NS_END(elloop);

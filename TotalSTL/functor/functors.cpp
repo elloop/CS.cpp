@@ -10,11 +10,16 @@ using std::less;
 using std::equal;
 
 
-TEST(FunctorTest, Useful) {
+
+
+BEGIN_TEST(FunctorTest, Useful, @);
   // modulus
   modulus<int> mIntFunc;
   EXPECT_EQ(1, mIntFunc(7, 6));
 
-}
+END_TEST;
+
+
+
 
 NS_END(elloop);

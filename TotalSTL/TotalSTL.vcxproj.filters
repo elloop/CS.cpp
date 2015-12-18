@@ -16,6 +16,9 @@
     <Filter Include="include">
       <UniqueIdentifier>{361c9e91-7121-4828-aa22-c3674c74b433}</UniqueIdentifier>
     </Filter>
+    <Filter Include="algorithm\numeric">
+      <UniqueIdentifier>{8ee4f1ae-78c8-4fc5-8dfc-06025b1b5d9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="algorithm\modifying_algorithms.cpp">
@@ -54,6 +57,9 @@
     </ClCompile>
     <ClCompile Include="container\container_overall_test.cpp">
       <Filter>container</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\numeric\accumulate_test.cpp">
+      <Filter>algorithm\numeric</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
