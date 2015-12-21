@@ -357,52 +357,6 @@ END_TEST;
 
 
 
-//----------------------- c++98 mem_fun and c++11 mem_fn -----------------------
-BEGIN_TEST(FunctorTest, Mem_FunTest, @);
 
-using std::for_each;
-using std::mem_fun;
-
-// 1. mem_fun is for a pointer to an obj.
-vector<Foo*> fpv;
-fpv.push_back(new Foo());
-fpv.push_back(new Foo());
-fpv.push_back(new Foo());
-fpv.push_back(new Foo());
-
-for_each(fpv.begin(), fpv.end(), mem_fun(&Foo::print));
-cr;
-for_each(fpv.begin(), fpv.end(), bind(&Foo::print, _1));    // also can use bind
-cr;
-
-for_each(fpv.begin(), fpv.end(), [&](Foo* foo)
-{
-    delete foo;
-    foo = nullptr;
-});
-
-// 2. mem_fun_ref is for obj.
-vector<Foo> fv;
-fv.push_back(Foo());
-fv.push_back(Foo());
-fv.push_back(Foo());
-fv.push_back(Foo());
-
-for_each(fv.begin(), fv.end(), mem_fun_ref(&Foo::print));
-cr;
-for_each(fv.begin(), fv.end(), bind(&Foo::print, _1));      // also can use bind
-cr;
-
-// 3. mem_fn work for obj, ref to obj and ptr to obj.
-Foo foo;
-Foo &foo_ref = foo;
-Foo *fp = &foo;
-
-auto callMemFn = mem_fn(&Foo::f);
-callMemFn(foo, 1, 2, 3);
-callMemFn(foo_ref, 1, 2, 3);
-callMemFn(fp, 1, 2, 3);
-
-END_TEST;
 
 NS_END(elloop);

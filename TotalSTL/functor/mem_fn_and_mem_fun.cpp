@@ -37,6 +37,8 @@ fpv.push_back(new Foo());
 
 for_each(fpv.begin(), fpv.end(), mem_fun(&Foo::print));
 cr;
+//for_each(fpv.begin(), fpv.end(), mem_fun_ref(&Foo::print)); // error.
+
 for_each(fpv.begin(), fpv.end(), bind(&Foo::print, _1));    // also can use bind
 cr;
 
@@ -54,6 +56,9 @@ fv.push_back(Foo());
 
 for_each(fv.begin(), fv.end(), mem_fun_ref(&Foo::print));
 cr;
+
+//for_each(fv.begin(), fv.end(), mem_fun(&Foo::print));
+
 for_each(fv.begin(), fv.end(), bind(&Foo::print, _1));      // also can use bind
 cr;
 
