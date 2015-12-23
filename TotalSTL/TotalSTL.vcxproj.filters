@@ -19,27 +19,15 @@
     <Filter Include="algorithm\numeric">
       <UniqueIdentifier>{8ee4f1ae-78c8-4fc5-8dfc-06025b1b5d9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="algorithm\non_modifying">
+      <UniqueIdentifier>{e1002ba9-d385-40d0-9c86-4e1ba9f96cae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="algorithm\modifying">
+      <UniqueIdentifier>{1872c3b4-f70b-4c16-9eac-c79d97765566}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="algorithm\modifying_algorithms.cpp">
-      <Filter>algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm\mutating_algorithms.cpp">
-      <Filter>algorithm</Filter>
-    </ClCompile>
     <ClCompile Include="algorithm\nonmodifying_algorithms.cpp">
-      <Filter>algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm\numeric_algorithms.cpp">
-      <Filter>algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm\removing_algorithms.cpp">
-      <Filter>algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm\sorted_range_algorithms.cpp">
-      <Filter>algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm\sorting_algorithms.cpp">
       <Filter>algorithm</Filter>
     </ClCompile>
     <ClCompile Include="functor\functors.cpp">
@@ -67,27 +55,15 @@
     <ClCompile Include="functor\mem_fn_and_mem_fun.cpp">
       <Filter>functor</Filter>
     </ClCompile>
+    <ClCompile Include="algorithm\non_modifying\for_each_test.cpp">
+      <Filter>algorithm\non_modifying</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\modifying\fill_n_test.cpp">
+      <Filter>algorithm\non_modifying</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algorithm\modifying_algorithms.h">
-      <Filter>algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="algorithm\mutating_algorithms.h">
-      <Filter>algorithm</Filter>
-    </ClInclude>
     <ClInclude Include="algorithm\nonmodifying_algorithms.h">
-      <Filter>algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="algorithm\numeric_algorithms.h">
-      <Filter>algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="algorithm\removing_algorithms.h">
-      <Filter>algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="algorithm\sorted_range_algorithms.h">
-      <Filter>algorithm</Filter>
-    </ClInclude>
-    <ClInclude Include="algorithm\sorting_algorithms.h">
       <Filter>algorithm</Filter>
     </ClInclude>
     <ClInclude Include="include\functors.h">

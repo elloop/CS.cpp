@@ -330,7 +330,7 @@ END_TEST;
 
 
 //----------------------------- Bind smart pointer -----------------------------
-RUN_GTEST(FunctorTest, BindSmartPointer, @);
+BEGIN_TEST(FunctorTest, BindSmartPointer, @);
 
 struct Temp 
 {

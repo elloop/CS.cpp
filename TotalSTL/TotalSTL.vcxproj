@@ -80,14 +80,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algorithm\modifying_algorithms.cpp" />
-    <ClCompile Include="algorithm\mutating_algorithms.cpp" />
+    <ClCompile Include="algorithm\modifying\fill_n_test.cpp" />
     <ClCompile Include="algorithm\nonmodifying_algorithms.cpp" />
+    <ClCompile Include="algorithm\non_modifying\for_each_test.cpp" />
     <ClCompile Include="algorithm\numeric\accumulate_test.cpp" />
-    <ClCompile Include="algorithm\numeric_algorithms.cpp" />
-    <ClCompile Include="algorithm\removing_algorithms.cpp" />
-    <ClCompile Include="algorithm\sorted_range_algorithms.cpp" />
-    <ClCompile Include="algorithm\sorting_algorithms.cpp" />
     <ClCompile Include="container\container_overall_test.cpp" />
     <ClCompile Include="container\Dictionary.cpp" />
     <ClCompile Include="container\map_vs_unordered_map.cpp" />
@@ -98,13 +94,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algorithm\modifying_algorithms.h" />
-    <ClInclude Include="algorithm\mutating_algorithms.h" />
     <ClInclude Include="algorithm\nonmodifying_algorithms.h" />
-    <ClInclude Include="algorithm\numeric_algorithms.h" />
-    <ClInclude Include="algorithm\removing_algorithms.h" />
-    <ClInclude Include="algorithm\sorted_range_algorithms.h" />
-    <ClInclude Include="algorithm\sorting_algorithms.h" />
     <ClInclude Include="container\container_overall_test.h" />
     <ClInclude Include="container\Dictionary.h" />
     <ClInclude Include="container\map_vs_unordered_map.h" />
