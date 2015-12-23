@@ -107,7 +107,7 @@ private:
     int         count_;
 };
 //----------------------- for_each return value----------------------
-BEGIN_TEST(ForEachTest, UseReturnValue, @);
+RUN_GTEST(ForEachTest, UseReturnValue, @);
 
 vector<int> coll2{ 1, 2, 3, 4, 5 };
 printContainer(coll2, "coll2:");   // coll2: 1 2 3 4 5
@@ -118,11 +118,12 @@ printContainer(coll2, "coll2:");   // coll2: 1 2 3 4 5
 // double meanValue = mv;
 double meanValue = for_each(coll2.begin(), coll2.end(),
                             MeanValue());
+psln(meanValue);
 
 // validate result using numeric.
 using std::accumulate;
 double sum(0);
-sum = accumulate(coll2.begin(), coll2.end(), sum);
+sum = accumulate(coll2.begin(), coll2.end(), 0);
 EXPECT_EQ(sum / coll2.size(), meanValue);
 
 END_TEST;
