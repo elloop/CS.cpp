@@ -20,7 +20,7 @@ void printFun(int i)
     cout << i << " ";
 }
 //----------------------- for_each non-modify----------------------
-RUN_GTEST(ForEachTest, NonModify, @);
+BEGIN_TEST(ForEachTest, NonModify, @);
 
 auto print = [](int i){ cout << i << " "; };
 
@@ -57,7 +57,7 @@ void add50(int &val)
     val += 50;
 }
 //----------------------- for_each modify----------------------
-RUN_GTEST(ForEachTest, Modify, @);
+BEGIN_TEST(ForEachTest, Modify, @);
 
 vector<int> coll;
 insertElements(coll, 1, 5);
@@ -107,7 +107,7 @@ private:
     int         count_;
 };
 //----------------------- for_each return value----------------------
-RUN_GTEST(ForEachTest, UseReturnValue, @);
+BEGIN_TEST(ForEachTest, UseReturnValue, @);
 
 vector<int> coll2{ 1, 2, 3, 4, 5 };
 printContainer(coll2, "coll2:");   // coll2: 1 2 3 4 5
@@ -132,7 +132,7 @@ END_TEST;
 
 
 //----------------------- range based for loop ----------------------
-RUN_GTEST(ForEachTest, RangeForLoop, @);
+BEGIN_TEST(ForEachTest, RangeForLoop, @);
 
 //-----------non-modifying --------------
 auto print = [](int i)
