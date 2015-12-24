@@ -1,15 +1,13 @@
-#ifdef _MSC_VER
-#pragma once
-#else
-_Pragma("once")
-#endif // _MSC_VER
-
+#ifndef CS_CPP_PRINT_UTIL_H
+#define CS_CPP_PRINT_UTIL_H
 
 #include <iostream>
 #include <string>
 #include <cstdio>
 #include <cassert>
 #include <functional>
+#include <ctime>
+
 
 namespace elloop {
 
@@ -174,4 +172,33 @@ void assertCond(bool cond, const std::function<void()>& func, Dummy x = 0) {
     }
 }
 
+
+// todo.
+//const char * f()
+//{
+//    return "";
+//}
+
+// added @20151224
+//std::string timeStamp()
+//{
+//
+//    //time_t ti;
+//    //time(&ti);
+//    //psln(ctime(&ti));
+//
+//    time_t rawtime;
+//    struct tm * timeinfo;
+//    char buffer[80];
+//
+//    time(&rawtime);
+//    timeinfo = localtime(&rawtime);
+//
+//    strftime(buffer, 80, "[%H:%M:%S]", timeinfo);
+//
+//    return std::string(buffer);
+//}
+
 } // end namespace elloop;
+
+#endif
