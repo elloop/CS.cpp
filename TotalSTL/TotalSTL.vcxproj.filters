@@ -28,6 +28,12 @@
     <Filter Include="container\sequence">
       <UniqueIdentifier>{4344dd04-617a-4884-a495-d5cfe8e3b7c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="algorithm\mutating">
+      <UniqueIdentifier>{0d86052a-3d11-4416-a1d8-7665a0321ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="algorithm\removing">
+      <UniqueIdentifier>{bae9dd0f-d102-4586-935d-5391ee9955b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="algorithm\nonmodifying_algorithms.cpp">
@@ -66,6 +72,12 @@
     </ClCompile>
     <ClCompile Include="container\sequence\array_test.cpp">
       <Filter>container\sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\mutating\shuffle_random_shuffle_test.cpp">
+      <Filter>algorithm\mutating</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\removing\unique_test.cpp">
+      <Filter>algorithm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -81,9 +81,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="algorithm\modifying\fill_n_test.cpp" />
+    <ClCompile Include="algorithm\mutating\shuffle_random_shuffle_test.cpp" />
     <ClCompile Include="algorithm\nonmodifying_algorithms.cpp" />
     <ClCompile Include="algorithm\non_modifying\for_each_test.cpp" />
     <ClCompile Include="algorithm\numeric\accumulate_test.cpp" />
+    <ClCompile Include="algorithm\removing\unique_test.cpp" />
     <ClCompile Include="container\container_overall_test.cpp" />
     <ClCompile Include="container\Dictionary.cpp" />
     <ClCompile Include="container\map_vs_unordered_map.cpp" />
