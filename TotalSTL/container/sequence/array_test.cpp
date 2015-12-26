@@ -14,7 +14,7 @@ using std::for_each;
 
 
 //----------------------- basic use ----------------------
-RUN_GTEST(ArrayTest, BasicUse, @);
+BEGIN_TEST(ArrayTest, BasicUse, @);
 
 array<int, 3> a;
 for_each(a.begin(), a.end(), [](int i)
@@ -36,7 +36,7 @@ END_TEST;
 
 
 //----------------------- array as c-style array ----------------------
-RUN_GTEST(ArrayTest, CStyleArray, @);
+BEGIN_TEST(ArrayTest, CStyleArray, @);
 
 // use array<char> as a fix sized c-string.
 array<char, 100> str = { 0 };
@@ -53,7 +53,7 @@ END_TEST;
 
 
 //----------------------- normal example ----------------------
-RUN_GTEST(ArrayTest, NormalExample, @);
+BEGIN_TEST(ArrayTest, NormalExample, @);
 
 array<int, 5> a = { 1, 2, 3 };
 psln(a.size());                     // a.size() = 5;

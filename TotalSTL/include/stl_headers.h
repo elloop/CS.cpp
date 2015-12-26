@@ -50,3 +50,36 @@ inline void insertRepeat(Con& con, Repeat repeat) {
     con.insert(con.end(), repeat.repeat().second);
   }
 }
+
+template <typename ForwardIter, typename T>
+ForwardIter find_before(ForwardIter beg, ForwardIter end, const T &val)
+{
+    auto posBefore = beg;
+    while (beg != end)
+    {
+        if (*beg == val) 
+        {
+            return posBefore;
+        }
+        posBefore = beg;
+        ++beg;
+    }
+    return end;
+}
+
+template <typename ForwardIter, typename Pred>
+ForwardIter find_before_if(ForwardIter beg, ForwardIter end, Pred op)
+{
+    auto posBefore = beg;
+    ++beg;
+    while (beg != end)
+    {
+        if (op(*beg))
+        {
+            return posBefore;
+        }
+        posBefore = beg;
+        ++beg;
+    }
+    return end;
+}

@@ -79,6 +79,9 @@
     <ClCompile Include="algorithm\removing\unique_test.cpp">
       <Filter>algorithm</Filter>
     </ClCompile>
+    <ClCompile Include="container\sequence\foward_list_test.cpp">
+      <Filter>container\sequence</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="algorithm\nonmodifying_algorithms.h">

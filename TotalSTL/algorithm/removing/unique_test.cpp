@@ -26,7 +26,7 @@ void uniqueUrls(std::vector<int> &v)
 }
 
 //----------------------- ShuffleWithGenerator  ----------------------
-RUN_GTEST(UniqueTest, Basic, @);
+BEGIN_TEST(UniqueTest, Basic, @);
 
 vector<int> v{1, 2, 3, 4, 5, 6, 7 , 8, 10, 2, 3, 5, 9, 10, 1, 4, 4, 3, 3};
 printContainer(v, "v: ");
