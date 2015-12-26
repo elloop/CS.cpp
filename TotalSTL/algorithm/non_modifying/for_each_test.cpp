@@ -22,9 +22,12 @@ void printFun(int i)
 //----------------------- for_each non-modify----------------------
 BEGIN_TEST(ForEachTest, NonModify, @);
 
-auto print = [](int i){ cout << i << " "; };
+auto print = [](int i)
+{
+    cout << i << " ";
+};
 
-vector<int> v{1,2,3,4,5};
+vector<int> v{ 1, 2, 3, 4, 5 };
 for_each(v.begin(), v.end(), print);
 cr;
 
@@ -65,7 +68,10 @@ printContainer(coll, "coll: ");  // coll: 1 2 3 4 5
 
 // change use lambda.
 for_each(coll.begin(), coll.end(),
-         [](int& elem){ elem += 50; });
+         [](int& elem)
+{
+    elem += 50;
+});
 
 printContainer(coll, "coll: ");  //coll: 51 52 53 54 55 
 
@@ -88,7 +94,8 @@ END_TEST;
 class MeanValue
 {
 public:
-    MeanValue() : count_(0), sum_(0) {}
+    MeanValue() : count_(0), sum_(0)
+    {}
     void operator() (int val)
     {
         sum_ += val;
@@ -132,7 +139,7 @@ END_TEST;
 
 
 //----------------------- range based for loop ----------------------
-BEGIN_TEST(ForEachTest, RangeForLoop, @);
+RUN_GTEST(ForEachTest, RangeForLoop, @);
 
 //-----------non-modifying --------------
 auto print = [](int i)
@@ -141,17 +148,23 @@ auto print = [](int i)
 };
 
 vector<int> v{ 1, 2, 3, 4, 5 };
-//for_each(v.begin(), v.end(), print);
-for (auto item : v)
+// be aware of copy consumption if item is not int type. use ref to avoid that.
+for ( const auto &item : v )
 {
     print(item);
 }
 cr;
 
-//for_each(v.begin(), v.end(), printFun);
-for (auto item : v)
+for ( const auto &item : v )
 {
     printFun(item);
+}
+cr;
+
+// or save the definition of vector, use initial list to print.
+for ( const auto &item : { 1, 2, 3, 4, 5 } )
+{
+    print(item);
 }
 cr;
 
@@ -160,12 +173,15 @@ vector<int> coll;
 insertElements(coll, 1, 5);
 printContainer(coll, "coll: ");  // coll: 1 2 3 4 5 
 
-for (auto & item : coll) {
+for ( auto &item : coll )
+{
     item += 50;
 }
 printContainer(coll, "coll: ");  //coll: 51 52 53 54 55 
 
 END_TEST;
+
+
 
 
 NS_END(elloop);
