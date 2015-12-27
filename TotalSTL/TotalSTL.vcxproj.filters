@@ -34,6 +34,9 @@
     <Filter Include="algorithm\removing">
       <UniqueIdentifier>{bae9dd0f-d102-4586-935d-5391ee9955b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="iterator\auxiliary_functions">
+      <UniqueIdentifier>{2635fab8-6fcd-4201-8389-b43f28b04cf0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="algorithm\nonmodifying_algorithms.cpp">
@@ -81,6 +84,9 @@
     </ClCompile>
     <ClCompile Include="container\sequence\forward_list_test.cpp">
       <Filter>container\sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="iterator\auxiliary_functions\auxiliary_iterator_func_test.cpp">
+      <Filter>iterator\auxiliary_functions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

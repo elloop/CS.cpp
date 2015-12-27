@@ -95,6 +95,7 @@
     <ClCompile Include="functor\bind_test.cpp" />
     <ClCompile Include="functor\functors.cpp" />
     <ClCompile Include="functor\mem_fn_and_mem_fun.cpp" />
+    <ClCompile Include="iterator\auxiliary_functions\auxiliary_iterator_func_test.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
