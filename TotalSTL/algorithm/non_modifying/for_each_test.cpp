@@ -139,7 +139,7 @@ END_TEST;
 
 
 //----------------------- range based for loop ----------------------
-RUN_GTEST(ForEachTest, RangeForLoop, @);
+BEGIN_TEST(ForEachTest, RangeForLoop, @);
 
 //-----------non-modifying --------------
 auto print = [](int i)

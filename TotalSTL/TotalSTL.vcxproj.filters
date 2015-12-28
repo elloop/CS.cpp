@@ -37,6 +37,9 @@
     <Filter Include="iterator\auxiliary_functions">
       <UniqueIdentifier>{2635fab8-6fcd-4201-8389-b43f28b04cf0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="iterator\iterator_adapter">
+      <UniqueIdentifier>{e1d93464-aa9f-46fc-ac46-71ff9b03b4f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="algorithm\nonmodifying_algorithms.cpp">
@@ -87,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="iterator\auxiliary_functions\auxiliary_iterator_func_test.cpp">
       <Filter>iterator\auxiliary_functions</Filter>
+    </ClCompile>
+    <ClCompile Include="iterator\iterator_adapter\iterator_adapter_test.cpp">
+      <Filter>iterator\iterator_adapter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -55,7 +55,7 @@ public:
 
 
 //----------------------- self-written generator  ----------------------
-RUN_GTEST(ShuffleTest, ShuffleWithGenerator, @);
+BEGIN_TEST(ShuffleTest, ShuffleWithGenerator, @);
 
 array<int, 10> a = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 printContainer(a, "a: ");

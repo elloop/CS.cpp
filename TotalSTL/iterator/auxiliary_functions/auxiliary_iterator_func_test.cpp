@@ -15,7 +15,7 @@ using namespace std::placeholders;
 
 
 //-----------------------  Advance  ----------------------
-RUN_GTEST(AuxiliaryIterFuncTest, Advance, @);
+BEGIN_TEST(AuxiliaryIterFuncTest, Advance, @);
 
 array<int, 5> a = {1, 2, 3, 4, 5};
 printContainer(a, "a: ");
@@ -47,7 +47,7 @@ END_TEST;
 
 //-----------------------  next  ----------------------
 // next(pos, n) calls advance(pos, n) for an internal temporary object.
-RUN_GTEST(AuxiliaryIterFuncTest, Next, @);
+BEGIN_TEST(AuxiliaryIterFuncTest, Next, @);
 
 array<int, 5> a = { 1, 2, 3, 4, 5 };
 printContainer(a, "a: ");
@@ -82,7 +82,7 @@ END_TEST;
 
 //-----------------------  prev ----------------------
 // prev(pos, n) calls advance(pos, -n) for an internal temporary object.
-RUN_GTEST(AuxiliaryIterFuncTest, Prev, @);
+BEGIN_TEST(AuxiliaryIterFuncTest, Prev, @);
 
 array<int, 5> a = { 1, 2, 3, 4, 5 };
 printContainer(a, "a: ");
@@ -105,7 +105,7 @@ END_TEST;
 
 
 //-----------------------  distance ----------------------
-RUN_GTEST(AuxiliaryIterFuncTest, Distance, @);
+BEGIN_TEST(AuxiliaryIterFuncTest, Distance, @);
 
 array<int, 5> a = { 1, 2, 3, 4, 5 };
 printContainer(a, "a: ");
@@ -128,7 +128,7 @@ END_TEST;
 
 
 //-----------------------  iter_swap ----------------------
-RUN_GTEST(AuxiliaryIterFuncTest, Iter_swap, @);
+BEGIN_TEST(AuxiliaryIterFuncTest, Iter_swap, @);
 
 array<int, 5> a = { 1, 2, 3, 4, 5 };
 printContainer(a, "a: ");               // 1 2 3

@@ -16,7 +16,7 @@ using namespace std::placeholders;
 
 
 //----------------------- forward_list basic  ----------------------
-RUN_GTEST(ForwardListTest, Basic, @);
+BEGIN_TEST(ForwardListTest, Basic, @);
 
 forward_list<int> fl = { 1, 2, 3, 4, 5 };
 for ( const auto &elem : fl )
@@ -32,7 +32,7 @@ END_TEST;
 
 
 //----------------------- Modifying  ----------------------
-RUN_GTEST(ForwardListTest, Modifying, @);
+BEGIN_TEST(ForwardListTest, Modifying, @);
 
 forward_list<int> fl = { 1, 2, 3 };
 printContainer(fl, "fl: ");                 // fl: 1 2 3
@@ -50,7 +50,7 @@ END_TEST;
 
 
 //----------------------- find and modify  ----------------------
-RUN_GTEST(ForwardListTest, FindAndModify, @);
+BEGIN_TEST(ForwardListTest, FindAndModify, @);
 
 forward_list<int> fl = { 1, 2, 3 };
 printContainer(fl, "fl: ");                 // fl: 1 2 3
@@ -114,7 +114,7 @@ END_TEST;
 
 
 //----------------------- test find_before  ----------------------
-RUN_GTEST(ForwardListTest, FindBefore, @);
+BEGIN_TEST(ForwardListTest, FindBefore, @);
 
 forward_list<int> fl = { 1, 2, 3 };
 printContainer(fl, "original fl: ");                 // 1 2 3
@@ -152,7 +152,7 @@ END_TEST;
 
 
 //----------------------- splice ----------------------
-RUN_GTEST(ForwardListTest, SpliceTest, @);
+BEGIN_TEST(ForwardListTest, SpliceTest, @);
 
 forward_list<int> fl1 = { 1, 2, 3, 4, 5 };
 forward_list<int> fl2 = { 97, 98, 99 };
