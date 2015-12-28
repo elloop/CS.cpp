@@ -17,6 +17,14 @@ using std::for_each;
 //----------------------- reverse iterator  ----------------------
 RUN_GTEST(IteratorAdapter, ReverseIterator, @);
 
+vector<int> v = { 1, 2, 3 };
+auto rbeg = v.rbegin();
+while ( rbeg != v.rend() )
+{
+    cout << *rbeg << endl;
+    ++rbeg;
+}
+
 array<int, 5> a = {1, 2, 3, 4, 5};
 printContainer(a, "a: ");
 
@@ -184,24 +192,24 @@ END_TEST;
 
 
 
-//----------------------- move iterator  ----------------------
-RUN_GTEST(IteratorAdapter, MoveIterator, @);
+    //----------------------- move iterator  ----------------------
+    RUN_GTEST(IteratorAdapter, MoveIterator, @);
 
-list<string> l = {"hello", "tom", "jerry"};
-printContainer(l, "l: ");
+    list<string> l = {"hello", "tom", "jerry"};
+    printContainer(l, "l: ");
 
-vector<string> v(l.begin(), l.end());              // copy l.
-printContainer(v, "copy of l: ");
+    vector<string> v(l.begin(), l.end());              // copy l.
+    printContainer(v, "copy of l: ");
 
-vector<string> v2(make_move_iterator(l.begin()), 
-               make_move_iterator(l.end()));    // move l.
+    vector<string> v2(make_move_iterator(l.begin()), 
+                   make_move_iterator(l.end()));    // move l.
 
-printContainer(v2, "move l to v2: ");
+    printContainer(v2, "move l to v2: ");
 
-// todo: l is moved, but i can still visit its elem. why?
-printContainer(l, "after moved l: ");           // still valid , why??
+    // todo: l is moved, but i can still visit its elem. why?
+    printContainer(l, "after moved l: ");           // still valid , why??
 
-END_TEST;
+    END_TEST;
 
 
 
