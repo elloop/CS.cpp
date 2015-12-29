@@ -15,7 +15,7 @@ using std::for_each;
 
 
 //----------------------- reverse iterator  ----------------------
-RUN_GTEST(IteratorAdapter, ReverseIterator, @);
+BEGIN_TEST(IteratorAdapter, ReverseIterator, @);
 
 vector<int> v = { 1, 2, 3 };
 auto rbeg = v.rbegin();
@@ -66,7 +66,7 @@ END_TEST;
 
 
 //----------------------- inserter ----------------------
-RUN_GTEST(IteratorAdapter, InserterTest, @);
+BEGIN_TEST(IteratorAdapter, InserterTest, @);
 
 array<int, 5> a = { 1, 2, 3, 4, 5 };
 vector<int> v = {};
@@ -135,7 +135,7 @@ END_TEST;
 
 
 //----------------------- stream iterator  ----------------------
-RUN_GTEST(IteratorAdapter, StreamIterator, @);
+BEGIN_TEST(IteratorAdapter, StreamIterator, @);
 
 //------------- 1. ostream iterator ----------------
 // ostream_iterator(stream, delim)
@@ -193,7 +193,7 @@ END_TEST;
 
 
 //----------------------- move iterator  ----------------------
-RUN_GTEST(IteratorAdapter, MoveIterator, @);
+BEGIN_TEST(IteratorAdapter, MoveIterator, @);
 
 list<string> l = {"hello", "tom", "jerry"};
 printContainer(l, "l: ");

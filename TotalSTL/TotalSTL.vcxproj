@@ -97,6 +97,7 @@
     <ClCompile Include="functor\mem_fn_and_mem_fun.cpp" />
     <ClCompile Include="iterator\auxiliary_functions\auxiliary_iterator_func_test.cpp" />
     <ClCompile Include="iterator\iterator_adapter\iterator_adapter_test.cpp" />
+    <ClCompile Include="iterator\user_defined_iterator.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
