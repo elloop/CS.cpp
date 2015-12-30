@@ -99,6 +99,7 @@
     <ClCompile Include="iterator\iterator_adapter\iterator_adapter_test.cpp" />
     <ClCompile Include="iterator\user_defined_iterator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="regex\regex_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="algorithm\nonmodifying_algorithms.h" />

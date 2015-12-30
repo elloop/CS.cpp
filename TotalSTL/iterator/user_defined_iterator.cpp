@@ -56,7 +56,7 @@ inline asso_inserter_iterator<Con> asso_inserter(Con &con)
 }
 
 
-RUN_GTEST(UserDefinedIterator, AssoInserter, @);
+BEGIN_TEST(UserDefinedIterator, AssoInserter, @);
 
 set<int> uset;
 

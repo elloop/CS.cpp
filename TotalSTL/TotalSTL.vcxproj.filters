@@ -40,6 +40,9 @@
     <Filter Include="iterator\iterator_adapter">
       <UniqueIdentifier>{e1d93464-aa9f-46fc-ac46-71ff9b03b4f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="regex">
+      <UniqueIdentifier>{37c58dff-a933-48d2-9d5b-e147e2f9e0b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="algorithm\nonmodifying_algorithms.cpp">
@@ -96,6 +99,9 @@
     </ClCompile>
     <ClCompile Include="iterator\user_defined_iterator.cpp">
       <Filter>iterator</Filter>
+    </ClCompile>
+    <ClCompile Include="regex\regex_test.cpp">
+      <Filter>regex</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
