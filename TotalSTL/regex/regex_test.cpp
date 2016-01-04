@@ -31,7 +31,7 @@ while (rit != rend)
     ++rit;
 }
 
-char32_t utf32[] = U"hello = \u4F60\u597D\u554A";
+//char32_t utf32[] = U"hello = \u4F60\u597D\u554A";
 
 
 END_TEST;
