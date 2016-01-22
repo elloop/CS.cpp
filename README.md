@@ -33,10 +33,10 @@ see `macro_define.h` to learn more.
       After deleting `xcode` and `vim` branches, .git decrease to 3M, so I needn't create a new repo anymore.
 
 =====================
-Because the commits I do by using cmd-line tools on my local computer won't be shown in my profile contributions graph, I lost some followers who maybe think that I'm not doing my git-jobs.
+~~Because the commits I do by using cmd-line tools on my local computer won't be shown in my profile contributions graph, I lost some followers who maybe think that I'm not doing my git-jobs.~~
 
-So I decide to sign in here everyday, is this stupid?
+~~So I decide to sign in here everyday, is this stupid? YES，Stupid~~
 
-Sign in with one sentence:
+~~Sign in with one sentence:~~
 
-2016-1-22 today is the first day after our nianhui, we rest in the morning.
+~~2016-1-22 today is the first day after our nianhui, we rest in the morning.~~
