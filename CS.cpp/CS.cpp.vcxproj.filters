@@ -25,6 +25,9 @@
     <Filter Include="algorithm\suffix_expression">
       <UniqueIdentifier>{891674ad-57b4-42de-8652-fcc78836d0f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="algorithm\DP">
+      <UniqueIdentifier>{75096717-de52-4cd5-bdf7-53f23fac30f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structure\stack\stack.h">
@@ -98,6 +101,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="data_structure\tree\BinarySearchTreeTest.cpp">
       <Filter>data_structure\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\DP\leetcode_120_triangle.cpp">
+      <Filter>algorithm\DP</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

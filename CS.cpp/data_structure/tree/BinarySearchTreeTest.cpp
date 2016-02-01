@@ -3,7 +3,7 @@
 NS_BEGIN(elloop);
 
 //---------------------- begin of new test ----------------------
-RUN_GTEST(BinarySearchTree, Construct, @0);
+BEGIN_TEST(BinarySearchTree, Construct, @0);
     
     using std::cin;
     using std::vector;
