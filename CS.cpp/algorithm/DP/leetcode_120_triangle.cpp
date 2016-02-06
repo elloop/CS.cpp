@@ -8,6 +8,8 @@ NS_BEGIN(elloop);
 class Solution
 {
 public:
+    // transfer equation:
+    // 
     int minimumTotal(vector<vector<int>>& triangle)
     {
         return 0;

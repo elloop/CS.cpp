@@ -91,6 +91,7 @@
     <ClCompile Include="container\map_vs_unordered_map.cpp" />
     <ClCompile Include="container\sequence\array_test.cpp" />
     <ClCompile Include="container\sequence\forward_list_test.cpp" />
+    <ClCompile Include="container\sequence\vector_test.cpp" />
     <ClCompile Include="container\set_with_pointer.cpp" />
     <ClCompile Include="functor\bind_test.cpp" />
     <ClCompile Include="functor\functors.cpp" />
