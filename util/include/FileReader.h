@@ -13,7 +13,7 @@ public:
     void purege();
 private:
     FileReader() {}
-    ~FileReader() {pln("~FileReader()");}
+    ~FileReader() {}
     static FileReader* instance_;
 };
 

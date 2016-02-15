@@ -103,6 +103,9 @@
     <ClCompile Include="regex\regex_test.cpp">
       <Filter>regex</Filter>
     </ClCompile>
+    <ClCompile Include="container\sequence\tuple_test.cpp">
+      <Filter>container\sequence</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="algorithm\nonmodifying_algorithms.h">

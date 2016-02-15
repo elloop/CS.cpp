@@ -20,6 +20,8 @@ void dummyExitFunction() {
 	char c = getchar();
 }
 
+
+
 int main(int argc, char** argv) {
 
 #if defined(_MSC_VER) && defined(_DEBUG)

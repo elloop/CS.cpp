@@ -16,7 +16,7 @@ using namespace std::placeholders;
 
 
 //-----------------------  Advance  ----------------------
-RUN_GTEST(RegexTest, Unicode, @);
+BEGIN_TEST(RegexTest, Unicode, @);
 
 std::string s("this subject has a submarine as a subsequence");
 //std::regex e("\\b(sub)([^ ]*)");   // matches words beginning by "sub"
