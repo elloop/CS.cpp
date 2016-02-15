@@ -95,7 +95,13 @@ void printContainer(const Con & c, const std::string& opt = "") {
 //}
 
 	
-
+template <typename Container>
+void printContainerNormally(const Container& container) {
+  for (auto item : container) {
+    p(item);
+  }
+  cr;
+}
 
 template <typename Container>
 void printArrayLikeContainer(const Container & container) {
@@ -119,13 +125,7 @@ void printMap(const Con & c, const std::string& opt = "") {
     cr;
 }
 
-template <typename Container>
-void printContainerNormally(const Container& container) {
-  for (auto item : container) {
-    p(item);
-  }
-  cr;
-}
+
 
 template <typename Container>
 void printConainterInfo(const Container& container, const std::string& opt = "") {

@@ -97,6 +97,7 @@
     <ClInclude Include="data_structure\tree\binary_tree.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="algorithm\DP\leetcode_120_triangle.cpp" />
     <ClCompile Include="algorithm\leetcode\two_sum.cpp" />
     <ClCompile Include="algorithm\oj\1002-telephone-numer.c" />
     <ClCompile Include="algorithm\suffix_expression\suffix.cpp" />
