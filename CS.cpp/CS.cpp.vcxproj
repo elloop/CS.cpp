@@ -94,6 +94,7 @@
     <ClInclude Include="data_structure\stack\stash.h" />
     <ClInclude Include="data_structure\tree\avl_tree.h" />
     <ClInclude Include="data_structure\tree\BinarySearchTree.h" />
+    <ClInclude Include="data_structure\tree\binary_thread_tree.h" />
     <ClInclude Include="data_structure\tree\binary_tree.h" />
   </ItemGroup>
   <ItemGroup>

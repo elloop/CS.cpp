@@ -75,6 +75,9 @@
     <ClInclude Include="data_structure\tree\BinarySearchTree.h">
       <Filter>data_structure\tree</Filter>
     </ClInclude>
+    <ClInclude Include="data_structure\tree\binary_thread_tree.h">
+      <Filter>data_structure\tree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="data_structure\stack\stash.cpp">
