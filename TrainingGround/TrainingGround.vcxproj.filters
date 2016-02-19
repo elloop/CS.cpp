@@ -79,6 +79,9 @@
     <ClCompile Include="grammar\template_function_test.cpp">
       <Filter>grammar</Filter>
     </ClCompile>
+    <ClCompile Include="grammar\enum_class_test.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="grammar\c_lib_test.h">
