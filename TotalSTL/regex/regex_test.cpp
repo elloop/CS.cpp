@@ -169,8 +169,69 @@ read_from_file(srcfile_name, content);
 convert_highlight(content, flag);
 write_to_file(dstfile_name, content);
 
-END_TEST;   
+END_TEST;
 
+
+
+
+BEGIN_TEST(RegexTest, highlight, @);
+
+string s("{%    highlight  c++   %} ");
+cout << "target: " << s << endl;
+
+string pat1("\\{[\\s\\t]*%[\\s\\t]*\\bhighlight[\\s\\t]*(\\S+)[\\s\\t]*%[\\s\\t]*\\}[\\s\\t]*");
+regex e(pat1.c_str());
+cout << "pattern: " << pat1 << endl;
+
+smatch sm;
+regex_match(s, sm, e);
+if (sm.size() == 2)
+{
+    cout << regex_replace(s, e, "```$1") << endl;
+}
+
+
+string s1e("{   %      endhighlight    	  %   }");
+
+string pat2("\\{[\\s\\t]*%[\\s\\t]*endhighlight[\\s\\t]*%[\\s\\t]*\\}");
+regex e2(pat2.c_str());
+cout << "pattern e2: " << pat2 << endl;
+
+smatch sm1e;
+regex_match(s1e, sm1e, e2);
+cout << "size: " << sm1e.size() << endl;
+if (sm1e.size() == 1)
+{
+    cout << regex_replace(s1e, e2, "```") << endl;
+}
+
+
+string s2b("```c++      ");
+string pat3("```(\\S+)[\\s\\t]*");
+regex e3(pat3.c_str());
+cout << "pattern 2b: " << pat3 << endl;
+
+smatch sm2b;
+regex_match(s2b, sm2b, e3);
+if (sm2b.size() == 2)
+{
+    cout << regex_replace(s2b, e3, "{% highlight $1 %}");
+}
+
+
+string s2e("```           \n");
+string pat4("```[\\s\\t]*");
+regex e4;
+e4 = pat4;
+cout << "pattern : " << pat4 << endl;
+
+smatch sm2e;
+regex_match(s2e, sm2e, e4);
+if (sm2e.size() == 1)
+{
+    cout << regex_replace(s2e, e4, "{% endhighlight %}");
+}
+END_TEST;
 
 
 NS_END(elloop);
