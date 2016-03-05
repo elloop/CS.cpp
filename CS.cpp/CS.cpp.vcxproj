@@ -103,6 +103,7 @@
     <ClCompile Include="algorithm\oj\1002-telephone-numer.c" />
     <ClCompile Include="algorithm\suffix_expression\suffix.cpp" />
     <ClCompile Include="algorithm\suffix_expression\suffix_test.cpp" />
+    <ClCompile Include="bigword\graph.cpp" />
     <ClCompile Include="data_structure\stack\stash.cpp" />
     <ClCompile Include="data_structure\stack\stash_test.cpp" />
     <ClCompile Include="data_structure\tree\BinarySearchTreeTest.cpp" />
