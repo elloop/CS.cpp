@@ -78,10 +78,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ds\graph_test.h" />
     <ClInclude Include="grammar\cau_oj.h" />
     <ClInclude Include="grammar\test_printf.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ds\graph_test.c" />
     <ClCompile Include="grammar\cau_oj.c" />
     <ClCompile Include="grammar\test_printf.c" />
     <ClCompile Include="main.c" />
