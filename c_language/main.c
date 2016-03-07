@@ -45,9 +45,23 @@ int findLongWord(char *str)
     return place;
 }
 
+// memory leak check.
+#if defined(_MSC_VER) && defined(_DEBUG)
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+// with detail description of memory leak.
+#define new new( _CLIENT_BLOCK, __FILE__, __LINE__)
+void turnOnMemroyCheck()
+{
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+}
+#endif
+
+#include "ds/graph_test.h"
 int main(void)
 {
-    char str[100];
+   /* char str[100];
     int i;
     gets(str);
     printf("word=");
@@ -55,7 +69,12 @@ int main(void)
     for ( i = findLongWord(str); isalphabetic(str[i]); ++i )
     {
         printf("%c", str[i]);
-    }
+    }*/
+
+    mgraph_t g;
+
+    create_mgraph(&g);
+    delete_mgraph(&g);
 
     return 0;
 }

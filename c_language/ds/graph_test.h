@@ -23,3 +23,4 @@ void init_mgraph_edges(mgraph_t* g);
 
 void init_mgraph_vertexes(mgraph_t* g);
 
+void create_mgraph_edges(mgraph_t* g);

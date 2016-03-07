@@ -1,6 +1,8 @@
 #include "ds/graph_test.h"
 
+#include <assert.h>
 #include <stdio.h>
+
 
 
 void create_mgraph(mgraph_t* g)
@@ -15,6 +17,7 @@ void create_mgraph(mgraph_t* g)
     {
         g->adj[i] = (mgraph_edge_t *) malloc (sizeof (mgraph_edge_t) * num);
     }
+    init_mgraph_edges(g);
 
     g->vertexes = (mgraph_elem_t *) malloc (sizeof (mgraph_elem_t) * num);
 
@@ -22,7 +25,8 @@ void create_mgraph(mgraph_t* g)
     init_mgraph_vertexes(g);
 
     // init edges.
-    init_mgraph_edges(g);
+    create_mgraph_edges(g);
+
 }
 
 void delete_mgraph(mgraph_t* g)
@@ -66,20 +70,30 @@ void init_mgraph_vertexes(mgraph_t* g)
 void init_mgraph_edges(mgraph_t* g)
 {
     assert(g && g->adj);
+    for (size_t i=0; i<g->size; ++i) 
+    {
+        for (size_t j = 0; j < g->size; j++)
+        {
+            g->adj[i][j] = 0;
+        }
+    }
+}
+
+void create_mgraph_edges(mgraph_t* g)
+{
+    assert(g && g->adj);
     size_t count = 0;
     printf("how many edges: \n");
     scanf("%d", &count);
 
     size_t  h;
     size_t  t;
-    int     w;
-    h = t = w = 0;
-    for ( size_t i = 0; i < count; ++i)
+    h = t = 0;
+    for (size_t i = 0; i < count; ++i)
     {
-        printf("edge %d: i j weight = ", (i+1));
-        scanf("%d %d %d", h, t, w);
-        g->adj[h-1][t-1] = w;
+        printf("edge %d: i j = ", (i + 1));
+        scanf("%d %d %d", &h, &t);
+        g->adj[h - 1][t - 1] = 1;
+        g->adj[t - 1][h - 1] = 1;
     }
-
 }
-

@@ -4,6 +4,9 @@
     <Filter Include="grammar">
       <UniqueIdentifier>{534b55ae-3cf1-4a15-9d26-d5c19dd92d8f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ds">
+      <UniqueIdentifier>{e4f12013-28ea-4d21-95f4-bf4f2b55d57b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="grammar\test_printf.h">
@@ -13,7 +16,7 @@
       <Filter>grammar</Filter>
     </ClInclude>
     <ClInclude Include="ds\graph_test.h">
-      <Filter>grammar</Filter>
+      <Filter>ds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -25,7 +28,7 @@
       <Filter>grammar</Filter>
     </ClCompile>
     <ClCompile Include="ds\graph_test.c">
-      <Filter>grammar</Filter>
+      <Filter>ds</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
