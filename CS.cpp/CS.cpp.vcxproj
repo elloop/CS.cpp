@@ -101,6 +101,8 @@
     <ClCompile Include="algorithm\DP\leetcode_120_triangle.cpp" />
     <ClCompile Include="algorithm\leetcode\two_sum.cpp" />
     <ClCompile Include="algorithm\oj\1002-telephone-numer.c" />
+    <ClCompile Include="algorithm\string\perm_string.cpp" />
+    <ClCompile Include="algorithm\string\ReverseWord.cpp" />
     <ClCompile Include="algorithm\suffix_expression\suffix.cpp" />
     <ClCompile Include="algorithm\suffix_expression\suffix_test.cpp" />
     <ClCompile Include="bigword\graph.cpp" />

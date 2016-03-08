@@ -31,6 +31,9 @@
     <Filter Include="bigword">
       <UniqueIdentifier>{1bd66b35-f3a0-47eb-9543-2f7d824376a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="algorithm\string">
+      <UniqueIdentifier>{1f594eb2-54ba-4cc4-a56c-efa59a3c578b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structure\stack\stack.h">
@@ -113,6 +116,12 @@
     </ClCompile>
     <ClCompile Include="bigword\graph.cpp">
       <Filter>bigword</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\string\ReverseWord.cpp">
+      <Filter>algorithm\string</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\string\perm_string.cpp">
+      <Filter>algorithm\string</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
