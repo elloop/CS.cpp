@@ -34,6 +34,9 @@
     <Filter Include="algorithm\string">
       <UniqueIdentifier>{1f594eb2-54ba-4cc4-a56c-efa59a3c578b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="algorithm\array">
+      <UniqueIdentifier>{8f0f7bb1-1e6a-4439-ba73-800c2ccb7500}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structure\stack\stack.h">
@@ -122,6 +125,9 @@
     </ClCompile>
     <ClCompile Include="algorithm\string\perm_string.cpp">
       <Filter>algorithm\string</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm\array\matrix_multiply.cpp">
+      <Filter>algorithm\array</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
