@@ -28,7 +28,7 @@ void perm_string(string& s, size_t begin, size_t end)
 // perm with dictionary order.
 
 
-RUN_GTEST(StringAlgorithm, PermRecursive, @@);
+BEGIN_TEST(StringAlgorithm, PermRecursive, @@);
 
 string str("abcd");
 perm_string(str, 0, str.size() -1 );

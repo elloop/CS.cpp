@@ -11,13 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2656E26F-25D8-4F0A-A47C-DF086E079620}</ProjectGuid>
+    <ProjectGuid>{1AE5528E-3ACC-4A85-9B15-65C4B281B4C8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>c_language</RootNamespace>
+    <RootNamespace>gtest</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -54,13 +54,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
-      <CompileAs>CompileAsC</CompileAs>
+      <AdditionalIncludeDirectories>$(SolutionDir)/include/;$(SolutionDir)/include/gtest;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <OutputFile>$(SolutionDir)/libs/$(ProjectName)$(TargetExt)</OutputFile>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -80,15 +82,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ds\graph_test.h" />
-    <ClInclude Include="grammar\cau_oj.h" />
-    <ClInclude Include="grammar\test_printf.h" />
+    <ClCompile Include="..\include\gtest\src\gtest-death-test.cc" />
+    <ClCompile Include="..\include\gtest\src\gtest-filepath.cc" />
+    <ClCompile Include="..\include\gtest\src\gtest-port.cc" />
+    <ClCompile Include="..\include\gtest\src\gtest-printers.cc" />
+    <ClCompile Include="..\include\gtest\src\gtest-test-part.cc" />
+    <ClCompile Include="..\include\gtest\src\gtest-typed-test.cc" />
+    <ClCompile Include="..\include\gtest\src\gtest.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ds\graph_test.c" />
-    <ClCompile Include="grammar\cau_oj.c" />
-    <ClCompile Include="grammar\test_printf.c" />
-    <ClCompile Include="main.c" />
+    <ClInclude Include="..\include\gtest\gtest-death-test.h" />
+    <ClInclude Include="..\include\gtest\gtest-message.h" />
+    <ClInclude Include="..\include\gtest\gtest-param-test.h" />
+    <ClInclude Include="..\include\gtest\gtest-printers.h" />
+    <ClInclude Include="..\include\gtest\gtest-spi.h" />
+    <ClInclude Include="..\include\gtest\gtest-test-part.h" />
+    <ClInclude Include="..\include\gtest\gtest-typed-test.h" />
+    <ClInclude Include="..\include\gtest\gtest.h" />
+    <ClInclude Include="..\include\gtest\gtest_pred_impl.h" />
+    <ClInclude Include="..\include\gtest\gtest_prod.h" />
+    <ClInclude Include="..\include\gtest\internal\custom\gtest-port.h" />
+    <ClInclude Include="..\include\gtest\internal\custom\gtest-printers.h" />
+    <ClInclude Include="..\include\gtest\internal\custom\gtest.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-death-test-internal.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-filepath.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-internal.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-linked_ptr.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-param-util-generated.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-param-util.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-port-arch.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-port.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-string.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-tuple.h" />
+    <ClInclude Include="..\include\gtest\internal\gtest-type-util.h" />
+    <ClInclude Include="..\include\gtest\src\gtest-internal-inl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\gtest\gtest-param-test.h.pump" />
+    <None Include="..\include\gtest\internal\gtest-param-util-generated.h.pump" />
+    <None Include="..\include\gtest\internal\gtest-tuple.h.pump" />
+    <None Include="..\include\gtest\internal\gtest-type-util.h.pump" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

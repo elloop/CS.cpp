@@ -32,7 +32,7 @@ void print_matrix(int m[][DIM])
 	}
 }
 
-RUN_GTEST(ArrayAlgo, MatrixMultiply, @@);
+BEGIN_TEST(ArrayAlgo, MatrixMultiply, @@);
 
 int ma[DIM][DIM] = 
 {

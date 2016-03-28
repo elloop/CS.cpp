@@ -17,7 +17,7 @@ public:
 };
 
 
-RUN_GTEST(LeetCodeDP, Triangle, @);
+BEGIN_TEST(LeetCodeDP, Triangle, @);
 
 vector<vector<int>> mat =
 {

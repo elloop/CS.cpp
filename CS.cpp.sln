@@ -18,6 +18,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "util", "util\util.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "c_language", "c_language\c_language.vcxproj", "{2656E26F-25D8-4F0A-A47C-DF086E079620}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "gtest\gtest.vcxproj", "{1AE5528E-3ACC-4A85-9B15-65C4B281B4C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -48,6 +50,10 @@ Global
 		{2656E26F-25D8-4F0A-A47C-DF086E079620}.Debug|Win32.Build.0 = Debug|Win32
 		{2656E26F-25D8-4F0A-A47C-DF086E079620}.Release|Win32.ActiveCfg = Release|Win32
 		{2656E26F-25D8-4F0A-A47C-DF086E079620}.Release|Win32.Build.0 = Release|Win32
+		{1AE5528E-3ACC-4A85-9B15-65C4B281B4C8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1AE5528E-3ACC-4A85-9B15-65C4B281B4C8}.Debug|Win32.Build.0 = Debug|Win32
+		{1AE5528E-3ACC-4A85-9B15-65C4B281B4C8}.Release|Win32.ActiveCfg = Release|Win32
+		{1AE5528E-3ACC-4A85-9B15-65C4B281B4C8}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
