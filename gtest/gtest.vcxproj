@@ -61,7 +61,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <OutputFile>$(SolutionDir)/libs/$(ProjectName)$(TargetExt)</OutputFile>
+      <OutputFile>$(SolutionDir)/libs/$(TargetFileName)</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

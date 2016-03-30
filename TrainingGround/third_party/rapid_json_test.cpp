@@ -1,7 +1,7 @@
 #include "rapid_json_test.h"
 #include "rapidjson/reader.h"
 #include "rapidjson/document.h"
-#include "FileReader.h"
+#include "util/FileReader.h"
 #include <string>
 #include <fstream>
 #include <iostream>

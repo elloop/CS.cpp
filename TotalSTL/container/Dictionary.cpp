@@ -1,6 +1,6 @@
 
 #include "Dictionary.h"
-#include "FileReader.h"
+#include "util/FileReader.h"
 #include "jsoncpp/json.h"
 
 Dictionary* Dictionary::instance_ = nullptr;

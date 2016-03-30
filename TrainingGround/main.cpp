@@ -11,7 +11,7 @@ void turnOnMemroyCheck() {
 #endif
 
 #include "inc.h"
-#include "FileReader.h"
+#include "util/FileReader.h"
 #include "gtest/gtest.h"
 
 void dummyExitFunction() {

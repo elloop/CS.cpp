@@ -63,7 +63,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <OutputFile>$(SolutionDir)libs/$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(SolutionDir)libs/$(TargetFileName)</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -85,9 +85,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="file\FileReader.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\FileReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

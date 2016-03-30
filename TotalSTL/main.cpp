@@ -12,7 +12,7 @@ void turnOnMemroyCheck() {
 
 #include "inc.h"
 #include "gtest/gtest.h"
-#include "FileReader.h"
+#include "util/FileReader.h"
 
 void dummyExitFunction() {
     elloop::FileReader::getInstance()->purege();
