@@ -2,6 +2,14 @@
 Computer Science Practice Using cpp.
 ---
 
+## difference between branches
+
+|*Name*| *Description*|
+|------|--------------|
+|master| building with CMake |
+|1.0(visual studio)| building with visual studio |
+
+
 ## Projects in this repo
 |*Name*| *Description*|
 |------|--------------|
