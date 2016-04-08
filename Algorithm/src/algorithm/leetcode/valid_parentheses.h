@@ -43,7 +43,7 @@ class Solution {
       int i = s.size();
       stack st(i);
       int j(0);
-      for (j; j<i; ++j) {
+      for (; j<i; ++j) {
         switch (s[j]) {
           case '(' :
           case '{':

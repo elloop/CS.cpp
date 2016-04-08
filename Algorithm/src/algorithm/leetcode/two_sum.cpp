@@ -26,7 +26,7 @@ class S {
       vector<int> result;
       vector<int>::size_type i(0);
       map<int, int> half;
-      for (i; i<numbers.size(); ++i) {
+      for (; i<numbers.size(); ++i) {
         if (half.find(numbers[i]) != half.end()) {
           result.push_back(half.find(numbers[i])->second);
           result.push_back(i+1);

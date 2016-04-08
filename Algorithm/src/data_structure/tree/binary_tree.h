@@ -53,7 +53,7 @@ private:
 template <typename T>
 class BinaryTree {
 public:
-  typedef typename BinaryTreeNode<T> Node;
+  typedef typename elloop::BinaryTreeNode<T> Node;
   typedef void(*const_visitor)( const BinaryTreeNode<T>* );
   typedef void(*visitor)( BinaryTreeNode<T>* & );
 
@@ -196,8 +196,8 @@ private:
 template <typename T>
 class TreeHelper {
 public:
-  typedef BinaryTree<T> Tree;
-  typedef BinaryTreeNode<T> Node;
+  typedef elloop::BinaryTree<T> Tree;
+  typedef elloop::BinaryTreeNode<T> Node;
   typedef typename Tree::visitor visitor;
   typedef typename Tree::const_visitor const_visitor;
   typedef const std::vector<T>& ValueList;

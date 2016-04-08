@@ -158,7 +158,7 @@ typename TreeHelper<T>::Node * TreeHelper<T>::copySubTree(const Node* node) {
 
 template <typename T>
 void TreeHelper<T>::logTreeInfo(const Tree* tree) {
-    LOGD("height: %d, leaf count: %d\n", getTreeHeight(tree->root()),
+    LOGD("height: %zu, leaf count: %zu\n", getTreeHeight(tree->root()),
         getBinaryTreeLeafCount(tree));
 }
 

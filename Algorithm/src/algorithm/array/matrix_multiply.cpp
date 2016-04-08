@@ -48,7 +48,7 @@ int mb[DIM][DIM] =
 	{7, 1, 3}
 };
 
-int mc[DIM][DIM] = { 0 };
+int mc[DIM][DIM] = { {0} };
 
 print_matrix(ma);
 cr;
