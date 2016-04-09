@@ -1,18 +1,2 @@
-
-INCLUDE_SUB_DIRECTORIES_RECURSIVELY(${CMAKE_CURRENT_LIST_DIR})
-
-#file(GLOB ALL_SUB RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_LIST_DIR}/*)
-#foreach(sub_dir ${ALL_SUB})
-#    if (IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${sub_dir})
-#        include_directories(${CMAKE_CURRENT_LIST_DIR}/${sub_dir})
-#    endif()
-#endforeach()
-
-file(GLOB_RECURSE CPP_LIST ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
-file(GLOB_RECURSE C_LIST ${CMAKE_CURRENT_LIST_DIR}/*.c)
-set(ALGORITHM_SRC_LIST
-    ${CPP_LIST}
-    ${C_LIST}
-    )
-
-
+include_sub_directories_recursively(${CMAKE_CURRENT_LIST_DIR})
+include_all_sources_recursively(ALGORITHM_SRC_LIST ${CMAKE_CURRENT_LIST_DIR})

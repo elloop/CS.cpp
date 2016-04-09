@@ -1,20 +1,5 @@
 set(EXECUTABLE_OUTPUT_PATH  ${PROJECT_BINARY_DIR}/bin)
 
-## function definition: INCLUDE_SUB_DIRECTORIES_RECURSIVELY
-function(INCLUDE_SUB_DIRECTORIES_RECURSIVELY root_dir)
-
-    if (IS_DIRECTORY ${root_dir})
-        message("include dir: " ${root_dir})
-        include_directories(${root_dir})
-    endif()
-
-    file(GLOB ALL_SUB RELATIVE ${root_dir} ${root_dir}/*)
-    foreach(sub ${ALL_SUB})
-        if (IS_DIRECTORY ${root_dir}/${sub})
-            INCLUDE_SUB_DIRECTORIES_RECURSIVELY(${root_dir}/${sub})
-        endif()
-    endforeach()
-endfunction()
 
 
 include(algorithm/CMakeLists.txt)

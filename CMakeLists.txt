@@ -1,6 +1,30 @@
 cmake_minimum_required(VERSION 3.0)
 project(CS_CPP)
 
+## function    : include_sub_directories_recursively
+## description : as the function name says.
+function(include_sub_directories_recursively root_dir)
+    if (IS_DIRECTORY ${root_dir})
+        message("include dir: " ${root_dir})
+        include_directories(${root_dir})
+    endif()
+
+    file(GLOB ALL_SUB RELATIVE ${root_dir} ${root_dir}/*)
+    foreach(sub ${ALL_SUB})
+        if (IS_DIRECTORY ${root_dir}/${sub})
+            include_sub_directories_recursively(${root_dir}/${sub})
+        endif()
+    endforeach()
+endfunction()
+
+## function    : include_all_sources_recursively
+## description : as the function name says
+function(include_all_sources_recursively target_list root_dir)
+    file(GLOB_RECURSE cpp_list ${root_dir}/*.cpp)
+    file(GLOB_RECURSE c_list ${root_dir}/*.c)
+    set(${target_list} ${cpp_list} ${c_list} PARENT_SCOPE)
+endfunction()
+
 include_directories(${PROJECT_SOURCE_DIR}/)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
