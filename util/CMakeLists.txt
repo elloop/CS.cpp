@@ -1,0 +1,7 @@
+message("adding lib: util......")
+include_sub_directories_recursively(${CMAKE_CURRENT_LIST_DIR})
+include_all_sources_recursively(UTIL_SRC_LIST ${CMAKE_CURRENT_LIST_DIR})
+foreach(src ${UTIL_SRC_LIST})
+    message("util src: " ${src})
+endforeach()
+add_library(util ${UTIL_SRC_LIST})
