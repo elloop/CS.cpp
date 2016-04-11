@@ -40,7 +40,7 @@ namespace union_test {
         std::string s;
         int id;
     };
-    WithString ws; 
+    // WithString ws;  // error: call to implicitly-deleted default constructor of 'elloop::union_test::WithString'
     // error: string is not pod, so WithString' s default constructor
     // is deleted.
 
@@ -54,6 +54,7 @@ namespace union_test {
             new (&s) std::string();
         }
         ~WithString2() {
+            using namespace std; //fix  error: expected the class name after '~' to name a destructor
             s.~string();
         }
     };
@@ -61,7 +62,10 @@ namespace union_test {
     // anonymous union. p.109
     class Person {
     public:
-        Person(int id, int age) : id_(id), age_(age) {}
+        Person(int id, int age) : age_(age), id_(id){
+            (void)age_;
+            (void)id_;
+        }
     private:
         int age_;
         int id_;
@@ -89,7 +93,8 @@ namespace union_test {
     private:
         Type t;
         union {
-            Person p;
+            // Person p;
+            class Person p;
             char name[10];
             char gender;
         };

@@ -91,7 +91,8 @@ BEGIN_TEST(Lambda, ConvertLambdaToFunctionPointer, @);
     auto lambda_sum2_capture = [=](int a, int b)->int {return a + b; };
 
     typedef int (*Sum2ptr)(int x, int y);
-    typedef int (*Sum1ptr)(int x);
+
+    // typedef int (*Sum1ptr)(int x); commentted @20160410 for -Wunused-local-typedef in clang++.
 
     Sum2ptr sum2 = lambda_sum2;
     //Sum2ptr sum22 = lambda_sum2_capture; // error: capture is not allowed.

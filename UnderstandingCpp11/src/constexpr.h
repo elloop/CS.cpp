@@ -6,7 +6,7 @@ _Pragma("once")
 #include "inc.h"
 
 NS_BEGIN(elloop)
-NS_BEGIN(constexpr)
+NS_BEGIN(constexpr_test)
 
 #ifdef _MSC_VER
 #else
@@ -19,20 +19,22 @@ NS_BEGIN(constexpr)
 // it must be a const expression.
 
 // example:
-constexpr int data() { const int i = 1; return i;} // wrong, too many statements.
-constexpr void f() {}							   // wrong, must have return val.
+
+//constexpr int data() { const int i = 1; return i;} // wrong, too many statements.
+//constexpr void f() {}							   // wrong, must have return val.
 
 constexpr int cf();
-constexpr int c = cf();							   // wrong, cf is not defined.
+//constexpr int c = cf();							   // wrong, cf is not defined.
 
 int globalInt(100);
-constexpr int g() { return globalInt; }			   // wrong, global data..
+//constexpr int g() { return globalInt; }			   // wrong, global data..
 
-int nonConstFunc() { return 1;}
-constexpr int k() { return nonConstFunc(); }	   // wrong, nonConstFunc is not const expression.
+int nonConstFunc() { return 1;};
+//constexpr int k() { return nonConstFunc(); }	   // wrong, nonConstFunc is not const expression.
 
-const int returnConst { return 11;}
-constexpr int p() { return returnConst(); }        // wrong, returnConst is not const expression.
+//const int returnConst() { return 11;}
+int returnConst() { return 11;}
+//constexpr int p() { return returnConst(); }        // wrong, returnConst is not const expression.
 
 //---------------------- const expression value ----------------------
 // 1.
@@ -48,14 +50,14 @@ constexpr int p() { return returnConst(); }        // wrong, returnConst is not 
 // 2. initial list can only use constexpr expression.
 
 struct Data {
-	constexpr Data(int y, int m, int d) : year(y), month(m), day(d) {}
-	constexpr int year() {return year;}
-	constexpr int month() {return month;}
-	constexpr int day() {return day;}
+	constexpr Data(int y, int m, int d) : year_(y), month_(m), day_(d) {}
+	constexpr int year() const {return year_;}
+	constexpr int month() const {return month_;}
+	constexpr int day() const {return day_;}
 private:
-	int year;
-	int month;
-	int day;
+	int year_;
+	int month_;
+	int day_;
 };
 constexpr Data kBirth(1988, 5, 12);
 constexpr int birthMonth = kBirth.month();
@@ -90,5 +92,5 @@ int fibs[] = {
 
 #endif
 
-NS_END(constexpr)
+NS_END(constexpr_test)
 NS_END(elloop)

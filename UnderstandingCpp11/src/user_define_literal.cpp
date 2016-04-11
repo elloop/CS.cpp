@@ -5,13 +5,16 @@ NS_ELLOOP_BEGIN
 
 #ifdef _MSC_VER
 #else
+/*
 Person operator "" _person(const char * data, unsigned int len) {
 	// just a demo, no real meaning.
-	Person p;
+    // Person p;
+	Person p(data, len);
 	p.setName(data);
 	p.setAge(len);
     return p;
 }
+*/
 #endif
 
 
@@ -43,7 +46,7 @@ void takePersion(Person p)
 BEGIN_TEST(UserDefineLiteral, UsingLiteralConstruct, @);
 #ifdef _MSC_VER
 #else
-	takePersion("Tom"_person);
+	// takePersion("Tom"_person);
 #endif
 END_TEST;
 

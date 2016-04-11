@@ -63,6 +63,7 @@ void* func(void*) {
     total += 1;
     // pthread_mutex_unlock(&m);
   }
+  return 0; // fixed @20160410
 }
 
 void ThreadTest::testWithPthread() {
@@ -176,6 +177,7 @@ void setValue(int) {
 
 int observe(int) {
   LOGD("observe: a, b =(%d, %d)\n", ta.load(), tb.load());
+  return 0; // fixed @20160410
 }
 
 void testMemoryOrderWithoutOrderLimit() {
@@ -203,6 +205,8 @@ int observeWait(int) {
     // waiting...
   }
   LOGD("a now is: %d\n", ta.load(memory_order_relaxed)); // ta maybe == 0 in some hardware platform.
+
+  return 0; // fixed @20160410
 }
 
 void testMemoryOrderRelax() {
@@ -228,6 +232,7 @@ int observeWaitAcquire(int) {
     // waiting...
   }
   LOGD("a now is: %d\n", ta.load(memory_order_relaxed)); // ta can't be 0 , because of the memory_order_acquire in tb.load().
+  return 0; // fixed @20160410
 }
 
 void testReleaseAcquire() {

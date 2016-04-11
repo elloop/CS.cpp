@@ -46,18 +46,18 @@ int BigDog::dtr = 0;
 BigDog getTempBigDog() {
 	// dog is a xvalue. (expiring value, ½«ÍöÖµ)
 	BigDog dog;
-	LOGD("temp dog in %s, ptr is %d\n", __FUNCTION__, (int*)dog.knowledge_);
+	LOGD("temp dog in %s, ptr is %ld\n", __FUNCTION__, reinterpret_cast<intptr_t>(dog.knowledge_));
 	return dog;
 }
 
 RUN_GTEST(RValueReference, MoveConstructorTest, @);
 	// bad practice of using move semantics.
 	BigDog bd;
-	LOGD("bd ptr is %d\n", (int*)bd.knowledge_);
+	LOGD("bd ptr is %ld\n", reinterpret_cast<intptr_t>(bd.knowledge_));
 	BigDog bd1(std::move(bd));
 	// bd is moved and invalid. although it doesn't called copy constructor and is efficient.
 	EXPECT_EQ(nullptr, bd.knowledge_);
-	LOGD("bd1 ptr is %d\n", (int*)bd1.knowledge_);
+	LOGD("bd1 ptr is %ld\n", reinterpret_cast<intptr_t>(bd1.knowledge_));
 
 	// i didn't find how to turn off RVO in vs. so in vs:
 	// this will call:
@@ -65,7 +65,7 @@ RUN_GTEST(RValueReference, MoveConstructorTest, @);
 	// move constructor : 1 
 	// destructor : 2
 	BigDog dog1 = getTempBigDog();
-	LOGD("temp dog in %s, ptr is %d\n", __FUNCTION__, (int*)dog1.knowledge_);
+	LOGD("temp dog in %s, ptr is %ld\n", __FUNCTION__, reinterpret_cast<intptr_t>(dog1.knowledge_));
 
 	EXPECT_TRUE(std::is_rvalue_reference<decltype(std::move(getTempBigDog()))>::value);
 	EXPECT_FALSE(std::is_rvalue_reference<decltype(getTempBigDog())>::value);
@@ -79,12 +79,12 @@ END_TEST;
 Movable getTempMovable()
 {
 	Movable temp = Movable();
-	LOGD("moveable in getTempMovable is %d\n", temp.hm_.data_);
+	LOGD("moveable in getTempMovable is %ld\n", reinterpret_cast<intptr_t>(temp.hm_.data_));
 	return temp;
 }
 BEGIN_TEST(RValueReference, UsingStdMove, @);
 	Movable m(getTempMovable());
-	LOGD("movable in testbody is %d\n", m.hm_.data_);
+	LOGD("movable in testbody is %ld\n", reinterpret_cast<intptr_t>(m.hm_.data_));
 END_TEST;
 
 BEGIN_TEST(RValueReference, ReferenceFolding, @);

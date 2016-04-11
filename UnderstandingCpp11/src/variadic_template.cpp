@@ -51,7 +51,7 @@ END_TEST;
 
 BEGIN_TEST( VariadicTemplate, PrintfTest, @);
     Printf( "hello, world in Printf\n" );
-    Printf( "hello, world in Printf£¬ following a str: %s\n",
+    Printf( "hello, world in Printf, following a str: %s\n",
             std::string( "here" ) );
 END_TEST;
 
@@ -80,8 +80,8 @@ BEGIN_TEST(VariadicTemplate, VariadicCountTest, @);
 END_TEST;
 
 BEGIN_TEST(VariadicTemplate, TemplateVariadicTemplate, @);
-	Container<int, A>;
-	Container<int, A, B>;
+	Container<int, A> ca;
+	Container<int, A, B> cb;
 	//Container<A, B>;	//error: A is a template class. need type for 1st param.
 END_TEST;
 

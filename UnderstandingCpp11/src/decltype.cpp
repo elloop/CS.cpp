@@ -62,7 +62,7 @@ BEGIN_TEST( Decltype, FourRulesForUsingDecltype, @);
     void foo( double );
     void foo( int );
     int && rvalueReference();
-    const bool func( int );
+    const bool func( int );     // -Wignored-qualifiers: 'const' type qualifier on return type has no effect
 
     bool same( false );
 
@@ -105,6 +105,7 @@ BEGIN_TEST( Decltype, FourRulesForUsingDecltype, @);
     same = std::is_same<decltype(v7), int&>::value;
     EXPECT_TRUE( same );
 
+    // -Wunevaluated-expression: ++i expression with side effects has no effect in an unevaluated context
     decltype(++i) v8 = i;             // int&
     same = std::is_same<decltype(v8), int&>::value;
     EXPECT_TRUE( same );
@@ -135,6 +136,7 @@ BEGIN_TEST( Decltype, FourRulesForUsingDecltype, @);
     same = std::is_same<decltype(v12), int>::value;
     EXPECT_TRUE( same );
 
+    // -Wunevaluated-expression: i++ expression with side effects has no effect in an unevaluated context
     decltype(i++) v13;                // int
     same = std::is_same<decltype(v13), int>::value;
     EXPECT_TRUE( same );

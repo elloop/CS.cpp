@@ -192,7 +192,7 @@ class MultiTypes<T, Others...> : public MultiTypes<Others...>{
 public:
 	T t_;
 	MultiTypes<T, Others...>(T t, Others... others) 
-		: t_(t), MultiTypes<Others...>(others...) {
+		: MultiTypes<Others...>(others...), t_(t) {
 		pln("construct MutiTypes<T, Others...>");
 	}
     /* error.  how to get base's t_ ?

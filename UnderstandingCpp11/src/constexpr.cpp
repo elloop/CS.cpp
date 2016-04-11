@@ -1,6 +1,6 @@
 #include "constexpr.h"
 NS_BEGIN(elloop)
-NS_BEGIN(constexpr)
+NS_BEGIN(constexpr_test)
 
 BEGIN_TEST(Constexpr, UseDefinedConstData, @);
 #ifdef _MSC_VER
@@ -9,5 +9,5 @@ BEGIN_TEST(Constexpr, UseDefinedConstData, @);
 #endif
 END_TEST;
 
-NS_END(constexpr)
+NS_END(constexpr_test)
 NS_END(elloop)

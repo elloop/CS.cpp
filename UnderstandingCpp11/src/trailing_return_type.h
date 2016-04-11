@@ -19,10 +19,11 @@ void sum(const T1 & t1, const T2 & t2, decltype(t1 + t2) & sum) {
 
 // this won't work, because t1 and t2 (int decltype(t1+t2)) 
 // are unknown symbols before parse params list.
-template<typename T1, typename T2>
-decltype(t1 + t2) sum2(const T1& t1, const T2 & t2) {
-	return t1 + t2;
-}
+//
+// template<typename T1, typename T2>
+// decltype(t1 + t2) sum2(const T1& t1, const T2 & t2) { // error: use of undeclared identifier 't1', 't2'
+	// return t1 + t2;
+// }
 
 template <typename T1, typename T2>
 auto sum(const T1 & t1, const T2 & t2) -> decltype(t1 + t2) {

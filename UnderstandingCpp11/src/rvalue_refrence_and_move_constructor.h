@@ -137,7 +137,7 @@ public:
 
 	~BigDog() {
 		LOGD("dtr called: %d\n", ++dtr);
-		delete knowledge_;
+		delete [] knowledge_;
 	}
 
 	// move constructor.
@@ -167,7 +167,7 @@ public:
 		data_ = new int[size_];
 	}
 
-	HugeMem(HugeMem&& h) : size_(h.size_), data_(h.data_) {
+	HugeMem(HugeMem&& h) : data_(h.data_), size_(h.size_) {
 		h.data_ = nullptr;
 	}
 

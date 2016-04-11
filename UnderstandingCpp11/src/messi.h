@@ -14,7 +14,8 @@ class Messi {
       pcln("deleting a test.");
     }
 
-    Messi() {
+    Messi() : id_(0) {
+        (void)id_;
       pcln("creating a test.");
     }
 
