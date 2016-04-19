@@ -1,6 +1,9 @@
 cmake_minimum_required ( VERSION 3.0)
 project                ( algorithm)
 
+# export compilation_database for YouCompleteMe Plugin in VIM.
+set( CMAKE_EXPORT_COMPILE_COMMANDS 1 )
+
 function(include_sub_directories_recursively root_dir)
     if (IS_DIRECTORY ${root_dir})
         message("include dir: " ${root_dir})
@@ -18,7 +21,7 @@ endfunction()
 function(include_all_sources_recursively target_list root_dir)
     file(GLOB_RECURSE cpp_list ${root_dir}/*.cpp)
     file(GLOB_RECURSE c_list ${root_dir}/*.c)
-    set(${target_list} ${cpp_list} ${c_list} PARENT_SCOPE)
+    set(${target_list} ${cpp_list} ${c_list} ${hearder_list} PARENT_SCOPE)
 endfunction()
 
 include_directories(${PROJECT_SOURCE_DIR}/../)
