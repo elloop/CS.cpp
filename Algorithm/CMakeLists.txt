@@ -31,11 +31,11 @@ set(CXX_FLAGS
  -std=c++11
  -g
  -Wall
- -Wextra
- -Werror
- -Wno-unused-parameter
- -Wno-unused-variable
- -Wno-sign-compare
+ #-Wextra # unknown for visual studio
+ # -Werror
+ #-Wno-unused-parameter
+ #-Wno-unused-variable
+ # -Wno-sign-compare
  # -Wno-format
  # -DCHECK_PTHREAD_RETURN_VALUE
  # -D_FILE_OFFSET_BITS=64

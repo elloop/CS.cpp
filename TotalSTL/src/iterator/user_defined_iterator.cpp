@@ -74,7 +74,7 @@ asso_inserter(uset) = 1;
 asso_inserter(uset) = 2;
 printContainer(uset, "uset: ");     // 1 2 10 20 30
 
-array<int, 5> a = {{11, 22, 33, 44, 55}};
+array<int, 5> a = {11, 22, 33, 44, 55};
 copy(a.begin(), a.end(), asso_inserter(uset)); // 1 2 10 11 20 22 30 33 44 55
 printContainer(uset, "uset: ");
 
