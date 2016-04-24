@@ -22,6 +22,8 @@ PROJECTS = (
 
 PLATFORMS = {
     "windows":"Visual Studio 12 2013 Win64",
+    "mac": "Xcode",
+    "unix": ""
 }
 
 def build_all(argv):
@@ -60,7 +62,10 @@ def build_all(argv):
                 shutil.rmtree(work_dir)
         os.mkdir(work_dir)
         os.chdir(work_dir)
-        cmd_p = 'cmake .. -G "{gener}"'.format(gener=generator)
+        if generator == "":
+            cmd_p = "cmake .."
+        else:
+            cmd_p = 'cmake .. -G "{gener}"'.format(gener=generator)
         print(cmd_p)
         os.system(cmd_p)
         os.system("pause")
