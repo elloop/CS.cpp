@@ -4,25 +4,25 @@
 NS_BEGIN( elloop )
 
 
-void Stash::push( void * data ) noexcept {
+void Stash::push( void* data ) noexcept {
   head_ = new Link( data, head_ );
 }
 
-void * Stash::peek() {
+void* Stash::peek() {
   if ( nullptr == head_ ) {
     return nullptr;
   }
   return head_->data_;
 }
 
-void * Stash::pop() {
+void* Stash::pop() {
 
   if ( head_ == nullptr) {
     return nullptr;
   }
-  Link * oldHead = head_;
+  Link* oldHead = head_;
   head_ = oldHead->link_;
-  void * data = oldHead->data_;
+  void* data = oldHead->data_;
   delete oldHead;
   oldHead = nullptr;
   return data;

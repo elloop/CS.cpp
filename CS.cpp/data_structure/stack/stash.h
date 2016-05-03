@@ -27,16 +27,16 @@ public:
   ~Stash() { cleanup(); }
 
   // disallow copy and move and copy assignment.
-  Stash( const Stash & other ) = delete;
-  Stash( Stash && other ) = delete;
-  Stash& operator=(const Stash & other ) =  delete;
+  Stash( const Stash& other ) = delete;
+  Stash( Stash&& other ) = delete;
+  Stash& operator=(const Stash& other ) =  delete;
 
-  void * pop();
-  void * peek();
+  void* pop();
+  void* peek();
 #ifdef _MSC_VER
-  void push( void * data ) _NOEXCEPT;
+  void push( void* data ) _NOEXCEPT;
 #else
-  void push( void * data ) noexcept;
+  void push( void* data ) noexcept;
 #endif // _MSC_VER
 
   void cleanup();
@@ -45,10 +45,10 @@ public:
 protected:
   class Link {
   public:
-    Link( void * data, Link * link ) : data_( data ), link_( link ) {}
-    void * data_;
-    Link * link_;
-  } *head_;
+    Link( void* data, Link* link ) : data_( data ), link_( link ) {}
+    void* data_;
+    Link* link_;
+  }* head_;
 
 }; /* -----  end of class Stash  ----- */
 

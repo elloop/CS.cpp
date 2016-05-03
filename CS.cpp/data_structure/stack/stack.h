@@ -12,13 +12,13 @@ template <typename T> class Stack;
 
 template <typename T>
 class ListNode {
-	ListNode(const T & data, ListNode<T> * next = nullptr) 
+	ListNode(const T& data, ListNode<T>* next = nullptr) 
         : data_(data), next_(next)
     { }
 
 	~ListNode() { }
 	T           data_;
-	ListNode   *next_;
+	ListNode*   next_;
 	friend      Stack<T>;
 };
 
@@ -30,7 +30,7 @@ public:
 	Stack() : head_(nullptr) {}
 
 	// disallow copy.
-	Stack(const Stack & rhs) = delete;
+	Stack(const Stack& rhs) = delete;
 	// disallow move.
 	// stack(const stack && rhs) = delete;
 
@@ -47,7 +47,7 @@ public:
 		}
 	}
 
-	void push(const T & elem) {
+	void push(const T& elem) {
 		head_ = new NodeType(elem, head_);
 	}
 
