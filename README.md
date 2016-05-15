@@ -89,3 +89,4 @@ Please check this article to learn more about the test case control macro: [cont
 
     progress: 1.After deleting `xcode` and `vim` branches, .git decrease to 3M, so I needn't create a new repo anymore.
 
+can i fix this ?
