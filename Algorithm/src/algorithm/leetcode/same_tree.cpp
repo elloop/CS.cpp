@@ -11,15 +11,21 @@ Two binary trees are considered equal if they are structurally identical and the
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
         if (!p) {
-            return (q == NULL);
+            return (q == nullptr);
         }
 
         if (!q) {
-            return (p == NULL);
+            return (p == nullptr);
         }
 
         bool isSameRoot = (p->val == q->val);

@@ -12,6 +12,15 @@ The minimum depth is the number of nodes along the shortest path from the root n
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+#include <algorithm>
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
 class Solution {
 public:
     int minDepth(TreeNode* root) {
@@ -39,6 +48,6 @@ public:
 
         //          p
         //        l   r
-        return min(minDepth(root->left), minDepth(root->right)) + 1;
+        return std::min(minDepth(root->left), minDepth(root->right)) + 1;
     }
 };
