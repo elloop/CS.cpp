@@ -28,18 +28,18 @@ namespace elloop {
 
 
 #ifdef NDEBUG
-#define LOGD(...) 
+#define LOGD(...)
 #else
 #define LOGD(...)  LOGD__(__VA_ARGS__)
 #endif
 
 #ifdef NDEBUG
-#define VLOGD(...) 
+#define VLOGD(...)
 #else
 #define LOGV(...)  LOGV__(__VA_ARGS__)
 #endif
 
-
+#define pv(...) LOGD(__VA_ARGS__)
 
 template <typename T>
 inline void pc(const T & x) {
@@ -48,7 +48,7 @@ inline void pc(const T & x) {
 
 template <typename T>
 inline void pcln(const T & x) {
-    std::cout << "************************" << x << "*********************" 
+    std::cout << "************************" << x << "*********************"
 			  << std::endl;
 }
 
@@ -94,7 +94,7 @@ void printContainer(const Con & c, const std::string& opt = "") {
 //  simplePrintContainer<Container>(std::forward(container));
 //}
 
-	
+
 template <typename Container>
 void printContainerNormally(const Container& container) {
   for (auto item : container) {

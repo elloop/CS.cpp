@@ -3,7 +3,7 @@
 
 NS_BEGIN(elloop);
 
-RUN_GTEST(StackTest, Basic, @@);
+BEGIN_TEST(StackTest, Basic, @@);
 
 Stack<int> st;
 st.push(10);
@@ -19,4 +19,3 @@ END_TEST;
 
 
 NS_END(elloop);
-

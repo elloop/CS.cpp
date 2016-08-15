@@ -7,6 +7,7 @@ on_error_msg() {
     local retv=$?
     if [ $retv -gt 0 ]; then
         echo $1
+        read -n1 -r -p "Press any key to continue..."
         exit 1
     fi
 }
@@ -52,6 +53,7 @@ cd ../../build/
 
 ./algorithm/bin/algorithm
 
-exit 0;
+read -n1 -r -p "Press any key to continue..."
 
+exit 0;
 
