@@ -10,6 +10,7 @@ void dumpHashTable(const HashTable<T> &ht) {
     psln(ht.capacity());
 }
 
+// todo: use HashTable to solve real oj problem.
 RUN_GTEST(HashTableTest, StringHash, @@);
 
     std::cout << std::boolalpha;
@@ -24,8 +25,6 @@ RUN_GTEST(HashTableTest, StringHash, @@);
     psln(ht.insert("hello", isUnique));
     psln(isUnique);
     psln(ht.search("hello"));
-
-
 
 END_TEST;
 

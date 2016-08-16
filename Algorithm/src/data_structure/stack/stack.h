@@ -13,7 +13,7 @@ template <typename T> class Stack;
 template <typename T>
 struct ListNode {
 
-	ListNode(const T & data, ListNode<T> * next = nullptr) 
+	ListNode(const T &data, ListNode<T> *next = nullptr) 
         : data_(data), next_(next) { }
 
 	~ListNode() { }
@@ -33,7 +33,7 @@ public:
 	Stack(const Stack & rhs) = delete;
 
 	// disallow move.
-	// stack(const stack && rhs) = delete;
+    Stack(const Stack && rhs) = delete;
 
 	T top() noexcept {
 		assert(top_ != nullptr);
@@ -69,10 +69,8 @@ public:
 		return (top_ == nullptr);
 	}
 
-	// testing how to define a template member function outside of a class.
-	void test();
 private:
-	NodeType* top_;
+	NodeType        *top_;
 }; // end class stack;
 
 NS_END(elloop)
