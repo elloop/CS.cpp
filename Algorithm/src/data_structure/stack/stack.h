@@ -56,6 +56,22 @@ public:
 		clear();
 	}
 
+    void dump(const std::string& info) const {
+        elloop::p(info);
+        auto temp = top_;
+        while (temp) {
+            auto val = temp->data_;
+            // if (std::is_same<decltype(val), char>::value) {
+                // pv("%c -> ", val);
+            // }
+            // else {
+                elloop::p(temp->data_); elloop::p(" -> ");
+            // }
+            temp = temp->next_;
+        }
+        cr;
+    }
+
 	void clear() {
 		auto temp = top_;
 		while (temp) {

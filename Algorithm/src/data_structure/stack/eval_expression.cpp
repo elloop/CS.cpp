@@ -2,6 +2,7 @@
 #include <string>
 #include <cassert>
 #include <unordered_map>
+#include "util/StringUtil.h"
 
 NS_BEGIN(elloop);
 
@@ -94,71 +95,82 @@ double evalBinaryOper(double opnd1, char oper, double opnd2) {
             res = opnd1 + opnd2;
             break;
         case '-':
-            res = opnd1 - opnd2;
+            res = opnd2 - opnd1; // fix minus bug, second push is 被减数
             break;
         case '*':
             res = opnd1 * opnd2;
             break;
         case '/':
-            assert(opnd2 != 0);
-            res = opnd1 / opnd2;
+            assert(opnd1 != 0);
+            res = opnd2 / opnd1; // fix divide bug, second push is 被除数.
             break;
         default:
             assert(false);
     }
-    return 0;
+    return res;
 }
 
-
+/*
+ * return: INT_MAX when fail.
+ */
 double evalExpression(const std::string &s) {
-    double res(0);
 
-    Stack<double> operStack;
-    Stack<char> opndStack;
-    operStack.push('#');
+    using std::string;
 
     auto isOper = [](char c) -> bool {
-        return (std::string("+-*/()#").find(c) != std::string::npos); 
+        return (string("+-*/()#").find(c) != string::npos); 
     };
 
-    auto fetchAnElem = [isOper] (const std::string &s, size_t &index, std::string &ret) -> bool {
-        ret.clear();
-        if (index >= s.length() || index < 0) { return false; }
+    auto fetchAnElem = [isOper] (const string &s, size_t &index, string &result) {
+        result.clear();
+        if (index >= s.length() || index < 0) { return; }
         if (isOper(s[index])) {
-            ret = s[index++];
+            result = s[index++];
         }
         else {
             while (index < s.length() && !isOper(s[index])) {
-                ret.append(1, s[index++]);
+                result.append(1, s[index++]);
             }
         }
-        return true;
     };
 
     auto testFetch = [&] () {
-        std::string ret;
+        string result;
         size_t j(0);
         psln(j);
-        while (fetchAnElem(s, j, ret)) {
-            psln(ret);
+        while ((fetchAnElem(s, j, result), result != "")) {
+            psln(result);
             psln(j);
         }
     };
 
+    Stack<char> operStack;
+    Stack<double> opndStack;
+
     size_t i(0);
-    std::string ret;
-    while (fetchAnElem(s, i, ret)  && ret != '#' && operStack.top() != '#') {
-        if (!isOper(ret[0])) {
-            // opndStack.push(folly::convertToDoulbe(ret));
+    string elem;
+    fetchAnElem(s, i, elem);
+    assert(elem[0] == '#');
+    operStack.push('#');
+
+    fetchAnElem(s, i, elem);
+    while (elem != "" && (elem[0] != '#' || operStack.top() != '#')) {
+        psln(elem);
+        if (!isOper(elem[0])) {
+            opndStack.push(StringUtil::stod(elem));
+            fetchAnElem(s, i, elem);
         }
         else {
+            char oper = elem[0];
             auto top = operStack.top();
-            switch (compareOper(top, s[i])) {
+            switch (compareOper(top, oper)) {
                 case -1:
-                    operStack.push(s[i]);
+                    operStack.push(oper);
+                    fetchAnElem(s, i, elem);
                     break;
                 case 0:
                     operStack.pop();
+                    fetchAnElem(s, i, elem);
                     break;
                 case 1:
                     auto opnd1 = opndStack.top(); opndStack.pop();
@@ -168,14 +180,24 @@ double evalExpression(const std::string &s) {
                     break;
             }
         }
+        opndStack.dump("opndStack: ");
+        operStack.dump("operStack: ");
     }
-    return res;
+
+    if (opndStack.empty()) {
+        return INT_MAX;
+    }
+    double ret = opndStack.top();
+    opndStack.pop();
+    return opndStack.empty() ? ret : INT_MAX;
 }
 
 
 RUN_GTEST(StackTest, EvalExpression, @@);
 
-std::string epress("(1+2+3+4)*2+3*4+10/2");
+// std::string epress("#(1+2+3+4)*2+3*4+10/2+(10+2)*10-100+3-60#");
+std::string epress("#(1+2+3*4*(2+3)+10)#");
+psln(epress);
 psln(evalExpression(epress));
 
 END_TEST;

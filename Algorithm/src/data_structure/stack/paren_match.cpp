@@ -22,7 +22,7 @@ bool isParenMatch(const std::string &s) {
     return st.empty();
 }
 
-RUN_GTEST(StackTest, ParenMatch, @@);
+BEGIN_TEST(StackTest, ParenMatch, @@);
 
 std::string s;
 
