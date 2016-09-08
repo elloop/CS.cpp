@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/Users/elloop/codes/local_codes/apuevim/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -I/Users/elloop/codes/local_codes/apuevim    -o CMakeFiles/apuevim.dir/src/err_func.cpp.o -c /Users/elloop/codes/local_codes/apuevim/src/err_func.cpp",
+  "file": "/Users/elloop/codes/local_codes/apuevim/src/err_func.cpp"
+},
+{
+  "directory": "/Users/elloop/codes/local_codes/apuevim/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -I/Users/elloop/codes/local_codes/apuevim    -o CMakeFiles/apuevim.dir/src/main.cpp.o -c /Users/elloop/codes/local_codes/apuevim/src/main.cpp",
+  "file": "/Users/elloop/codes/local_codes/apuevim/src/main.cpp"
+}
+]
