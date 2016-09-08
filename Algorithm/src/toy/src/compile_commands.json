@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/elloop/codes/CS.cpp/Algorithm/src/toy/build",
+  "command": "clang++   -DTOY -I/Users/elloop/codes/CS.cpp/Algorithm/src/toy/../../.. -I/Users/elloop/codes/CS.cpp/Algorithm/src/toy/../../../include  -std=c++11 -g -Wall   -o CMakeFiles/toy.dir/src/main.cpp.o -c /Users/elloop/codes/CS.cpp/Algorithm/src/toy/src/main.cpp",
+  "file": "/Users/elloop/codes/CS.cpp/Algorithm/src/toy/src/main.cpp"
+}
+]

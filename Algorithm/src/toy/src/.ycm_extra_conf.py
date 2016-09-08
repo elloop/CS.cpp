@@ -33,7 +33,7 @@ flags = [
 def DirectoryOfThisScript():
   return os.path.dirname( os.path.abspath( __file__ ) )
 
-compilation_database_folder = '/Users/elloop/codes/CS.cpp/OperatingSystem/Apue/src'
+compilation_database_folder = '/Users/elloop/codes/CS.cpp/Algorithm/src/toy/src'
 #  compilation_database_folder = DirectoryOfThisScript()
 
 if os.path.exists( compilation_database_folder ):

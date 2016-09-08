@@ -27,10 +27,7 @@ endfunction()
 include_directories(${PROJECT_SOURCE_DIR}/../)
 include_directories(${PROJECT_SOURCE_DIR}/../include)
 
-set(CXX_FLAGS
- -std=c++11
- -g
- -Wall
+set(CXX_FLAGS -std=c++11 -g -Wall
  #-Wextra # unknown for visual studio
  # -Werror
  #-Wno-unused-parameter
