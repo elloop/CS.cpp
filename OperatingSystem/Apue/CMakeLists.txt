@@ -1,5 +1,5 @@
 cmake_minimum_required( VERSION 3.0)
-project(apuevim)
+project(apue)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
@@ -14,7 +14,9 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2 -finline-limit=1000 -DNDEBUG " )
 
 file(GLOB_RECURSE SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
+include_directories(${PROJECT_SOURCE_DIR}/src/include)
 include_directories(${PROJECT_SOURCE_DIR}/../../)
+include_directories(${PROJECT_SOURCE_DIR}/../../include)
 
 foreach(f ${SRC_FILES})
     message(${f})

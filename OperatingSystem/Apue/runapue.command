@@ -54,7 +54,7 @@ on_error_msg "make failed"
 
 log_from_me "make finish"
 
-./bin/apuevim
+./bin/apue
 
 read -n1 -r -p "[${CURR_FILE_NAME}] Press any key to continue..."
 

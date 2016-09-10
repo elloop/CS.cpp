@@ -2,6 +2,7 @@
 #include "inter_signal.h"
 #include "file_io.h"
 #include "file_directory.h"
+#include "inc.h"
 
 using namespace elloop;
 

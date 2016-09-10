@@ -1,12 +1,12 @@
 [
 {
   "directory": "/Users/elloop/codes/CS.cpp/OperatingSystem/apue/build",
-  "command": "clang++   -DAPUE -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../..  -std=c++11 -g -Wall   -o CMakeFiles/apuevim.dir/src/err_func.cpp.o -c /Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/err_func.cpp",
+  "command": "clang++   -DAPUE -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/include -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../.. -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../../include  -std=c++11 -g -Wall   -o CMakeFiles/apue.dir/src/err_func.cpp.o -c /Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/err_func.cpp",
   "file": "/Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/err_func.cpp"
 },
 {
   "directory": "/Users/elloop/codes/CS.cpp/OperatingSystem/apue/build",
-  "command": "clang++   -DAPUE -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../..  -std=c++11 -g -Wall   -o CMakeFiles/apuevim.dir/src/main.cpp.o -c /Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/main.cpp",
+  "command": "clang++   -DAPUE -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/include -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../.. -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../../include  -std=c++11 -g -Wall   -o CMakeFiles/apue.dir/src/main.cpp.o -c /Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/main.cpp",
   "file": "/Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/main.cpp"
 }
 ]

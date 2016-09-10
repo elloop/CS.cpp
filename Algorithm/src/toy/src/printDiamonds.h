@@ -2,12 +2,14 @@
 
 #include "include/inc.h"
 
+NS_BEGIN(elloop);
+
 class PrintDiamonds {
 public:
 
     void printNPlus(int n) {
         for (int i=0; i<n; ++i) {
-            // p("+");
+            p("+");
         }
     }
 
@@ -56,3 +58,4 @@ public:
     }
 };
 
+NS_END(elloop);
