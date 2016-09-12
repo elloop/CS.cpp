@@ -16,7 +16,53 @@ public:
         // umaskTest();
         // chmodTest();
         // testUnlink();
-        futimesTest();
+        // futimesTest();
+        // chdirTest();
+        // getcwdTest();
+        printDeviceType(argc, argv);
+    }
+
+    /*
+     * you can run this with following args on macOS.
+     * ./apue / /Users/elloop /dev/tty /dev/ttyp[01234]
+     *
+     * explanation of major and minor macros are here: http://man7.org/linux/man-pages/man3/major.3.html
+     * they are included in <sys/sysmacros.h> according to the man page, but i can't find it on my macOS.
+     *
+     */
+    static void printDeviceType(int argc, char** argv) {
+        int i(0);
+        while (argv[i] != NULL) {
+            pv("%s: ", argv[i]);
+            struct stat statBuf;
+            if (stat(argv[i], &statBuf) < 0) {
+                err_ret("fail to stat: %s", argv[i]);
+                continue;
+            }
+            pv("dev = %d/%d", major(statBuf.st_dev), minor(statBuf.st_dev));
+
+            if (S_ISCHR(statBuf.st_mode) || S_ISBLK(statBuf.st_mode)) {
+                pv("(%s) rdev=%d/%d", S_ISCHR(statBuf.st_mode) ? "character" : "block", major(statBuf.st_rdev), minor(statBuf.st_rdev));
+            }
+            cr;
+            ++i;
+        }
+    }
+
+    static void getcwdTest() {
+        ERR_IF_NEG(chdir("/Users/elloop/codes"), err_sys, "fail to chdir to codes");
+        // char* ptr;
+        // int size;
+        const int size = 100;
+        char ptr[size];
+        // ptr = path_alloc(&size);
+        ERR_IF(getcwd(ptr, size) == NULL, err_sys, "getcwd failed");
+        pv("cwd=%s\n", ptr);
+    }
+
+    static void chdirTest() {
+        ERR_IF_NEG(chdir("/tmp"), err_sys, "fail to chdir to /tmp");
+        pln("chdir to /tmp success");
     }
 
     /*
