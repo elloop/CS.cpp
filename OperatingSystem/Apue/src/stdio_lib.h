@@ -3,13 +3,41 @@
 #include "include/apue.h"
 #include "include/inc.h"
 
+// #include <cstdio>
+
+#include <stdio.h>
+
 NS_BEGIN(elloop);
 
 class StdioLib {
 public:
 
     static int run(int argc, char** argv) {
-        printBufferType();
+        // printBufferType();
+        tmpnameTest();
+    }
+
+    /*
+     * tmpnam, tmpfile return NULL on fail.
+     *
+     */
+    static void tmpnameTest() {
+        char* tmpN = tmpnam(NULL);
+        pv("first tmpname: %s\n", tmpN ? tmpN : "NULL");
+        char t[L_tmpnam];
+        pv("second tmpname: %s\n", tmpnam(t) ? t : "NULL");
+        pv("t is %s\n", t ? t : "NULL");
+
+        // test tmpfile
+        FILE* tmp = tmpfile();
+        ERR_IF(tmp == NULL, err_sys, "fal to create tmpfile()");
+        fputs("something input into tmpfile", tmp);
+        rewind(tmp);
+        char oneline[MAXLINE];
+        ERR_IF(fgets(oneline, sizeof(oneline), tmp) == NULL, err_sys, "fail to fgets temp");
+        pv("read back from tmp: %s\n", oneline);
+        sleep(15);
+        pln("done");
     }
 
     static void printStdio(const char* name, FILE* fp) {
