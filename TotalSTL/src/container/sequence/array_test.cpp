@@ -125,5 +125,51 @@ printContainer(a6, "a6: ");
 END_TEST;
 
 
+//----------------------- multiple div array example ----------------------
+RUN_GTEST(ArrayTest, MatrixOrMultipleDiv, @);
+
+// like plain 2D array
+array<array<int, 5>, 5> mat1 = {
+    1,2,3,4,5,
+    1,2,3,4,5,
+    1,2,3,4,5,
+    1,2,3,4,5,
+    1,2,3,4,5,
+};
+
+// construct with 1D arys.
+array<int, 5> ary = {1};
+array<array<int, 5>, 5> mat2 = { ary, ary, ary, ary, ary};
+
+// just like plain 2D array, but can ommit some value some each div.
+array<array<int, 5>, 5> mat3 = {
+    array<int, 5>{ 1, 2, 3, 4, 5},
+    array<int, 5>{ 1, 2, 3, 4},
+    array<int, 5>{ 1, 2, 3},
+    array<int, 5>{ 1, 2,},
+    array<int, 5>{ 1, }
+};
+
+// util function to print matrix.
+auto printMatrix = [] (const array<array<int, 5>, 5>& mat) {
+    for (const auto& ary : mat) {
+        for (const auto& item : ary) {
+            cout << item << " ";
+        }
+        cout << endl;
+    }
+};
+
+pcln("ma1");
+printMatrix(mat1);
+
+pcln("mat2");
+printMatrix(mat2);
+
+pcln("mat3");
+printMatrix(mat3);
+
+END_TEST;
+
 
 NS_END(elloop);

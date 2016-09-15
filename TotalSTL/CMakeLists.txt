@@ -54,8 +54,8 @@ set(CMAKE_CXX_COMPILER      "clang++" )
 set(CMAKE_CXX_FLAGS_DEBUG   "-O0" )
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -finline-limit=1000 -DNDEBUG " )
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../build/${PROJECT_NAME}/bin)
-set(LIBRARY_OUTPUT_PATH    ${PROJECT_SOURCE_DIR}/../build/${PROJECT_NAME}/lib)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
+set(LIBRARY_OUTPUT_PATH    ${PROJECT_SOURCE_DIR}/build/lib)
 link_directories(${LIBRARY_OUTPUT_PATH})
 
 include_directories(${PROJECT_SOURCE_DIR}/../)
