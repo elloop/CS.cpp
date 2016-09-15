@@ -14,7 +14,72 @@ public:
 
     static int run(int argc, char** argv) {
         // printBufferType();
-        tmpnameTest();
+        // tmpnameTest();
+        // mkstempTest();
+
+        return 0;
+    }
+
+# if defined(linux)
+    static void memopenTest() {
+        const int kBufSize = 48;
+        char buf[kBufSize];
+
+        memset(buf, 'a', kBufSize - 2);
+        buf[kBufSize - 2] = 0;
+        buf[kBufSize - 1] = 'X';
+        ERR_IF(fmemopen(buf, kBufSize, "w+") == NULL, err_sys, "fail to call fmemopen");
+        pv("initial content of buf: %s\n", buf);
+        fprintf(fp, "hello world");
+        fflush(fp);
+        pv("after flush: %s\n", buf);
+        pv("length of buf: %ld\n", (long)strlen(buf));
+
+        memset(buf, 'b', kBufSize - 2);
+        buf[kBufSize - 2] = 0;
+        buf[kBufSize - 1] = 'X';
+        fprintf(fp, "hello, world");
+        fseek(fp, 0, SEEK_SET);
+        pv("after seek, buf is: %s\n", buf);
+        pv("length of buf is: %ld\n", (long)strlen(buf));
+
+        memset(buf, 'c', kbufsize - 2);
+        buf[kBufSize - 2] = 0;
+        buf[kBufSize - 1] = 'X';
+        fprintf(fp, "hello world");
+        fclose(fp);
+        pv("after close, buf is: %s\n", buf);
+        pv("length of buf is : %ld\n", (long)strlen(buf));
+    }
+# endif
+
+    static void mkstempTest() {
+        auto makeTemp = [] (char* tmplate) {
+            int fd;
+            fd = mkstemp(tmplate);
+            ERR_IF(fd < 0, err_sys, "fail to create temp file");
+            close(fd);
+            struct stat statBuf;
+            if (stat(tmplate, &statBuf) < 0) {
+                if (ENOENT == errno) {
+                    pln("file don't exist");
+                }
+                else {
+                    err_sys("stat failed");
+                }
+            }
+            else {
+                pln("file exist");
+                unlink(tmplate);
+            }
+        };
+
+        char goodTemplate[] = "/tmp/dirXXXXXX";
+        char* badTemplate = "/tmp/dirXXXXXX";
+        pln("trying to create first temp file");
+        makeTemp(goodTemplate);
+        pln("trying to create second temp file");
+        makeTemp(badTemplate);  // will fail.
     }
 
     /*
@@ -26,7 +91,7 @@ public:
         pv("first tmpname: %s\n", tmpN ? tmpN : "NULL");
         char t[L_tmpnam];
         pv("second tmpname: %s\n", tmpnam(t) ? t : "NULL");
-        pv("t is %s\n", t ? t : "NULL");
+        // pv("t is %s\n", t ? t : "NULL"); // address of array t will always evaluate to true.
 
         // test tmpfile
         FILE* tmp = tmpfile();

@@ -3,7 +3,7 @@ project(apue)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
-set(CXX_FLAGS -std=c++11 -g -Wall)
+set(CXX_FLAGS -std=c++11 -g -ggdb -Wall)
 
 string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
 
