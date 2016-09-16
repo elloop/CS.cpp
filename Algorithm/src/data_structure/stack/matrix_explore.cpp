@@ -11,19 +11,18 @@ using std::vector;
 using std::list;
 
 void matrixExplore() {
-    enum class MazePosType {
-        kWall    = 0,
-        kPass    = 1,
-        kTryFail = 2,
-        kInStack = 3,
-    };
 
-    array<array<MazePosType, 5>, 5> mat = {
-        MazePosType::kPass, MazePosType::kWall, MazePosType::kWall, MazePosType::kPass, MazePosType::kWall,
-        MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kWall,
-        MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kWall, MazePosType::kPass,
-        MazePosType::kWall, MazePosType::kPass, MazePosType::kWall, MazePosType::kPass, MazePosType::kWall,
-        MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kPass,
+    const int kWall    = 0;
+    const int kPass    = 1;
+    const int kTryFail = 2;
+    const int kInStack = 3;
+
+    array<array<int, 5>, 5> mat = {
+        kPass, kWall, kWall, kPass, kWall,
+        kPass, kPass, kPass, kPass, kWall,
+        kPass, kPass, kPass, kWall, kPass,
+        kWall, kPass, kWall, kPass, kWall,
+        kPass, kPass, kPass, kPass, kPass,
     };
 
     struct Pos { 
@@ -74,14 +73,14 @@ void matrixExplore() {
             posi.makeValid(mat.size() - 1);
             if ( (posi != pos) && 
                  (posi != noWay) &&
-                 (mat[posi.row_][posi.col_] == MazePosType::kPass) ) {
+                 (mat[posi.row_][posi.col_] == kPass) ) {
                 return posi;
             }
         }
         return noWay;
     };
 
-    auto markMazePos = [&mat] (const Pos& pos, MazePosType t) {
+    auto markMaze = [&mat] (const Pos& pos, int t) {
         mat[pos.row_][pos.col_] = t;
     };
 
@@ -89,10 +88,8 @@ void matrixExplore() {
     st.push({0, 0});
 
     Pos currentPos = st.top();
-    markMazePos(currentPos, MazePosType::kInStack);
+    markMaze(currentPos, kInStack);
     while (true) {
-        // fail to reach outlet.
-        
         // find outlet.
         if (currentPos == outlet) {
             printSolution(st);
@@ -104,7 +101,7 @@ void matrixExplore() {
         // currentPos is end of way?
         if (nextPos == noWay) {
             st.pop();
-            markMazePos(currentPos, MazePosType::kTryFail);
+            markMaze(currentPos, kTryFail);
             pv("{%d, %d} out\n", currentPos.row_, currentPos.col_);
             if (st.empty()) {
                 pln("no solution");
@@ -116,7 +113,7 @@ void matrixExplore() {
             // currentPos has other way? push it
             st.push(nextPos);
             pv("{%d, %d} in\n", nextPos.row_, nextPos.col_);
-            markMazePos(nextPos, MazePosType::kInStack);
+            markMaze(nextPos, kInStack);
             currentPos = nextPos;
         }
     }
