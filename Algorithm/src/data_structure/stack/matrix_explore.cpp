@@ -11,27 +11,34 @@ using std::vector;
 using std::list;
 
 void matrixExplore() {
-    array<array<int, 5>, 5> mat = {
-        1, 0, 0, 1, 0,
-        1, 1, 1, 1, 0,
-        1, 0, 1, 0, 1,
-        1, 0, 1, 1, 0,
-        1, 1, 0, 1, 1,
+    enum class MazePosType {
+        kWall    = 0,
+        kPass    = 1,
+        kTryFail = 2,
+        kInStack = 3,
+    };
+
+    array<array<MazePosType, 5>, 5> mat = {
+        MazePosType::kPass, MazePosType::kWall, MazePosType::kWall, MazePosType::kPass, MazePosType::kWall,
+        MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kWall,
+        MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kWall, MazePosType::kPass,
+        MazePosType::kWall, MazePosType::kPass, MazePosType::kWall, MazePosType::kPass, MazePosType::kWall,
+        MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kPass, MazePosType::kPass,
     };
 
     struct Pos { 
-        long long row_; 
-        long long col_; 
-        Pos(long long row = -1, long long col = -1) : row_(row), col_(col) { }
+        int row_; 
+        int col_; 
+        Pos(int row = -1, int col = -1) : row_(row), col_(col) { }
         bool operator == (const Pos& rhs) const {
             return (rhs.row_ == row_ && rhs.col_ == col_);
         }
         bool operator != (const Pos& rhs) const {
             return !(*this == rhs);
         }
-        void makeValid(long long size) {
-            row_ = std::max(0LL, row_);
-            col_ = std::max(0LL, col_);
+        void makeValid(int size) {
+            row_ = std::max(0, row_);
+            col_ = std::max(0, col_);
             row_ = std::min(row_, size);
             col_ = std::min(col_, size);
         }
@@ -48,18 +55,16 @@ void matrixExplore() {
         }
         auto iter = resPos.begin();
         while (iter != resPos.end()) {
-            pv("{%lld, %lld} -> ", iter->row_, iter->col_);
+            pv("{%d, %d} -> ", iter->row_, iter->col_);
             ++iter;
         }
     };
     
 
-    Pos outlet = {static_cast<long long>(mat.size() - 1), static_cast<long long>(mat[0].size() - 1)};
+    Pos outlet = {static_cast<int>(mat.size() - 1), static_cast<int>(mat[0].size() - 1)};
     Pos noWay = {-1, -1};
 
-    vector<Pos> failPos;
-    vector<Pos> posInStack;
-    auto getNextPos = [&mat, &failPos, &posInStack, &noWay] (const Pos& pos) -> Pos {
+    auto getNextPos = [&mat, &noWay] (const Pos& pos) -> Pos {
         array<Pos, 4> anticlockwisePos = { 
                                         Pos(pos.row_ - 1, pos.col_),
         Pos(pos.row_, pos.col_ - 1),                                    Pos(pos.row_, pos.col_ + 1), 
@@ -69,20 +74,22 @@ void matrixExplore() {
             posi.makeValid(mat.size() - 1);
             if ( (posi != pos) && 
                  (posi != noWay) &&
-                 (mat[pos.row_][pos.col_] == 1) &&
-                 (find(posInStack.begin(), posInStack.end(), posi) == posInStack.end()) && 
-                 (find(failPos.begin(), failPos.end(), posi) == failPos.end())) {
+                 (mat[posi.row_][posi.col_] == MazePosType::kPass) ) {
                 return posi;
             }
         }
         return noWay;
     };
 
+    auto markMazePos = [&mat] (const Pos& pos, MazePosType t) {
+        mat[pos.row_][pos.col_] = t;
+    };
+
     Stack<Pos> st;
     st.push({0, 0});
-    posInStack.push_back({0, 0});
 
     Pos currentPos = st.top();
+    markMazePos(currentPos, MazePosType::kInStack);
     while (true) {
         // fail to reach outlet.
         
@@ -97,9 +104,8 @@ void matrixExplore() {
         // currentPos is end of way?
         if (nextPos == noWay) {
             st.pop();
-            failPos.push_back(currentPos);
-            posInStack.pop_back();
-            pv("{%lld, %lld} out\n", currentPos.row_, currentPos.col_);
+            markMazePos(currentPos, MazePosType::kTryFail);
+            pv("{%d, %d} out\n", currentPos.row_, currentPos.col_);
             if (st.empty()) {
                 pln("no solution");
                 break;
@@ -109,8 +115,8 @@ void matrixExplore() {
         else {
             // currentPos has other way? push it
             st.push(nextPos);
-            pv("{%lld, %lld} in\n", nextPos.row_, nextPos.col_);
-            posInStack.push_back(nextPos);
+            pv("{%d, %d} in\n", nextPos.row_, nextPos.col_);
+            markMazePos(nextPos, MazePosType::kInStack);
             currentPos = nextPos;
         }
     }

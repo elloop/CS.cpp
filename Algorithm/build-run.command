@@ -12,10 +12,7 @@ on_error_msg() {
     fi
 }
 
-cd ../
-
-
-if [ "$1" = "r" ]; then
+if [ "$1" = "r" ] || [ ! -d "build" ]; then
     # check build dir.
     if [ -d "build" ] ; then
         echo "removing old build dir..."
@@ -31,17 +28,9 @@ if [ "$1" = "r" ]; then
     cmake ../
     on_error_msg "cmake failed"
     echo "cmake finish"
-
-    cd ../
 fi
 
-
-if [ -d "build" ]; then
-    cd build
-else
-    mkdir "build"
-    cd build
-fi
+cd build
 
 make 
 
@@ -49,9 +38,9 @@ on_error_msg "make failed"
 
 echo "make finish"
 
-cd ../../build/
+cd ./bin
 
-./algorithm/bin/algorithm
+./algorithm
 
 read -n1 -r -p "Press any key to continue..."
 
