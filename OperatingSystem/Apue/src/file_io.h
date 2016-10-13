@@ -10,8 +10,6 @@ NS_BEGIN(elloop);
 class FileIO {
 public:
 
-    // static const std::string fileName_;
-
     static std::string fileName_;
 
     static int run(int argc, char** argv) {

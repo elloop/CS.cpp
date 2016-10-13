@@ -32,7 +32,7 @@ END_TEST;
 
 
 
-RUN_GTEST(VectorTest, Capacity, @);
+BEGIN_TEST(VectorTest, Capacity, @);
 
 vector<int> v1;
 psln(v1.capacity());

@@ -18,6 +18,12 @@ include_directories(${PROJECT_SOURCE_DIR}/src/include)
 include_directories(${PROJECT_SOURCE_DIR}/../../)
 include_directories(${PROJECT_SOURCE_DIR}/../../include)
 
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
+set(LIBRARY_OUTPUT_PATH    ${PROJECT_SOURCE_DIR}/build/lib)
+
+link_directories    ( ${LIBRARY_OUTPUT_PATH})
+include(${PROJECT_SOURCE_DIR}/../../include/gtest/CMakeLists.txt)   # build libgtest.a
+
 foreach(f ${SRC_FILES})
     message(${f})
 endforeach()
@@ -26,4 +32,7 @@ add_definitions(-DAPUE)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
 add_executable(${PROJECT_NAME} ${SRC_FILES})
+
+set(LINK_LIBS gtest)
+target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
 

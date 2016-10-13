@@ -15,8 +15,7 @@ public:
     static int run(int argc, char** argv) {
         // printBufferType();
         // tmpnameTest();
-        // mkstempTest();
-
+        mkstempTest();
         return 0;
     }
 

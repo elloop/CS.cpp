@@ -1,6 +1,8 @@
 cmake_minimum_required ( VERSION 3.0)
 project                ( total_stl)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+
 function(include_sub_directories_recursively root_dir)
     if (IS_DIRECTORY ${root_dir})
         message("include dir: " ${root_dir})

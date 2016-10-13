@@ -126,7 +126,7 @@ END_TEST;
 
 
 //----------------------- multiple div array example ----------------------
-RUN_GTEST(ArrayTest, MatrixOrMultipleDiv, @);
+BEGIN_TEST(ArrayTest, MatrixOrMultipleDiv, @);
 
 // like plain 2D array
 array<array<int, 5>, 5> mat1 = {

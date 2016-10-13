@@ -1,7 +1,7 @@
 #! /bin/bash
 
 CURR_FILE_NAME=`basename ${0}`
-EXECUTABLE=apue
+EXECUTABLE=total_stl
 
 CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd ${CUR_DIR}

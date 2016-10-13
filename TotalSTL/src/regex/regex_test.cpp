@@ -154,7 +154,7 @@ void printUsage()
 }
 
 
-RUN_GTEST(RegexTest, convert, @@);
+BEGIN_TEST(RegexTest, convert, @@);
 
 string srcfile_name("2015-12-15-learning-using-stl-12-std-bind.md");
 string flag("--to-rouge");

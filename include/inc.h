@@ -3,9 +3,9 @@
 #include <cassert>
 #include "noncopyable.h"
 
-# ifndef APUE
+// # ifndef APUE
 #   include "gtest/gtest.h"
-# endif
+// # endif
 
 # if __GXX_EXPERIMENTAL_CXX0X__ || __cplusplus >= 201103L
 // Compiling in at least C++11 mode.

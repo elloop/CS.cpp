@@ -15,8 +15,10 @@ int main(int argc, char * argv[]) {
     // InterSignal::run(argc, argv);
     // FileIO::run(argc, argv);
     // FileDirectory::run(argc, argv);
-    StdioLib::run(argc, argv);
+    // StdioLib::run(argc, argv);
     // IpAddress::run(argc, argv);
-    return 0;
+
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
 

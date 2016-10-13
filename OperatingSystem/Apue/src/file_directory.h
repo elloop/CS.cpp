@@ -1,3 +1,5 @@
+#pragma once
+
 #include "include/apue.h"
 #include "inc.h"
 #include <fcntl.h>
