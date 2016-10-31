@@ -30,12 +30,12 @@
  *      local system(...) will hide ISO system(...), use std::system(...) to call the std version explicitly.
  *
  *  3. what value is `ret` set for in watpid(pid, &ret, 0) ? Is ret equal to the return value of the child process?
- *
- *
- *
- *
+ *      ret stores the termination status of the terminated process. 
+ *      its value is defined by implementation. with certain bits indicating the exit status, other bits indicating the signal number and one bit indicating whether a 
+ *      core file is generated, and so on. use the macro defined in <sys/wait.h> to check it. see printExit() function defined below.
  *
  */
+
 #include "include/inc.h"
 #include "include/apue.h"
 // #include <cstdlib>   // if you use ISO C system 
@@ -44,6 +44,7 @@
 #include <sys/times.h>
 #include <string>
 #include <vector>
+#include <dirent.h>
 
 using namespace std;
 using std::string;
@@ -385,7 +386,7 @@ END_TEST;
 
 // ****************************************************************************
 
-RUN_GTEST(ProcessControll, ProcessTime, @@);
+BEGIN_TEST(ProcessControll, ProcessTime, @@);
 
 auto printProcessTime = [] (clock_t wallTime, struct tms *begin, struct tms *end) {
 
@@ -431,6 +432,11 @@ while (iter != cmds.end()) {
 
 END_TEST;
 
+
+RUN_GTEST(ProcessControll, getSubDir, @@);
+
+
+END_TEST;
 
 NS_END(elloop);
 

@@ -16,6 +16,16 @@
 },
 {
   "directory": "/Users/elloop/codes/CS.cpp/OperatingSystem/apue/build",
+  "command": "clang++   -DAPUE -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/include -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../.. -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../../include -I/Users/elloop/codes/CS.cpp/include/gtest  -std=c++11 -g -ggdb -Wall   -o CMakeFiles/apue.dir/src/signal_test.cpp.o -c /Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/signal_test.cpp",
+  "file": "/Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/signal_test.cpp"
+},
+{
+  "directory": "/Users/elloop/codes/CS.cpp/OperatingSystem/apue/build",
+  "command": "clang++   -DAPUE -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/include -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../.. -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../../include -I/Users/elloop/codes/CS.cpp/include/gtest  -std=c++11 -g -ggdb -Wall   -o CMakeFiles/apue.dir/src/test.cpp.o -c /Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/test.cpp",
+  "file": "/Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/test.cpp"
+},
+{
+  "directory": "/Users/elloop/codes/CS.cpp/OperatingSystem/apue/build",
   "command": "clang++   -DAPUE -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/src/include -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../.. -I/Users/elloop/codes/CS.cpp/OperatingSystem/apue/../../include -I/Users/elloop/codes/CS.cpp/include/gtest  -std=c++11 -g -ggdb -Wall   -o CMakeFiles/gtest.dir/Users/elloop/codes/CS.cpp/include/gtest/src/gtest-all.cc.o -c /Users/elloop/codes/CS.cpp/include/gtest/src/gtest-all.cc",
   "file": "/Users/elloop/codes/CS.cpp/include/gtest/src/gtest-all.cc"
 },
