@@ -6,7 +6,7 @@ _Pragma("once")
 #include "inc.h"
 
 NS_BEGIN(elloop)
-NS_BEGIN(constexpr)
+NS_BEGIN(constexpression)
 
 #ifdef _MSC_VER
 #else
@@ -90,5 +90,5 @@ int fibs[] = {
 
 #endif
 
-NS_END(constexpr)
+NS_END(constexpression)
 NS_END(elloop)

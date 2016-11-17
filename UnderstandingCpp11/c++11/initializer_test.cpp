@@ -69,7 +69,7 @@ BEGIN_TEST(TypeConvert, CustomConverter, @);
     EXPECT_TRUE(sameA2);
 
     bool sameB1 = std::is_same<decltype(cb()), A>::value;
-    bool sameB2 = std::is_same<decltype(cb.operator B), A>::value;
+    bool sameB2 = std::is_same<decltype(cb.operator B()), A>::value;
     EXPECT_TRUE(sameB1);
     EXPECT_FALSE(sameB2);
 

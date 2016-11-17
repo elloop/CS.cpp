@@ -62,7 +62,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(solutiondir)libs;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib;util.lib;jsoncpp_0_50.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gtest.lib;util.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetFileName)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -91,8 +91,12 @@
     <ClCompile Include="algorithm\numeric\accumulate_test.cpp" />
     <ClCompile Include="algorithm\removing\unique_test.cpp" />
     <ClCompile Include="container\container_overall_test.cpp" />
-    <ClCompile Include="container\Dictionary.cpp" />
-    <ClCompile Include="container\map_vs_unordered_map.cpp" />
+    <ClCompile Include="container\Dictionary.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="container\map_vs_unordered_map.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="container\sequence\array_test.cpp" />
     <ClCompile Include="container\sequence\forward_list_test.cpp" />
     <ClCompile Include="container\sequence\tuple_test.cpp" />
