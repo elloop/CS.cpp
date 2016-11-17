@@ -13,10 +13,10 @@
 #define EL_SAFE_DELETE(p) do { if (p) { delete (p); (p) = nullptr;} } while(0); 
 
 
-#ifdef _MSC_VER
-#define __func__ __FUNCTION__
-#define noexcept _NOEXCEPT
-//#define _Pragma __pragma // seemed no use, because _Pragma should be the first line in file.
+#if _MSC_VER < 1900         // before vs 2015
+    #define __func__ __FUNCTION__
+    #define noexcept _NOEXCEPT
+    //#define _Pragma __pragma // seemed no use, because _Pragma should be the first line in file.
 #endif
 
 #define RUN_GTEST(__CASE__, __SUB_CASE__, __TAG__) TEST(__CASE__, __SUB_CASE__) { \

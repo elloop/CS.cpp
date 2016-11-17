@@ -16,6 +16,8 @@ enum class Week
 };
 
 
+/*
+
 
 
 RUN_GTEST(EnumClassTest, ConvertToInt, @);
@@ -72,6 +74,7 @@ EXPECT_TRUE(same);
 
 END_TEST;
 
+*/
 
 NS_END(enum_class);
 NS_END(elloop);
