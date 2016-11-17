@@ -1,6 +1,8 @@
 #include "rapid_json_test.h"
 #include "rapidjson/reader.h"
 #include "rapidjson/document.h"
+#include "rapidjson/stringbuffer.h"
+#include "rapidjson/writer.h"
 #include "util/FileReader.h"
 #include <string>
 #include <fstream>
@@ -26,6 +28,7 @@ NS_BEGIN(third_party);
 BEGIN_TEST(RapidJson, SimpleDomUseStreamContent, @);
 //return;
 using namespace std;
+using namespace rapidjson;
 string      stringFromStream;
 ifstream    in;
 in.open("test.json", ifstream::in);
@@ -66,6 +69,21 @@ if (contents.IsArray()) {
         psln(util::getString(v, "value"));
     }
 }
+
+pcln("add a value into array");
+
+Value item(Type::kObjectType);
+item.AddMember("key", "word5", doc.GetAllocator());
+item.AddMember("value", "µ¥´Ê5", doc.GetAllocator());
+contents.PushBack(item, doc.GetAllocator());
+
+// convert dom to string.
+StringBuffer buffer;
+Writer<StringBuffer> writer(buffer);
+doc.Accept(writer);
+
+psln(buffer.GetString());
+
 
 END_TEST;
 
