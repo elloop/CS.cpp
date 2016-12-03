@@ -23,9 +23,6 @@ function(include_all_sources_recursively target_list root_dir)
     set(${target_list} ${cpp_list} ${c_list} PARENT_SCOPE)
 endfunction()
 
-include_directories(${PROJECT_SOURCE_DIR}/../)
-include_directories(${PROJECT_SOURCE_DIR}/../include)
-
 set(CXX_FLAGS
  -std=c++11
  -g
@@ -52,7 +49,7 @@ set(CXX_FLAGS
 
 string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
 
-set(CMAKE_CXX_COMPILER      "clang++" )
+#set(CMAKE_CXX_COMPILER      "clang++" )
 set(CMAKE_CXX_FLAGS_DEBUG   "-O0" )
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -finline-limit=1000 -DNDEBUG " )
 

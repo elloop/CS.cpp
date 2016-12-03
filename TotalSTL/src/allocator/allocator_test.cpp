@@ -104,7 +104,7 @@ public:
     }
 };
 
-RUN_GTEST(AllocatorTest, SimpleAllocator, @@);
+BEGIN_TEST(AllocatorTest, SimpleAllocator, @@);
 
 vector<int, elloop::allocator<int>> iv{1, 2, 3, 4, 5, 6};
 printContainer(iv, "iv = ");  // iv = 1, 2, 3, 4, 5, 6
