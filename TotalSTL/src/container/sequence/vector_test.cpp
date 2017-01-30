@@ -6,9 +6,8 @@
 NS_BEGIN(elloop);
 using namespace std;
 
-
-
-BEGIN_TEST(VectorTest, BasicUse, @);
+//********************************** new case **********************************
+RUN_GTEST(VectorTest, BasicUse, @);
 
 vector<int> vi {1, 2, 3};
 
@@ -22,16 +21,23 @@ for (int i=4; i<10; ++i)
 vi[0] = 10;
 
 // print elems
-for (int elem : vi)
-{
-    pln(elem);
+printContainer(vi, "init vi: ");
+
+// delete
+auto iter = vi.begin();
+vi.erase(iter);
+printContainer(vi, "erase begin, vi: ");
+
+iter = find(vi.begin(), vi.end(), 5);
+if (iter != vi.end()) {
+    pln("erase 5");
+    vi.erase(iter);
 }
+printContainer(vi, "erase 5, vi: ");
 
 END_TEST;
 
-
-
-
+//********************************** new case **********************************
 BEGIN_TEST(VectorTest, Capacity, @);
 
 vector<int> v1;
@@ -43,8 +49,8 @@ psln(v2.capacity());
 vector<int> v3 = {1};
 psln(v3.capacity());
 
-
 END_TEST;
 
+//********************************** new case **********************************
 
 NS_END(elloop);

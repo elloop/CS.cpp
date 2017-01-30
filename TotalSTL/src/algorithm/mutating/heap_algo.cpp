@@ -1,4 +1,3 @@
-#include "gtest/gtest.h"
 #include "inc.h"
 #include "stl_headers.h"
 #include <vector>
@@ -95,7 +94,7 @@ psln(is_heap(v1.begin(), v1.end()));
 END_TEST;
 
 // ****************************************************************************
-RUN_GTEST(HeapAlgo, IsHeapUntil, @@);
+BEGIN_TEST(HeapAlgo, IsHeapUntil, @@);
 
 vector<int> v1{6, 1, 2, 5, 3, 4};
 auto iter = is_heap_until(v1.begin(), v1.end());

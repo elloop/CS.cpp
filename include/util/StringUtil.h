@@ -54,5 +54,17 @@ public:
     static long double stold(const std::string &s, size_t* pos = 0) {
         return std::stold(s, pos);
     }
+
+    static std::string format(const char *fmt, ...) {
+        va_list va;
+        va_start(va, fmt);
+        char *str = new char[1024];
+        sprintf(str, fmt, va);
+        std::string res(str);
+        delete [] str;
+        va_end(va);
+        return res;
+    }
+
 };
 
