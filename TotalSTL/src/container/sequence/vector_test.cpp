@@ -7,7 +7,7 @@ NS_BEGIN(elloop);
 using namespace std;
 
 //********************************** new case **********************************
-RUN_GTEST(VectorTest, BasicUse, @);
+BEGIN_TEST(VectorTest, BasicUse, @);
 
 vector<int> vi {1, 2, 3};
 
@@ -49,8 +49,36 @@ psln(v2.capacity());
 vector<int> v3 = {1};
 psln(v3.capacity());
 
+v3.reserve(10);
+psln(v3.capacity());
+
 END_TEST;
 
 //********************************** new case **********************************
+
+template <typename T>
+void shrinkCapacity(vector<T> &v) {
+    vector<T> temp(v);
+    temp.swap(v);
+}
+
+BEGIN_TEST(VectorTest, Shrink, @@);
+
+vector<int> vi;
+
+vi.reserve(30);
+vi.push_back(1);
+
+psln(vi.capacity());        // 30
+
+shrinkCapacity(vi);
+
+vi.shrink_to_fit();         // since c++ 11
+
+psln(vi.capacity());        // 1
+
+
+
+END_TEST;
 
 NS_END(elloop);
