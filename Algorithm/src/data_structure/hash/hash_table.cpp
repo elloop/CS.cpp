@@ -11,7 +11,7 @@ void dumpHashTable(const HashTable<T> &ht) {
 }
 
 // todo: use HashTable to solve real oj problem.
-RUN_GTEST(HashTableTest, StringHash, @@);
+BEGIN_TEST(HashTableTest, StringHash, @@);
 
     std::cout << std::boolalpha;
     bool isUnique(false);

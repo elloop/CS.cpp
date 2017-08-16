@@ -119,7 +119,7 @@ void matrixExplore() {
     }
 }
 
-RUN_GTEST(StackTest, explore, @@);
+BEGIN_TEST(StackTest, explore, @@);
 
 matrixExplore();
 

@@ -193,7 +193,7 @@ double evalExpression(const std::string &s) {
 }
 
 
-RUN_GTEST(StackTest, EvalExpression, @@);
+BEGIN_TEST(StackTest, EvalExpression, @@);
 
 // std::string epress("#(1+2+3+4)*2+3*4+10/2+(10+2)*10-100+3-60#");
 std::string epress("#(1+2+3*4*(2+3)+10)#");
