@@ -10,8 +10,9 @@ NS_BEGIN(elloop);
 using namespace std;
 
 // ****************************************************************************
-BEGIN_TEST(CPPTest, Set, @@);
+RUN_GTEST(CPPTest, Set, @@);
 
+/*
 // approach 1:
 set<int, greater<int>> s;
 copy(istream_iterator<int>(cin), istream_iterator<int>(), inserter(s, s.begin()));
@@ -19,15 +20,16 @@ copy(istream_iterator<int>(cin), istream_iterator<int>(), inserter(s, s.begin())
 copy(s.begin(), next(s.begin(), 2), ostream_iterator<int>(cout, " "));
 
 // approach 2:
-// set<int> s;
-// copy(istream_iterator<int>(cin), istream_iterator<int>(), inserter(s, s.begin()));
+set<int> s;
+copy(istream_iterator<int>(cin), istream_iterator<int>(), inserter(s, s.begin()));
 //// copy_backward(prev(s.end(), 3), s.end(), ostream_iterator<int>(cout, " "));    // ostream_iterator is ForwardIterator can't go backward.
-// reverse_copy(prev(s.end(), 2), s.end(), ostream_iterator<int>(cout, " "));
-// cr;
+reverse_copy(prev(s.end(), 2), s.end(), ostream_iterator<int>(cout, " "));
+cr;
+*/
 
 // approach 3:
-// set<int> s;
-// reverse_copy(prev(copy(istream_iterator<int>(cin), istream_iterator<int>(), inserter(s, s.begin())), 3), s.end(), ostream_iterator<int>(cout, " "));
+set<int> s;
+reverse_copy(prev(copy(istream_iterator<int>(cin), istream_iterator<int>(), inserter(s, s.begin())), 3), s.end(), ostream_iterator<int>(cout, " "));
 
 // approach 4:
 // int a[10] = {0};
