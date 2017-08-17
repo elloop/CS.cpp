@@ -15,7 +15,11 @@ flags = [
 '-x',
 'c++',
 '-I',
-'.',
+'./',
+'-I',
+'./include/',
+'-I',
+'../../../include/',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1',
 '-isystem',
@@ -28,17 +32,24 @@ flags = [
 '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks',
 ]
 
-compilation_database_folder = '/Users/sunyongjian1/codes/CS.cpp/Algorithm/build'
+def DirectoryOfThisScript():
+  return os.path.dirname( os.path.abspath( __file__ ) )
+
+hme = os.path.expanduser("~")
+compilation_database_folder = hme + '/codes/CS.cpp/Algorithm/src'
+#  compilation_database_folder = ''
+#  compilation_database_folder = DirectoryOfThisScript()
+
+print("el## CompilationDatabase: ", compilation_database_folder)
 
 if os.path.exists( compilation_database_folder ):
+  print("el## database ycm core CompilationDatabase")
   database = ycm_core.CompilationDatabase( compilation_database_folder )
 else:
   database = None
 
 SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
 
-def DirectoryOfThisScript():
-  return os.path.dirname( os.path.abspath( __file__ ) )
 
 
 def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
@@ -48,6 +59,7 @@ def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
   make_next_absolute = False
   path_flags = [ '-isystem', '-I', '-iquote', '--sysroot=' ]
   for flag in flags:
+    print("fetch a flag: %s" % flag)
     new_flag = flag
 
     if make_next_absolute:
@@ -66,6 +78,7 @@ def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
         break
 
     if new_flag:
+      print("new_flag come out : %s" % new_flag)
       new_flags.append( new_flag )
   return new_flags
 
@@ -81,20 +94,25 @@ def GetCompilationInfoForFile( filename ):
   # corresponding source file, if any. If one exists, the flags for that file
   # should be good enough.
   if IsHeaderFile( filename ):
+    print("el## is header file: %s" % filename)
     basename = os.path.splitext( filename )[ 0 ]
     for extension in SOURCE_EXTENSIONS:
       replacement_file = basename + extension
+      print("el## replacement_file %s" % replacement_file)
       if os.path.exists( replacement_file ):
         compilation_info = database.GetCompilationInfoForFile(
           replacement_file )
         if compilation_info.compiler_flags_:
           return compilation_info
-    return None
+    cwdname = DirectoryOfThisScript()
+    return database.GetCompilationInfoForFile(cwdname + "/main.cpp")
+  print("el## not header file: %s" % filename)
   return database.GetCompilationInfoForFile( filename )
 
 
 def FlagsForFile( filename, **kwargs ):
   if database:
+    print("el## database")
     # Bear in mind that compilation_info.compiler_flags_ does NOT return a
     # python list, but a "list-like" StringVec object
     compilation_info = GetCompilationInfoForFile( filename )
@@ -113,6 +131,9 @@ def FlagsForFile( filename, **kwargs ):
     #  except ValueError:
       #  pass
   else:
+    print("el## relative path in ycm")
+    print(filename)
+    print("el## end filename")
     relative_to = DirectoryOfThisScript()
     final_flags = MakeRelativePathsInFlagsAbsolute( flags, relative_to )
 
@@ -120,3 +141,4 @@ def FlagsForFile( filename, **kwargs ):
     'flags': final_flags,
     'do_cache': True
   }
+

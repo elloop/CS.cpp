@@ -1,48 +1,55 @@
 #! /bin/bash
 
+CURR_FILE_NAME=`basename ${0}`
+EXECUTABLE=algorithm
+
 CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd ${CUR_DIR}
+
+log_from_me() {
+    echo "[${CURR_FILE_NAME}] ${1}"
+}
 
 on_error_msg() {
     local retv=$?
     if [ $retv -gt 0 ]; then
-        echo $1
-        read -n1 -r -p "Press any key to continue..."
+        log_from_me $1
+        read -n1 -r -p "[${CURR_FILE_NAME}] Press any key to continue..."
         exit 1
     fi
 }
 
 if [ "$1" = "r" ] || [ ! -d "build" ]; then
-    # check build dir.
     if [ -d "build" ] ; then
-        echo "removing old build dir..."
+        log_from_me "removing old build dir..."
         rm -rf ./build
-        echo "done"
+        log_from_me "done"
     fi
-
-    echo "create build dir..."
+    log_from_me "create build dir..."
     mkdir build
-
     cd ./build
-
     cmake ../
     on_error_msg "cmake failed"
-    echo "cmake finish"
+    log_from_me "cmake finish"
+    log_from_me "copy compile_commands"
+    cp ./compile_commands.json ../src/
+    cd ..
 fi
 
 cd build
-
 make 
 
 on_error_msg "make failed"
 
-echo "make finish"
+log_from_me "make finish"
 
-cd ./bin
+cd ./bin  # make ./bin as cwd.
 
-./algorithm
+./${EXECUTABLE}
 
-read -n1 -r -p "Press any key to continue..."
+read -n1 -r -p "[${CURR_FILE_NAME}] Press any key to continue..."
 
 exit 0;
+
+
 
