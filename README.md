@@ -27,14 +27,17 @@ This script will create a folder (containing the generated Makefile) called `bui
 
 For example, after running the python script, the structure of project Algorithm will be:
 
-{% highlight c++ %}
+
+```c++
+
 total 8
 drwxr-xr-x   5 lina  staff   170B  4 24 23:05 .
 drwxr-xr-x  16 lina  staff   544B  4 24 23:04 ..
 -rw-r--r--   1 lina  staff   2.5K  4 24 09:19 CMakeLists.txt
 drwxr-xr-x   2 lina  staff    68B  4 24 23:05 build
 drwxr-xr-x  11 lina  staff   374B  4 19 11:50 src
-{% endhighlight %}
+
+```
 
 then, you can go to build dir, and run `make`, executables will be output into a folder called `build` in the root dir of this repo.
 
